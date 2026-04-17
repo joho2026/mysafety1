@@ -29,6 +29,7 @@
       --radius:18px;
       --radius-lg:26px;
       --max:1160px;
+      --transition:260ms cubic-bezier(.2,.8,.2,1);
     }
 
     *{box-sizing:border-box}
@@ -48,6 +49,7 @@
     a{
       color:var(--navy-3);
       text-decoration:none;
+      transition:color var(--transition);
     }
 
     a:hover{
@@ -81,6 +83,7 @@
       font-weight:700;
       letter-spacing:0.02em;
       margin-bottom:18px;
+      animation:fadeUp 700ms ease both;
     }
 
     .eyebrow-dark{
@@ -100,8 +103,8 @@
       position:sticky;
       top:0;
       z-index:1000;
-      backdrop-filter:blur(14px);
-      background:rgba(255,255,255,0.86);
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,0.84);
       border-bottom:1px solid rgba(217,226,238,0.9);
     }
 
@@ -141,11 +144,27 @@
       font-weight:700;
       font-size:0.93rem;
       opacity:0.92;
+      position:relative;
+    }
+
+    .nav a:after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:var(--red);
+      transition:width var(--transition);
     }
 
     .nav a:hover{
       text-decoration:none;
       opacity:1;
+    }
+
+    .nav a:hover:after{
+      width:100%;
     }
 
     .hero{
@@ -168,6 +187,20 @@
       background:radial-gradient(circle, rgba(255,255,255,0.12), rgba(255,255,255,0));
       border-radius:50%;
       pointer-events:none;
+      animation:floatGlow 7s ease-in-out infinite;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      left:-100px;
+      top:60px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      pointer-events:none;
+      animation:floatGlow 9s ease-in-out infinite reverse;
     }
 
     .hero-grid{
@@ -181,6 +214,7 @@
 
     .hero-logo{
       margin-bottom:24px;
+      animation:fadeUp 850ms ease both;
     }
 
     .hero-logo img{
@@ -197,10 +231,11 @@
     }
 
     h1{
-      font-size:3.35rem;
+      font-size:3.45rem;
       font-weight:800;
       letter-spacing:-0.03em;
       color:#fff;
+      animation:fadeUp 900ms ease both;
     }
 
     h2{
@@ -218,6 +253,7 @@
 
     .hero h3{
       color:#fff;
+      animation:fadeUp 980ms ease both;
     }
 
     .lead{
@@ -225,6 +261,7 @@
       max-width:760px;
       color:rgba(255,255,255,0.95);
       margin-bottom:18px;
+      animation:fadeUp 1100ms ease both;
     }
 
     .hero-note{
@@ -232,6 +269,7 @@
       color:rgba(255,255,255,0.82);
       font-size:0.92rem;
       max-width:760px;
+      animation:fadeUp 1250ms ease both;
     }
 
     .btn-row{
@@ -239,6 +277,7 @@
       gap:14px;
       flex-wrap:wrap;
       margin-top:28px;
+      animation:fadeUp 1180ms ease both;
     }
 
     .btn{
@@ -252,7 +291,7 @@
       cursor:pointer;
       font-size:0.98rem;
       font-weight:800;
-      transition:all .2s ease;
+      transition:all var(--transition);
       text-decoration:none;
       box-shadow:var(--shadow-sm);
     }
@@ -265,7 +304,8 @@
     .btn-primary:hover{
       background:var(--red-hover);
       text-decoration:none;
-      transform:translateY(-1px);
+      transform:translateY(-2px);
+      box-shadow:0 16px 36px rgba(108,21,74,0.22);
     }
 
     .btn-secondary{
@@ -278,13 +318,15 @@
     .btn-secondary:hover{
       text-decoration:none;
       background:rgba(255,255,255,0.16);
+      transform:translateY(-1px);
     }
 
     .hero-card,
     .card,
     .faq-item,
     .legal-box,
-    .cta{
+    .cta,
+    .step-card{
       border-radius:var(--radius);
     }
 
@@ -294,15 +336,12 @@
       border:1px solid rgba(255,255,255,0.55);
       box-shadow:var(--shadow-lg);
       padding:28px;
+      animation:fadeUp 1050ms ease both;
     }
 
     .hero-card h3{
       color:var(--navy);
       margin-bottom:10px;
-    }
-
-    .hero-card p{
-      margin-top:0;
     }
 
     form{
@@ -320,12 +359,13 @@
       color:var(--text);
       background:#fff;
       outline:none;
-      transition:border-color .2s ease, box-shadow .2s ease;
+      transition:border-color var(--transition), box-shadow var(--transition), transform var(--transition);
     }
 
     input[type="email"]:focus{
       border-color:var(--navy-3);
       box-shadow:0 0 0 4px rgba(33,73,124,0.12);
+      transform:translateY(-1px);
     }
 
     .checkbox{
@@ -366,11 +406,6 @@
       margin-bottom:30px;
     }
 
-    .section-intro p{
-      color:var(--text);
-      margin-bottom:14px;
-    }
-
     .grid-3{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -391,6 +426,13 @@
       height:100%;
       position:relative;
       overflow:hidden;
+      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-md);
+      border-color:var(--border-strong);
     }
 
     .card:before{
@@ -406,10 +448,6 @@
       margin-bottom:12px;
     }
 
-    .card p:last-child{
-      margin-bottom:0;
-    }
-
     .steps{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -421,9 +459,15 @@
       background:rgba(255,255,255,0.98);
       border:1px solid var(--border);
       box-shadow:var(--shadow-sm);
-      border-radius:var(--radius);
       padding:26px;
       height:100%;
+      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .step-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-md);
+      border-color:var(--border-strong);
     }
 
     .step-number{
@@ -439,6 +483,11 @@
       font-size:0.98rem;
       box-shadow:0 10px 20px rgba(15,39,71,0.18);
       margin-bottom:14px;
+      transition:transform var(--transition);
+    }
+
+    .step-card:hover .step-number{
+      transform:scale(1.05);
     }
 
     .faq{
@@ -451,6 +500,13 @@
       border:1px solid var(--border);
       box-shadow:var(--shadow-sm);
       padding:24px 26px;
+      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .faq-item:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow-md);
+      border-color:var(--border-strong);
     }
 
     .faq-item h3{
@@ -464,11 +520,6 @@
       padding:28px;
     }
 
-    .legal-box ul{
-      margin-top:8px;
-      margin-bottom:16px;
-    }
-
     .cta{
       background:
         radial-gradient(circle at top right, rgba(255,255,255,0.09), rgba(255,255,255,0) 28%),
@@ -477,17 +528,102 @@
       padding:44px 30px;
       box-shadow:var(--shadow-md);
       border:1px solid rgba(255,255,255,0.10);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta:after{
+      content:"";
+      position:absolute;
+      right:-80px;
+      bottom:-80px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,0.10), rgba(255,255,255,0));
+      pointer-events:none;
     }
 
     .cta h2,
     .cta h3,
     .cta p{
       color:#fff;
+      position:relative;
+      z-index:1;
+    }
+
+    .cta .checkbox,
+    .cta form,
+    .cta .small,
+    .cta .btn{
+      position:relative;
+      z-index:1;
     }
 
     .cta .checkbox{
       color:rgba(255,255,255,0.88);
     }
+
+    .map-preview{
+      margin-top:20px;
+      background:linear-gradient(135deg, #eef3f9, #dde8f5);
+      border:1px solid #cfdcec;
+      border-radius:16px;
+      padding:18px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .map-frame{
+      position:relative;
+      min-height:240px;
+      border-radius:14px;
+      background:
+        linear-gradient(90deg, rgba(15,39,71,0.04) 1px, transparent 1px),
+        linear-gradient(rgba(15,39,71,0.04) 1px, transparent 1px),
+        linear-gradient(135deg, #f9fbfd 0%, #edf3f9 100%);
+      background-size:32px 32px, 32px 32px, auto;
+      border:1px solid #d6e0eb;
+      overflow:hidden;
+    }
+
+    .map-pin{
+      position:absolute;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow:0 0 0 6px rgba(108,21,74,0.16);
+      left:62%;
+      top:44%;
+      animation:pulsePin 2.4s ease-in-out infinite;
+    }
+
+    .map-route{
+      position:absolute;
+      left:18%;
+      top:24%;
+      width:50%;
+      height:38%;
+      border:2px dashed rgba(15,39,71,0.30);
+      border-radius:24px;
+      transform:rotate(-6deg);
+    }
+
+    .map-label{
+      position:absolute;
+      background:rgba(255,255,255,0.92);
+      color:var(--navy);
+      border:1px solid #d6e0eb;
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:0.82rem;
+      font-weight:700;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .map-label.a{left:12%; top:16%;}
+    .map-label.b{right:10%; bottom:14%;}
+    .map-label.c{right:20%; top:18%;}
 
     .footer{
       position:relative;
@@ -538,8 +674,31 @@
       margin-bottom:8px;
     }
 
-    .muted{
-      color:var(--muted);
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes floatGlow{
+      0%,100%{transform:translateY(0) translateX(0)}
+      50%{transform:translateY(-12px) translateX(8px)}
+    }
+
+    @keyframes pulsePin{
+      0%,100%{
+        transform:scale(1);
+        box-shadow:0 0 0 6px rgba(108,21,74,0.16);
+      }
+      50%{
+        transform:scale(1.08);
+        box-shadow:0 0 0 12px rgba(108,21,74,0.10);
+      }
     }
 
     @media (max-width: 1020px){
@@ -565,11 +724,11 @@
       }
 
       h1{
-        font-size:2.45rem;
+        font-size:2.5rem;
       }
 
       h2{
-        font-size:1.78rem;
+        font-size:1.82rem;
       }
 
       .hero{
@@ -589,6 +748,14 @@
         padding:68px 0;
       }
     }
+
+    @media (prefers-reduced-motion: reduce){
+      *, *:before, *:after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -604,6 +771,7 @@
         <a href="#wofuer">Wofür Safety1 gedacht ist</a>
         <a href="#nutzen">Nutzen</a>
         <a href="#funktion">Funktionsprinzip</a>
+        <a href="#bereiche">Bereiche & Standortlogik</a>
         <a href="#zielgruppen">Zielgruppen</a>
         <a href="#werte">Werte</a>
         <a href="#warteliste">Warteliste</a>
@@ -638,8 +806,9 @@
         </p>
 
         <p class="lead">
-          Der Ansatz verfolgt bewusst eine gestufte Kommunikationslogik, die auf Nachvollziehbarkeit,
-          Kontrolle und einen verantwortungsvollen Umgang mit sensiblen Informationen ausgerichtet ist.
+          Ergänzend kann Safety1 mit vordefinierten Bereichen und geregelten Standortprüfungen arbeiten,
+          um bei erheblichen Abweichungen vom vorgesehenen Verlauf oder bei ungewöhnlichen Verzögerungen
+          eine strukturierte Hinweislogik auszulösen – ausdrücklich ohne permanentes Live-Tracking.
         </p>
 
         <div class="btn-row">
@@ -807,7 +976,77 @@
     </div>
   </section>
 
-  <section class="section section-alt anchor-offset" id="zielgruppen">
+  <section class="section section-alt anchor-offset" id="bereiche">
+    <div class="container">
+      <div class="section-intro">
+        <span class="eyebrow-dark">Bereiche & Standortlogik</span>
+        <h2>Definierte Bereiche statt permanentes Live-Tracking</h2>
+
+        <p>
+          Ergänzend kann Safety1 mit vorab festgelegten Bereichen und definierten Zeitfenstern arbeiten.
+          Denkbar ist beispielsweise, dass für einen Schulweg oder einen sonstigen regelmäßig wiederkehrenden
+          Bewegungsrahmen ein erwarteter Bereich und ein üblicher Zeitkorridor hinterlegt werden.
+        </p>
+
+        <p>
+          Wird dieser definierte Bereich verlassen oder wird für den vorgesehenen Weg ungewöhnlich lange Zeit
+          benötigt, kann – abhängig von den festgelegten Einstellungen – eine Hinweis- oder Eskalationslogik
+          ausgelöst werden.
+        </p>
+
+        <p>
+          Dabei ist wesentlich: Safety1 ist nicht als permanente Überwachungslösung gedacht. Vorgesehen ist
+          ausdrücklich kein Live-Tracking, sondern eine geregelte Standortüberprüfung in definierten Intervallen.
+          Im Anlassfall kann dadurch allenfalls ein letzter bekannter, technisch erfasster Standortpunkt
+          zur Orientierung angezeigt werden.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Vordefinierter Bereich</h3>
+          <p>
+            Für bestimmte Szenarien kann ein geografischer Rahmen festgelegt werden, etwa ein Schulweg oder
+            ein sonstiger regelmäßig genutzter Wegabschnitt.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Zeit- und Abweichungslogik</h3>
+          <p>
+            Wird der definierte Bereich verlassen oder ein üblicher Zeitkorridor erheblich überschritten,
+            kann eine abgestufte Benachrichtigungslogik ausgelöst werden.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Letzte bekannte Position</h3>
+          <p>
+            Im Anlassfall kann eine letzte technisch erfasste Standortmeldung auf einer Kartenansicht
+            als Orientierungspunkt dargestellt werden – nicht als permanente Echtzeitverfolgung.
+          </p>
+        </div>
+      </div>
+
+      <div class="map-preview">
+        <h3 style="margin-top:0;">Beispielhafte Kartenlogik</h3>
+        <p class="muted" style="margin-top:0;">
+          Schematische Darstellung eines definierten Bereichs mit letzter bekannter Positionsmeldung.
+          Diese Darstellung dient ausschließlich der konzeptionellen Einordnung.
+        </p>
+
+        <div class="map-frame" aria-label="Schematische Kartenansicht">
+          <div class="map-route"></div>
+          <div class="map-pin"></div>
+          <div class="map-label a">Startbereich</div>
+          <div class="map-label b">Letzter bekannter Punkt</div>
+          <div class="map-label c">Definierter Wegkorridor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section anchor-offset" id="zielgruppen">
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Zielgruppen</span>
@@ -855,7 +1094,7 @@
     </div>
   </section>
 
-  <section class="section anchor-offset" id="werte">
+  <section class="section section-alt anchor-offset" id="werte">
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Grundprinzipien</span>
@@ -894,7 +1133,7 @@
     </div>
   </section>
 
-  <section class="section section-alt anchor-offset" id="warteliste">
+  <section class="section anchor-offset" id="warteliste">
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Projektstatus</span>
@@ -944,7 +1183,7 @@
     </div>
   </section>
 
-  <section class="section anchor-offset" id="faq">
+  <section class="section section-alt anchor-offset" id="faq">
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Häufige Fragen</span>
@@ -980,6 +1219,23 @@
         </div>
 
         <div class="faq-item">
+          <h3>Ist die Bereichs- und Standortlogik ein Live-Tracking?</h3>
+          <p>
+            Nein. Vorgesehen ist ausdrücklich kein permanentes Live-Tracking, sondern eine geregelte
+            Standortüberprüfung in definierten Intervallen innerhalb eines vorab festgelegten Rahmens.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Was bedeutet „letzte bekannte Position“?</h3>
+          <p>
+            Gemeint ist ein technisch erfasster letzter Standortpunkt, der im Anlassfall als Orientierung
+            dienen kann. Eine lückenlose, permanente oder jederzeit aktuelle Echtzeit-Ortung ist damit
+            nicht verbunden.
+          </p>
+        </div>
+
+        <div class="faq-item">
           <h3>Was bedeutet „verifizierte Community“?</h3>
           <p>
             Gemeint ist eine zusätzliche, kontrolliert eingebundene Gruppe von Personen, deren Teilnahme
@@ -999,7 +1255,7 @@
     </div>
   </section>
 
-  <section class="section section-alt anchor-offset" id="rechtliches">
+  <section class="section anchor-offset" id="rechtliches">
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Rechtliche Einordnung</span>
@@ -1018,9 +1274,17 @@
           <li>die jederzeitige technische Verfügbarkeit,</li>
           <li>die fehlerfreie oder zeitgerechte Übermittlung von Benachrichtigungen,</li>
           <li>die ständige Erreichbarkeit eingebundener Kontakte oder Community-Mitglieder,</li>
+          <li>die Vollständigkeit, Genauigkeit oder jederzeitige Aktualität von Standortmeldungen,</li>
           <li>das tatsächliche Eintreffen oder Tätigwerden von Hilfe,</li>
           <li>die Eignung der Anwendung für jeden Einzelfall.</li>
         </ul>
+
+        <p>
+          Bereichsprüfungen, Zeitlogiken und Standortmeldungen dienen ausschließlich der strukturierten Einordnung
+          vordefinierter Situationen. Aus Abweichungen, Zeitüberschreitungen oder letzten bekannten Positionsmeldungen
+          kann nicht automatisch auf einen konkreten Notfall, ein Schadensereignis oder einen tatsächlichen Aufenthaltsort
+          geschlossen werden.
+        </p>
 
         <p>
           Die Nutzung hat stets verantwortungsvoll und ausschließlich im rechtlich zulässigen Rahmen zu erfolgen.
