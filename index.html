@@ -803,7 +803,9 @@
   </div>
 </div>
 
-<script>
+<body id="top">
+
+  <script>
 function acceptCookies(){
   localStorage.setItem("cookieAccepted", "true");
   document.getElementById("cookie-banner").style.display = "none";
@@ -813,10 +815,6 @@ if(!localStorage.getItem("cookieAccepted")){
   document.getElementById("cookie-banner").style.display = "block";
 }
 </script>
-
-<body id="top">
-  
-<body>
 
   <header class="topbar">
     <div class="container topbar-inner">
@@ -1517,19 +1515,31 @@ if(!localStorage.getItem("cookieAccepted")){
     </div>
   </footer>
 
-<a href="#top" class="back-to-top">↑</a>
-  
-  <script>
-    const btn = document.querySelector(".back-to-top");
+.back-to-top{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#6C154A;
+  color:#fff;
+  text-decoration:none;
+  width:44px;
+  height:44px;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:20px;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:all 0.2s ease;
+  z-index:9999;
+}
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        btn.style.display = "flex";
-      } else {
-        btn.style.display = "none";
-      }
-    });
-  </script>
+.back-to-top:hover{
+  background:#54113A;
+  text-decoration:none;
+  transform:translateY(-2px);
+}
   
 </body>
 </html>
