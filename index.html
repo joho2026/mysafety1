@@ -811,35 +811,63 @@ if(!localStorage.getItem("cookieAccepted")){
   </header>
 
   <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-logo">
+          <img src="logo.png" alt="Safety1 Logo">
+        </div>
+        <h1>Safety1</h1>
+        <p class="lead"><strong>Unterstützung im entscheidenden Moment.</strong></p>
+        <p class="lead">
+          Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll,
+          im Ernstfall rasch ausgewählte Kontakte zu informieren und Hilfe aus dem persönlichen
+          Umfeld besser zu organisieren.
+        </p>
+        <p class="lead">
+          Ob Familie, Kinder, alleinlebende Personen oder Betreuungssituationen: Safety1 verfolgt das Ziel,
+          Kommunikation und Reaktionsfähigkeit in belastenden oder unübersichtlichen Situationen zu erleichtern –
+          einfach, nachvollziehbar und mit Fokus auf einen verantwortungsvollen Umgang mit sensiblen Informationen.
+        </p>
 
-  <div class="hero-content">
+        <div class="btn-row">
+          <a href="#warteliste" class="btn btn-primary">Jetzt vormerken</a>
+          <a href="#wofuer" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
 
-    <h1>Unterstützung im entscheidenden Moment.</h1>
+        <p class="hero-note">
+          Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
+        </p>
+      </div>
 
-    <p class="hero-subline">
-      Safety1 ist eine digitale Lösung in Entwicklung, die darauf ausgerichtet ist, im Anlassfall
-      eine strukturierte Benachrichtigung ausgewählter Kontakte zu ermöglichen und – abhängig von
-      den jeweiligen Einstellungen – zusätzlich eine verifizierte Community im definierten Umfeld
-      einzubinden.
-    </p>
+      <div class="hero-card">
+        <h3>Frühzeitig vormerken</h3>
+        <p>
+          Wer sich frühzeitig für Updates zum Projektstand, zum geplanten Produktstart und zu ausgewählten
+          Entwicklungsschritten registrieren möchte, kann sich bereits jetzt unverbindlich vormerken.
+        </p>
 
-    <p class="hero-subline">
-      Ziel ist es, Reaktionswege nachvollziehbar zu gestalten, Zuständigkeiten klar zu definieren
-      und die Organisation von Hilfe aus dem persönlichen sowie erweiterten Umfeld zu erleichtern.
-    </p>
+        <!-- FORMULAR: action später mit Brevo / Mailchimp / Formularanbieter ersetzen -->
+        <form action="#" method="post">
+          <input type="email" name="email" placeholder="E-Mail-Adresse eingeben" required>
 
-    <div class="hero-cta">
-      <a href="#warteliste" class="btn btn-primary">Jetzt vormerken</a>
-      <a href="#funktion" class="btn btn-secondary">Funktionsprinzip ansehen</a>
+          <label class="checkbox">
+            <input type="checkbox" required>
+            <span>
+              Mit dem Absenden des Formulars erkläre ich mich damit einverstanden, zum Projekt Safety1 per E-Mail kontaktiert zu werden.
+              Die Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden.
+              Weitere Informationen zur Verarbeitung personenbezogener Daten finden sich in der Datenschutzerklärung.
+            </span>
+          </label>
+
+          <button type="submit" class="btn btn-primary">Jetzt vormerken</button>
+        </form>
+
+        <p class="small">
+          Mit der Eintragung in die Warteliste erfolgt noch kein Vertragsabschluss und kein Anspruch auf spätere Nutzung bestimmter Funktionen.
+        </p>
+      </div>
     </div>
-
-    <p class="hero-note">
-      Safety1 befindet sich derzeit in Entwicklung. Funktionen, Abläufe und Inhalte können sich bis zum Produktstart ändern.
-    </p>
-
-  </div>
-
-</section>
+  </section>
   
   <section class="section anchor-offset" id="wofuer">
     <div class="container">
