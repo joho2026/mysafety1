@@ -757,6 +757,8 @@
       }
     }
     .back-to-top{
+  display:none;
+}
   position:fixed;
   bottom:30px;
   right:30px;
@@ -1516,6 +1518,18 @@ if(!localStorage.getItem("cookieAccepted")){
   </footer>
 
 <a href="#top" class="back-to-top">↑</a>
+  
+  <script>
+    const btn = document.querySelector(".back-to-top");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+    });
+  </script>
   
 </body>
 </html>
