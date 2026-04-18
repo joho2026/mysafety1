@@ -756,6 +756,29 @@
         scroll-behavior:auto !important;
       }
     }
+    .back-to-top{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#6C154A;
+  color:#fff;
+  text-decoration:none;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:all 0.2s ease;
+  z-index:999;
+}
+
+.back-to-top:hover{
+  background:#54113A;
+  transform:translateY(-2px);
+}
   </style>
 </head>
 
@@ -788,6 +811,8 @@ if(!localStorage.getItem("cookieAccepted")){
   document.getElementById("cookie-banner").style.display = "block";
 }
 </script>
+
+<body id="top">
   
 <body>
 
@@ -1490,5 +1515,7 @@ if(!localStorage.getItem("cookieAccepted")){
     </div>
   </footer>
 
+<a href="#top" class="back-to-top">↑</a>
+  
 </body>
 </html>
