@@ -758,6 +758,37 @@
     }
   </style>
 </head>
+
+<div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:#0f2747; color:#fff; padding:16px; font-size:14px; z-index:9999; display:none;">
+  <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
+    
+    <div style="max-width:750px;">
+      Diese Website verwendet derzeit keine zustimmungspflichtigen Cookies oder Tracking-Tools.
+      Technisch notwendige Daten können zur Sicherstellung des Betriebs verarbeitet werden.
+      Weitere Informationen finden Sie in der 
+      <a href="/datenschutz" style="color:#fff; text-decoration:underline;">Datenschutzerklärung</a>.
+    </div>
+
+    <div>
+      <button onclick="acceptCookies()" style="background:#6C154A; color:#fff; border:none; padding:10px 16px; cursor:pointer;">
+        Verstanden
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function acceptCookies(){
+  localStorage.setItem("cookieAccepted", "true");
+  document.getElementById("cookie-banner").style.display = "none";
+}
+
+if(!localStorage.getItem("cookieAccepted")){
+  document.getElementById("cookie-banner").style.display = "block";
+}
+</script>
+  
 <body>
 
   <header class="topbar">
