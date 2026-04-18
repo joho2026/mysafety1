@@ -769,6 +769,58 @@
   transform:translateY(-2px);
 }
 
+.logo-lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(10, 20, 35, 0.82);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:24px;
+}
+
+.logo-lightbox:target{
+  display:flex;
+}
+
+.logo-lightbox-backdrop{
+  position:absolute;
+  inset:0;
+}
+
+.logo-lightbox-content{
+  position:relative;
+  z-index:2;
+  background:rgba(255,255,255,0.98);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.25);
+  max-width:min(90vw, 900px);
+  max-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-lightbox-content img{
+  max-width:100%;
+  max-height:75vh;
+  width:auto;
+  height:auto;
+  display:block;
+}
+
+.logo-lightbox-close{
+  position:absolute;
+  top:10px;
+  right:16px;
+  font-size:32px;
+  line-height:1;
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+}    
   </style>
 </head>
 
@@ -791,6 +843,14 @@
   </div>
 </div>
 
+<div id="logo-lightbox" class="logo-lightbox">
+  <a href="#" class="logo-lightbox-backdrop" aria-label="Logo schließen"></a>
+  <div class="logo-lightbox-content">
+    <a href="#" class="logo-lightbox-close" aria-label="Schließen">×</a>
+    <img src="logo-safety1.png" alt="Safety1 Logo groß">
+  </div>
+</div>
+  
 <body id="top">
 
   <script>
@@ -807,8 +867,11 @@ if(!localStorage.getItem("cookieAccepted")){
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <img src="logo-safety1.png" alt="Safety1 Logo">
-        <span>Safety1</span>
+      <a href="#logo-lightbox">
+      <img src="logo-safety1.png" alt="Safety1 Logo">
+      </a>
+      <span>Safety1</span>
+    </div>
       </div>
 
       <nav class="nav">
