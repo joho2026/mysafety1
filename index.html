@@ -848,6 +848,201 @@
   text-decoration:none;
   font-weight:700;
 }    
+
+     /* =========================
+   MOBILE / TABLET OPTIMIERUNG
+   ========================= */
+
+@media (max-width: 1100px){
+  .topbar-inner{
+    min-height:auto;
+    padding:14px 0;
+    flex-wrap:wrap;
+    row-gap:14px;
+  }
+
+  .brand{
+    order:1;
+  }
+
+  .header-btn{
+    order:2;
+    margin-left:auto;
+  }
+
+  .nav{
+    order:3;
+    flex:1 1 100%;
+    justify-content:flex-start;
+    gap:18px;
+    flex-wrap:wrap;
+    white-space:normal;
+  }
+
+  .hero-grid,
+  .grid-3,
+  .grid-4,
+  .steps,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:78px 0 64px;
+  }
+
+  .hero-logo{
+    margin-bottom:18px;
+  }
+
+  .hero-logo img{
+    margin-left:0;
+    max-width:220px;
+  }
+
+  .section{
+    padding:64px 0;
+  }
+
+  .section-intro{
+    margin-bottom:24px;
+  }
+
+  .cta{
+    padding:34px 24px;
+  }
+}
+
+@media (max-width: 700px){
+  .container{
+    padding:0 16px;
+  }
+
+  .topbar-inner{
+    gap:12px;
+  }
+
+  .brand img{
+    height:40px;
+  }
+
+  .brand span{
+    font-size:1.14rem;
+  }
+
+  .header-btn{
+    min-height:40px;
+    padding:9px 16px;
+    font-size:0.9rem;
+    border-radius:12px;
+  }
+
+  .nav{
+    gap:12px 16px;
+  }
+
+  .nav a{
+    font-size:0.91rem;
+  }
+
+  h1{
+    font-size:2.25rem;
+    line-height:1.12;
+  }
+
+  h2{
+    font-size:1.7rem;
+    line-height:1.18;
+  }
+
+  h3{
+    font-size:1.05rem;
+  }
+
+  .lead{
+    font-size:1rem;
+  }
+
+  .hero-card,
+  .card,
+  .faq-item,
+  .legal-box,
+  .step-card{
+    padding:20px;
+  }
+
+  .btn{
+    width:100%;
+    min-height:44px;
+  }
+
+  .btn-row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .hero-card form,
+  .cta form{
+    gap:12px;
+  }
+
+  input[type="email"]{
+    font-size:16px;
+    padding:14px 14px;
+  }
+
+  .map-frame{
+    min-height:200px;
+  }
+
+  .footer{
+    padding:48px 0 24px;
+  }
+
+  .footer-card{
+    padding:20px;
+  }
+}
+
+@media (max-width: 480px){
+  .hero{
+    padding:70px 0 56px;
+  }
+
+  .hero-logo img{
+    max-width:190px;
+  }
+
+  h1{
+    font-size:2rem;
+  }
+
+  h2{
+    font-size:1.5rem;
+  }
+
+  .brand img{
+    height:36px;
+  }
+
+  .brand span{
+    font-size:1.02rem;
+  }
+
+  .nav a{
+    font-size:0.88rem;
+  }
+
+  .header-btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  .topbar-inner{
+    align-items:flex-start;
+  }
+}
+    
   </style>
 </head>
 
