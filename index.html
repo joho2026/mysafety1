@@ -109,11 +109,11 @@
 }
 
 .topbar-inner{
-  height: 76px;
+  height: 78px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  column-gap: 28px;
+  column-gap: 24px;
 }
 
 .brand{
@@ -131,13 +131,13 @@
 }
 
 .brand img{
-  height: 54px;
+  height: 58px;
   width: auto;
   display: block;
 }
 
 .brand span{
-  font-size: 1.18rem;
+  font-size: 1.22rem;
   font-weight: 800;
   line-height: 1;
   color: var(--navy);
@@ -148,16 +148,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   min-width: 0;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .nav a{
   color: var(--navy);
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1;
   text-decoration: none;
 }
@@ -165,6 +164,13 @@
 .nav a:hover{
   text-decoration: none;
   color: var(--navy-3);
+}
+
+.nav .btn{
+  min-height: 42px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 0.9rem;
 }
 
 .header-cta{
@@ -349,7 +355,7 @@
       color:var(--text);
       border:1px solid rgba(255,255,255,0.55);
       box-shadow:var(--shadow-lg);
-      padding:28px;
+      padding:24px;
       animation:fadeUp 1050ms ease both;
     }
 
@@ -1096,7 +1102,7 @@ if(!localStorage.getItem("cookieAccepted")){
   document.getElementById("cookie-banner").style.display = "block";
 }
 </script>
-
+  
 <header class="topbar">
   <div class="container topbar-inner">
     <div class="brand">
@@ -1113,8 +1119,11 @@ if(!localStorage.getItem("cookieAccepted")){
       <a href="#zielgruppen">Zielgruppen</a>
       <a href="#faq">FAQ</a>
       <a href="#footer">Kontakt und Informationen</a>
-      <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
     </nav>
+
+    <div class="header-cta">
+      <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
+    </div>
   </div>
 </header>
 
@@ -1145,11 +1154,9 @@ if(!localStorage.getItem("cookieAccepted")){
     </div>
 
     <div class="hero-card">
-      <span class="eyebrow-dark">Unverbindliche Vormerkung</span>
       <h3>Frühzeitig informieren lassen</h3>
       <p>
-        Wer sich frühzeitig für Updates zum Projektstand, zum geplanten Produktstart und zu ausgewählten
-        Entwicklungsschritten registrieren möchte, kann sich bereits jetzt unverbindlich vormerken.
+        Unverbindliche Vormerkung für Projektupdates und Informationen zum geplanten Produktstart.
       </p>
 
       <div class="brevo-form-wrap" id="warteliste-formular">
