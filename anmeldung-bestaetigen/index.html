@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmeldung bestätigen – Safety1</title>
+  <meta name="description" content="Bitte bestätige deine Anmeldung zur Safety1 Warteliste.">
 
+  <style>
+    :root{
+      --navy:#0f2747;
+      --navy-2:#16365f;
+      --bg:#f4f6fb;
+      --text:#182231;
+      --muted:#5a6678;
+      --red:#6C154A;
+      --red-hover:#54113A;
+      --border:#d9e2ee;
+      --white:#ffffff;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .container{
+      max-width:860px;
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    .back-home{
+      display:inline-block;
+      background:var(--red);
+      color:#fff;
+      text-decoration:none;
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:700;
+      margin-bottom:28px;
+    }
+
+    .back-home:hover{
+      background:var(--red-hover);
+      text-decoration:none;
+    }
+
+    .card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:34px 28px;
+      box-shadow:0 12px 30px rgba(15,39,71,0.08);
+    }
+
+    .logo{
+      margin-bottom:18px;
+    }
+
+    .logo img{
+      max-width:180px;
+      height:auto;
+      display:block;
+    }
+
+    h1{
+      margin:0 0 16px 0;
+      color:var(--navy);
+      font-size:2.2rem;
+      line-height:1.15;
+    }
+
+    h2{
+      margin:28px 0 12px 0;
+      color:var(--navy);
+      font-size:1.2rem;
+    }
+
+    p{
+      margin:0 0 14px 0;
+    }
+
+    .note{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    @media (max-width:700px){
+      .container{
+        padding:28px 16px;
+      }
+
+      .card{
+        padding:24px 20px;
+      }
+
+      h1{
+        font-size:1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="/" class="back-home">← Zurück zur Startseite</a>
+
+    <div class="card">
+      <div class="logo">
+        <img src="/logo-safety1.png" alt="Safety1 Logo">
+      </div>
+
+      <h1>Bitte bestätige deine Anmeldung</h1>
+
+      <p>
+        Vielen Dank für dein Interesse an Safety1. Wir haben dir soeben eine E-Mail mit einem Bestätigungslink gesendet.
+      </p>
+
+      <p>
+        Bitte öffne dein E-Mail-Postfach und bestätige deine Anmeldung, damit wir dich in unsere Warteliste aufnehmen können.
+      </p>
+
+      <p class="note">
+        Falls du keine E-Mail findest, prüfe bitte auch deinen Spam- oder Werbeordner.
+      </p>
+
+      <h2>Please confirm your subscription</h2>
+
+      <p>
+        Thank you for your interest in Safety1. We have just sent you an email containing a confirmation link.
+      </p>
+
+      <p>
+        Please check your inbox and confirm your subscription so we can add you to our waiting list.
+      </p>
+
+      <p class="note">
+        If you cannot find the email, please also check your spam or promotions folder.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
