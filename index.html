@@ -578,6 +578,20 @@
       color:rgba(255,255,255,0.88);
     }
 
+.brevo-form-wrap{
+  margin-top:16px;
+}
+
+.brevo-form-wrap iframe{
+  width:100% !important;
+  max-width:100% !important;
+  border:0;
+  display:block;
+  margin:0 auto;
+  border-radius:14px;
+  background:#fff;
+}
+    
     .map-preview{
       margin-top:20px;
       background:linear-gradient(135deg, #eef3f9, #dde8f5);
@@ -1041,41 +1055,26 @@
   .topbar-inner{
     align-items:flex-start;
   }
-
-  .brevo-form-wrap{
-  margin-top:16px;
-}
-
-.brevo-form-wrap iframe{
-  width:100% !important;
-  max-width:100% !important;
-  border:0;
-  display:block;
-  margin:0 auto;
-  border-radius:14px;
-  background:#fff;
-}
 }
     
   </style>
 </head>
+  
+<body id="top">
 
 <div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:#0f2747; color:#fff; padding:16px; font-size:14px; z-index:9999; display:none;">
   <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
-    
     <div style="max-width:750px;">
       Diese Website verwendet derzeit keine zustimmungspflichtigen Cookies oder Tracking-Tools.
       Technisch notwendige Daten können zur Sicherstellung des Betriebs verarbeitet werden.
       Weitere Informationen finden Sie in der 
       <a href="/datenschutz" style="color:#fff; text-decoration:underline;">Datenschutzerklärung</a>.
     </div>
-
     <div>
       <button onclick="acceptCookies()" style="background:#6C154A; color:#fff; border:none; padding:10px 16px; cursor:pointer;">
         Verstanden
       </button>
     </div>
-
   </div>
 </div>
 
@@ -1086,8 +1085,6 @@
     <img src="logo-safety1.png" alt="Safety1 Logo groß">
   </div>
 </div>
-  
-<body id="top">
 
   <script>
 function acceptCookies(){
@@ -1100,79 +1097,72 @@ if(!localStorage.getItem("cookieAccepted")){
 }
 </script>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
       <a href="#logo-lightbox">
-      <img src="logo-safety1.png" alt="Safety1 Logo">
+        <img src="logo-safety1.png" alt="Safety1 Logo">
+        <span>Safety1</span>
       </a>
-      <span>Safety1</span>
     </div>
-      </div>
 
-      <nav class="nav">
-        <a href="#wofuer">Über Safety1</a>
-        <a href="#funktion">Funktionsprinzip</a>
-        <a href="#bereiche">Bereiche & Standortlogik</a>
-        <a href="#zielgruppen">Zielgruppen</a>
-        <a href="#faq">FAQ</a>
-        <a href="#footer">Kontakt und Informationen</a>
-        <a href="#warteliste" class="btn btn-primary">Jetzt vormerken</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="nav">
+      <a href="#wofuer">Über Safety1</a>
+      <a href="#funktion">Funktionsprinzip</a>
+      <a href="#bereiche">Bereiche &amp; Standortlogik</a>
+      <a href="#zielgruppen">Zielgruppen</a>
+      <a href="#faq">FAQ</a>
+      <a href="#footer">Kontakt und Informationen</a>
+      <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
+    </nav>
+  </div>
+</header>
 
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1>Safety1</h1>
-        <p class="lead"><strong>Unterstützung im entscheidenden Moment.</strong></p>
-        <p class="lead">
-          Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll,
-          im Ernstfall rasch ausgewählte Kontakte zu informieren und Hilfe aus dem persönlichen
-          Umfeld besser zu organisieren.
-        </p>
-        <p class="lead">
-          Ob Familie, Kinder, alleinlebende Personen oder Betreuungssituationen: Safety1 verfolgt das Ziel,
-          Kommunikation und Reaktionsfähigkeit in belastenden oder unübersichtlichen Situationen zu erleichtern –
-          einfach, nachvollziehbar und mit Fokus auf einen verantwortungsvollen Umgang mit sensiblen Informationen.
-        </p>
+  <div class="container hero-grid">
+    <div>
+      <h1>Safety1</h1>
+      <p class="lead"><strong>Unterstützung im entscheidenden Moment.</strong></p>
+      <p class="lead">
+        Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll,
+        im Ernstfall rasch ausgewählte Kontakte zu informieren und Hilfe aus dem persönlichen
+        Umfeld besser zu organisieren.
+      </p>
+      <p class="lead">
+        Ob Familie, Kinder, alleinlebende Personen oder Betreuungssituationen: Safety1 verfolgt das Ziel,
+        Kommunikation und Reaktionsfähigkeit in belastenden oder unübersichtlichen Situationen zu erleichtern –
+        einfach, nachvollziehbar und mit Fokus auf einen verantwortungsvollen Umgang mit sensiblen Informationen.
+      </p>
 
-        <div class="btn-row">
-          <a href="#warteliste" class="btn btn-primary">Jetzt vormerken</a>
-          <a href="#wofuer" class="btn btn-secondary">Mehr erfahren</a>
-        </div>
-
-        <p class="hero-note">
-          Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
-        </p>
+      <div class="btn-row">
+        <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
+        <a href="#wofuer" class="btn btn-secondary">Mehr erfahren</a>
       </div>
 
-      <div class="hero-card">
-        <h3>Frühzeitig vormerken</h3>
-        <p>
-          Wer sich frühzeitig für Updates zum Projektstand, zum geplanten Produktstart und zu ausgewählten
-          Entwicklungsschritten registrieren möchte, kann sich bereits jetzt unverbindlich vormerken.
-        </p>
+      <p class="hero-note">
+        Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
+      </p>
+    </div>
 
-        <div class="hero-card">
-    <span class="eyebrow-dark">Unverbindliche Vormerkung</span>
-    <h3>Frühzeitig informieren lassen</h3>
-    <p>
-      Wer sich frühzeitig für Updates zum Projektstand, zum geplanten Produktstart und zu ausgewählten
-      Entwicklungsschritten registrieren möchte, kann sich bereits jetzt unverbindlich vormerken.
-    </p>
+    <div class="hero-card">
+      <span class="eyebrow-dark">Unverbindliche Vormerkung</span>
+      <h3>Frühzeitig informieren lassen</h3>
+      <p>
+        Wer sich frühzeitig für Updates zum Projektstand, zum geplanten Produktstart und zu ausgewählten
+        Entwicklungsschritten registrieren möchte, kann sich bereits jetzt unverbindlich vormerken.
+      </p>
 
-    <div class="brevo-form-wrap" id="warteliste-formular">
-      <iframe
-      width="100%"
-      height="760"
-      src="https://121ac05d.sibforms.com/serve/MUIFAHR3DDX0gtoOZ_eH-HjJG3pRofwYcy2U49QfAN37MPqeMYPkJdpxZ2PTabMlnLefSIITClMqkllsjkxiQ8wXPQf3dPNYKB0AtPxgVybdJrExeKLjTNynAIFHopoUZCA4GE9nqpPaIEFhzNmyPhzZqyLFjc0psS5vB4kU-CDSEcCT1vjsqx9mZNRGCDqNjTvzC4aNE6Q2giJ8zw=="
-      frameborder="0"
-      scrolling="auto"
-      allowfullscreen
-      style="display:block;margin-left:auto;margin-right:auto;max-width:100%;border:0;">
-      </iframe>
+      <div class="brevo-form-wrap" id="warteliste-formular">
+        <iframe
+          width="100%"
+          height="760"
+          src="https://121ac05d.sibforms.com/serve/MUIFAHR3DDX0gtoOZ_eH-HjJG3pRofwYcy2U49QfAN37MPqeMYPkJdpxZ2PTabMlnLefSIITClMqkllsjkxiQ8wXPQf3dPNYKB0AtPxgVybdJrExeKLjTNynAIFHopoUZCA4GE9nqpPaIEFhzNmyPhzZqyLFjc0psS5vB4kU-CDSEcCT1vjsqx9mZNRGCDqNjTvzC4aNE6Q2giJ8zw=="
+          frameborder="0"
+          scrolling="auto"
+          allowfullscreen
+          style="display:block;margin-left:auto;margin-right:auto;max-width:100%;border:0;">
+        </iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -1482,26 +1472,12 @@ if(!localStorage.getItem("cookieAccepted")){
           Produktstart zu erhalten.
         </p>
 
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="E-Mail-Adresse eingeben" required>
-
-          <label class="checkbox">
-            <input type="checkbox" required>
-            <span>
-              Mit dem Absenden des Formulars erkläre ich mich damit einverstanden, zum Projekt Safety1 per E-Mail
-              kontaktiert zu werden. Die Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden.
-              Weitere Informationen zur Verarbeitung personenbezogener Daten finden sich in der Datenschutzerklärung.
-            </span>
-          </label>
-
-          <div>
-            <button type="submit" class="btn btn-primary">Jetzt vormerken</button>
-          </div>
-        </form>
-
+        <div class="btn-row" style="margin-top:18px;">
+          <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
+        </div>
+        
         <p class="small" style="color:rgba(255,255,255,0.84);">
-          Mit der Eintragung in die Warteliste entsteht kein Vertragsverhältnis und kein Anspruch auf Nutzung
-          oder auf bestimmte Funktionen.
+          Die unverbindliche Vormerkung erfolgt über das Formular im oberen Seitenbereich.
         </p>
       </div>
     </div>
