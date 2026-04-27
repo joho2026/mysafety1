@@ -1108,17 +1108,6 @@
     
   </style>
 </head>
-
-<script>
-  document.querySelectorAll(".nav a").forEach(function(link){
-    link.addEventListener("click", function(){
-      const toggle = document.getElementById("mobile-menu-toggle");
-      if(toggle){
-        toggle.checked = false;
-      }
-    });
-  });
-</script>
   
 <body id="top">
 
@@ -1858,6 +1847,21 @@ if(!localStorage.getItem("cookieAccepted")){
       btn.style.display = "none";
     }
   });
+</script>
+  
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const links = document.querySelectorAll(".nav a");
+
+  links.forEach(function (link) {
+    link.addEventListener("click", function () {
+      if (toggle) {
+        toggle.checked = false;
+      }
+    });
+  });
+});
 </script>
   
 </body>
