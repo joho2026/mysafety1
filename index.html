@@ -969,6 +969,10 @@
 /* MOBILE */
 @media (max-width: 768px){
 
+  html{
+    scroll-padding-top:82px !important;
+  }
+
   .topbar{
     position:sticky !important;
     top:0 !important;
@@ -978,11 +982,27 @@
   }
 
   .topbar-inner{
+    width:100% !important;
+    max-width:none !important;
     height:72px !important;
-    padding:0 16px !important;
+    padding:0 18px !important;
     display:flex !important;
+    flex-direction:row !important;
     align-items:center !important;
     justify-content:space-between !important;
+  }
+
+  .brand{
+    margin:0 !important;
+    width:auto !important;
+    flex:0 0 auto !important;
+  }
+
+  .brand a{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    gap:10px !important;
   }
 
   .brand img{
@@ -998,6 +1018,8 @@
   }
 
   .burger{
+    margin:0 !important;
+    flex:0 0 44px !important;
     display:flex !important;
     flex-direction:column !important;
     justify-content:center !important;
@@ -1059,53 +1081,26 @@
   }
 
   .hero{
-    padding-top:72px !important;
+    padding-top:96px !important;
+    padding-bottom:56px !important;
   }
 
-  /* MOBILE HEADER ALIGNMENT FIX */
-@media (max-width: 768px){
-
-  .topbar-inner{
-    width:100% !important;
-    max-width:none !important;
-    height:72px !important;
-    padding:0 18px !important;
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:space-between !important;
+  .hero-grid{
+    grid-template-columns:1fr !important;
+    gap:26px !important;
   }
 
-  .brand{
-    margin:0 !important;
-    width:auto !important;
-    flex:0 0 auto !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-  }
-
-  .brand a{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:flex-start !important;
-    gap:10px !important;
-  }
-
-  .burger{
-    margin:0 !important;
-    flex:0 0 44px !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-  }
-
-  .nav{
-    top:72px !important;
+  .hero h1{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    margin-top:0 !important;
+    margin-bottom:12px !important;
+    font-size:2.45rem !important;
+    line-height:1.1 !important;
+    color:#fff !important;
   }
 }
-    
   </style>
 </head>
   
