@@ -1274,6 +1274,57 @@
     align-items:center !important;
     justify-content:flex-end !important;
   }
+
+  /* DESKTOP HEADER CLEANUP */
+@media (min-width: 769px){
+
+  .topbar-inner{
+    max-width:1160px;
+    height:78px !important;
+    display:grid !important;
+    grid-template-columns:auto minmax(0, 1fr) auto !important;
+    align-items:center !important;
+    column-gap:28px !important;
+  }
+
+  .brand img{
+    height:52px !important;
+  }
+
+  .brand span{
+    font-size:1.22rem !important;
+  }
+
+  .nav{
+    display:flex !important;
+    justify-content:flex-end !important;
+    align-items:center !important;
+    gap:22px !important;
+    white-space:nowrap !important;
+  }
+
+  .nav a{
+    font-size:0.9rem !important;
+    line-height:1 !important;
+  }
+
+  .nav .mobile-nav-cta{
+    display:none !important;
+  }
+
+  .header-cta{
+    display:flex !important;
+    justify-content:flex-end !important;
+    align-items:center !important;
+  }
+
+  .header-cta .btn{
+    min-height:46px !important;
+    padding:12px 22px !important;
+    border-radius:14px !important;
+    font-size:0.94rem !important;
+    white-space:nowrap !important;
+  }
 }
     
   </style>
@@ -1341,7 +1392,6 @@ if(!localStorage.getItem("cookieAccepted")){
       <a href="#zielgruppen">Zielgruppen</a>
       <a href="#faq">FAQ</a>
       <a href="#footer">Kontakt und Informationen</a>
-      <a href="#warteliste-formular" class="mobile-nav-cta">Jetzt vormerken</a>
     </nav>
 
     <div class="header-cta">
