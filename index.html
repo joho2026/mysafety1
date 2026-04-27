@@ -1061,10 +1061,64 @@
   .hero{
     padding-top:72px !important;
   }
+
+  /* MOBILE HEADER ALIGNMENT FIX */
+@media (max-width: 768px){
+
+  .topbar-inner{
+    width:100% !important;
+    max-width:none !important;
+    height:72px !important;
+    padding:0 18px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+  }
+
+  .brand{
+    margin:0 !important;
+    width:auto !important;
+    flex:0 0 auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+  }
+
+  .brand a{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:10px !important;
+  }
+
+  .burger{
+    margin:0 !important;
+    flex:0 0 44px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+
+  .nav{
+    top:72px !important;
+  }
 }
     
   </style>
 </head>
+
+<script>
+  document.querySelectorAll(".nav a").forEach(function(link){
+    link.addEventListener("click", function(){
+      const toggle = document.getElementById("mobile-menu-toggle");
+      if(toggle){
+        toggle.checked = false;
+      }
+    });
+  });
+</script>
   
 <body id="top">
 
