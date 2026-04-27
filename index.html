@@ -891,19 +891,14 @@
     order:1;
   }
 
-  .header-btn{
-    order:2;
-    margin-left:auto;
-  }
-
   .nav{
-    order:3;
-    flex:1 1 100%;
-    justify-content:flex-start;
-    gap:18px;
-    flex-wrap:wrap;
-    white-space:normal;
-  }
+  order:3;
+  flex:1 1 100%;
+  justify-content:flex-start;
+  gap:18px;
+  flex-wrap:wrap;
+  white-space:normal;
+}
 
   .hero-grid,
   .grid-3,
@@ -1059,13 +1054,152 @@
     font-size:0.88rem;
   }
 
-  .header-btn{
-    width:100%;
-    justify-content:center;
+  .topbar-inner{
+    align-items:flex-start;
+  }
+
+  /* =========================
+   SAFETY1 MOBILE BURGER FIX
+   ========================= */
+
+.mobile-menu-toggle{
+  display:none;
+}
+
+.burger{
+  display:none;
+}
+
+.mobile-nav-cta{
+  display:none;
+}
+
+@media (max-width: 768px){
+
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
   }
 
   .topbar-inner{
-    align-items:flex-start;
+    height:72px;
+    min-height:72px;
+    padding:0 16px;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:12px;
+  }
+
+  .brand{
+    grid-column:1;
+  }
+
+  .brand a{
+    gap:10px;
+  }
+
+  .brand img{
+    height:44px;
+  }
+
+  .brand span{
+    font-size:1.2rem;
+  }
+
+  .header-cta{
+    display:none;
+  }
+
+  .burger{
+    grid-column:3;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+    width:44px;
+    height:44px;
+    cursor:pointer;
+    justify-self:end;
+  }
+
+  .burger span{
+    display:block;
+    width:30px;
+    height:3px;
+    background:var(--navy);
+    border-radius:999px;
+    transition:all 220ms ease;
+  }
+
+  .nav{
+    position:absolute;
+    top:72px;
+    left:0;
+    right:0;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:0;
+    white-space:normal;
+    background:#fff;
+    padding:12px 20px 22px;
+    border-bottom:1px solid rgba(15,39,71,0.12);
+    box-shadow:0 18px 40px rgba(15,39,71,0.16);
+  }
+
+  .nav a{
+    display:block;
+    padding:14px 4px;
+    color:var(--navy);
+    font-size:1.02rem;
+    font-weight:800;
+    border-bottom:1px solid rgba(15,39,71,0.08);
+  }
+
+  .nav a:hover{
+    color:var(--navy-3);
+    text-decoration:none;
+  }
+
+  .mobile-nav-cta{
+    display:flex !important;
+    justify-content:center;
+    align-items:center;
+    margin-top:14px;
+    padding:15px 18px !important;
+    background:var(--red);
+    color:#fff !important;
+    border-radius:16px;
+    border-bottom:none !important;
+  }
+
+  .mobile-nav-cta:hover{
+    background:var(--red-hover);
+    color:#fff !important;
+  }
+
+  .mobile-menu-toggle:checked ~ .nav{
+    display:flex;
+  }
+
+  .mobile-menu-toggle:checked + .burger span:nth-child(1){
+    transform:translateY(9px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle:checked + .burger span:nth-child(2){
+    opacity:0;
+  }
+
+  .mobile-menu-toggle:checked + .burger span:nth-child(3){
+    transform:translateY(-9px) rotate(-45deg);
+  }
+
+  .hero{
+    padding-top:72px;
   }
 }
     
@@ -1109,14 +1243,23 @@ if(!localStorage.getItem("cookieAccepted")){
 }
 </script>
   
-<header class="topbar">
+  <header class="topbar">
   <div class="container topbar-inner">
+
     <div class="brand">
       <a href="#logo-lightbox">
         <img src="logo-safety1.png" alt="Safety1 Logo">
         <span>Safety1</span>
       </a>
     </div>
+
+    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+
+    <label for="mobile-menu-toggle" class="burger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
 
     <nav class="nav">
       <a href="#wofuer">Über Safety1</a>
@@ -1125,11 +1268,13 @@ if(!localStorage.getItem("cookieAccepted")){
       <a href="#zielgruppen">Zielgruppen</a>
       <a href="#faq">FAQ</a>
       <a href="#footer">Kontakt und Informationen</a>
+      <a href="#warteliste-formular" class="mobile-nav-cta">Jetzt vormerken</a>
     </nav>
 
     <div class="header-cta">
       <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
     </div>
+
   </div>
 </header>
 
