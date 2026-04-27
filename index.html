@@ -879,7 +879,7 @@
    MOBILE / TABLET OPTIMIERUNG
    ========================= */
 
-@media (max-width: 1100px){
+@media (max-width: 768px){
   .topbar-inner{
     min-height:auto;
     padding:14px 0;
@@ -1236,6 +1236,44 @@
     align-items:center;
     justify-content:flex-end;
   }
+
+  /* FINAL HEADER FIX */
+
+#mobile-menu-toggle{
+  display:none !important;
+}
+
+.burger{
+  display:none;
+}
+
+.mobile-nav-cta{
+  display:none;
+}
+
+@media (min-width: 769px){
+  .topbar-inner{
+    height:78px !important;
+    display:grid !important;
+    grid-template-columns:auto 1fr auto !important;
+    align-items:center !important;
+    column-gap:24px !important;
+  }
+
+  .nav{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:20px !important;
+    white-space:nowrap !important;
+  }
+
+  .header-cta{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+  }
 }
     
   </style>
@@ -1288,7 +1326,7 @@ if(!localStorage.getItem("cookieAccepted")){
       </a>
     </div>
 
-    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle">
+    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle" hidden>
 
     <label for="mobile-menu-toggle" class="burger" aria-label="Menü öffnen">
       <span></span>
