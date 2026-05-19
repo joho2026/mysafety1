@@ -1100,6 +1100,93 @@
     line-height:1.1 !important;
     color:#fff !important;
   }
+
+  /* Safety1 Event-Modus */
+
+.event-card{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:28px;
+  margin-top:34px;
+  align-items:stretch;
+}
+
+.event-content{
+  background:rgba(255,255,255,0.94);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:32px;
+  box-shadow:0 18px 45px rgba(15,39,71,0.08);
+}
+
+.event-content h3{
+  margin-top:0;
+  margin-bottom:16px;
+  color:var(--navy);
+  font-size:1.55rem;
+}
+
+.event-content p{
+  color:var(--text);
+  margin-bottom:16px;
+}
+
+.event-note{
+  margin-top:22px;
+  padding:18px 20px;
+  border-left:5px solid #6C154A;
+  background:#f8eef4;
+  border-radius:14px;
+  font-weight:600;
+}
+
+.event-steps{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.event-step{
+  background:linear-gradient(135deg, var(--navy), var(--navy-2));
+  color:#ffffff;
+  border-radius:22px;
+  padding:22px 24px;
+  box-shadow:0 18px 42px rgba(15,39,71,0.18);
+}
+
+.event-step span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#6C154A;
+  color:#ffffff;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.event-step strong{
+  display:block;
+  font-size:1.05rem;
+  margin-bottom:8px;
+}
+
+.event-step p{
+  margin:0;
+  color:rgba(255,255,255,0.86);
+  font-size:0.95rem;
+}
+
+@media (max-width: 900px){
+  .event-card{
+    grid-template-columns:1fr;
+  }
+
+  .event-content{
+    padding:26px 22px;
+  }
 }
   </style>
 </head>
@@ -1162,6 +1249,7 @@ if(!localStorage.getItem("cookieAccepted")){
     <nav class="nav">
       <a href="#wofuer">Über Safety1</a>
       <a href="#funktion">Funktionsprinzip</a>
+      <a href="#event-modus">Event-Modus</a>
       <a href="#bereiche">Bereiche &amp; Standortlogik</a>
       <a href="#zielgruppen">Zielgruppen</a>
       <a href="#faq">FAQ</a>
@@ -1303,7 +1391,8 @@ if(!localStorage.getItem("cookieAccepted")){
     <div class="container">
       <div class="section-intro">
         <span class="eyebrow-dark">Funktionsprinzip</span>
-        <h2>Funktionsprinzip und Eskalationslogik | So funktioniert der gestufte Benachrichtigungsablauf</h2>
+        <h2>Funktionsprinzip und Eskalationslogik    
+          So funktioniert der gestufte Benachrichtigungsablauf</h2>
 
         <p>
           Safety1 basiert auf einer mehrstufigen Kommunikationslogik, die individuell konfiguriert werden kann
@@ -1353,6 +1442,82 @@ if(!localStorage.getItem("cookieAccepted")){
       </div>
     </div>
   </section>
+
+  <section id="event-modus" class="section section-soft">
+  <div class="container">
+    <div class="section-kicker">Anwendungsfall</div>
+    <h2>Safety1 Event-Modus</h2>
+    <p class="section-lead">
+      Für Festivals, Konzerte und größere Veranstaltungen soll Safety1 künftig eine
+      temporäre Gruppenverbindung ermöglichen – damit vertraute Personen während
+      eines Events besser aufeinander achten können.
+    </p>
+
+    <div class="event-card">
+      <div class="event-content">
+        <h3>Temporär verbunden – nur für die Dauer des Events</h3>
+        <p>
+          Gerade bei Festivals oder großen Veranstaltungen kann es schnell passieren,
+          dass sich Gruppenmitglieder aus den Augen verlieren, Hilfe benötigen oder
+          einen gemeinsam vereinbarten Bereich verlassen.
+        </p>
+
+        <p>
+          Im Safety1 Event-Modus könnten sich mehrere Personen für die Dauer einer
+          Veranstaltung zu einer temporären Gruppe verbinden – zum Beispiel über
+          einen Gruppen-Code, QR-Code oder eine andere sichere Kopplungsfunktion.
+        </p>
+
+        <p>
+          Benötigt eine Person Unterstützung, können die verbundenen Gruppenmitglieder
+          informiert und – sofern freigegeben – mit einer Standortangabe benachrichtigt
+          werden. Zusätzlich könnte ein gemeinsam definierter Aufenthaltsbereich
+          hinterlegt werden, damit die Gruppe eine Meldung erhält, wenn eine Person
+          diesen Bereich verlässt.
+        </p>
+
+        <p>
+          Die Verbindung wäre zeitlich begrenzt, zweckgebunden und nur für die jeweilige
+          Veranstaltung vorgesehen. Nach Ende des Events kann die temporäre Gruppe
+          automatisch oder manuell beendet werden.
+        </p>
+
+        <p class="event-note">
+          Safety1 ersetzt keinen offiziellen Notruf, keinen Sicherheitsdienst und keine
+          behördlichen Einsatzkräfte. Der Event-Modus soll vielmehr helfen, innerhalb
+          einer vertrauten Gruppe schneller zu reagieren und Unterstützung besser zu
+          organisieren.
+        </p>
+      </div>
+
+      <div class="event-steps">
+        <div class="event-step">
+          <span>1</span>
+          <strong>Gruppe erstellen</strong>
+          <p>Eine Person legt für das Festival oder Event eine temporäre Gruppe an.</p>
+        </div>
+
+        <div class="event-step">
+          <span>2</span>
+          <strong>Personen verbinden</strong>
+          <p>Freunde oder Familienmitglieder treten über Code, QR-Code oder Einladung bei.</p>
+        </div>
+
+        <div class="event-step">
+          <span>3</span>
+          <strong>Bereich definieren</strong>
+          <p>Optional wird ein gemeinsamer Aufenthaltsbereich für das Event festgelegt.</p>
+        </div>
+
+        <div class="event-step">
+          <span>4</span>
+          <strong>Im Ernstfall informieren</strong>
+          <p>Bei Unterstützungsbedarf oder Verlassen des Bereichs wird die Gruppe benachrichtigt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section class="section section-alt anchor-offset" id="bereiche">
     <div class="container">
@@ -1788,10 +1953,10 @@ if(!localStorage.getItem("cookieAccepted")){
 
         <p>
           Unternehmensgegenstand: Entwicklung und Konzeption digitaler Lösungen<br>
-          Firmenbuchnummer: [FIRMENBUCHNUMMER, falls vorhanden]<br>
-          Firmenbuchgericht: [FIRMENBUCHGERICHT, falls vorhanden]<br>
-          UID-Nummer: [UID-NUMMER, falls vorhanden]<br>
-          Mitglied bei: [z. B. Wirtschaftskammer Österreich / zuständige Fachgruppe, falls zutreffend]
+          Firmenbuchnummer: [in Arbeit]<br>
+          Firmenbuchgericht: [in Arbeit]<br>
+          UID-Nummer: [in Arbeit]<br>
+          Mitglied bei: [in Arbeit]
         </p>
       </section>
 
