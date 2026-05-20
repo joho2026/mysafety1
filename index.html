@@ -22,6 +22,11 @@
       --border-strong:#c7d3e2;
       --red:#6C154A;
       --red-hover:#54113A;
+      
+      --safe-green:#2f8f5b;
+      --safe-green-soft:rgba(47,143,91,0.14);
+      --safe-green-soft-2:rgba(47,143,91,0.10);
+      
       --shadow-sm:0 8px 24px rgba(10, 31, 58, 0.06);
       --shadow-md:0 18px 48px rgba(10, 31, 58, 0.10);
       --shadow-lg:0 30px 80px rgba(8, 25, 46, 0.16);
@@ -1644,7 +1649,7 @@
   right:9%;
   top:43%;
   height:70px;
-  background:rgba(108,21,74,0.12);
+  background:var(--safe-green-soft);
   border-radius:999px;
   transform:skewY(-3deg);
 }
@@ -1655,7 +1660,7 @@
   inset:0;
   border-radius:999px;
   transform:translateY(-26px) skewY(8deg);
-  background:rgba(108,21,74,0.10);
+  background:var(--safe-green-soft-2);
 }
 
 .bw-route-line{
@@ -1665,10 +1670,10 @@
   right:11%;
   top:50%;
   height:0;
-  border-top:3px dashed rgba(15,39,71,0.68);
+  border-top:3px dashed var(--safe-green);
   transform:skewY(-3deg);
 }
-
+    
 .bw-route-point{
   position:absolute;
   z-index:6;
