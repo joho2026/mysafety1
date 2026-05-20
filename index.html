@@ -2009,8 +2009,29 @@
     height:50px;
     font-size:1.6rem;
   }
-
-    /* Abweichung / letzter bekannter Punkt bleibt Bordeaux */
+  
+  /* Grünformatierung für geplanten Wegkorridor */
+  .bw-route-band{
+    background:var(--safe-green-soft);
+  }
+  
+  .bw-route-band::before{
+    background:var(--safe-green-soft-2);
+  }
+  
+  .bw-route-line{
+    border-top-color:var(--safe-green);
+  }
+  
+  .bw-start span{
+    background:var(--safe-green);
+  }
+  
+  .bw-end span{
+    border-color:var(--safe-green);
+  }
+  
+  /* Abweichung / letzter bekannter Punkt bleibt Bordeaux */
   .bw-middle span{
     background:var(--red) !important;
     border-color:#fff !important;
