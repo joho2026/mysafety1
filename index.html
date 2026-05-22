@@ -1532,16 +1532,16 @@
   content:"";
   position:absolute;
   left:100%;
-  top:62%;
-  width:82px;
+  top:72%;
+  width:92px;
   border-top:2px dashed rgba(15,39,71,0.35);
 }
 
 .s1aw-area-alert-node{
   position:absolute;
   z-index:3;
-  left:73%;
-  top:58%;
+  left:74.5%;
+  top:60.5%;
   width:28px;
   height:28px;
   border-radius:50%;
@@ -1553,8 +1553,8 @@
 }
 
 .s1aw-area-alert-pill{
-  left:73%;
-  bottom:8%;
+  left:76.5%;
+  bottom:6%;
   transform:translateX(-50%);
   color:var(--red);
   border-color:rgba(108,21,74,0.22);
@@ -1565,7 +1565,7 @@
   position:absolute;
   left:50%;
   bottom:100%;
-  height:48px;
+  height:52px;
   border-left:2px dashed rgba(15,39,71,0.35);
 }
 
@@ -1657,8 +1657,8 @@
 
 /* Letzter bekannter Punkt im Bordeaux-Bereich */
 .s1aw-route-alert-node{
-  left:72%;
-  top:79%;
+  left:72.8%;
+  top:78%;
   background:var(--red);
   border:5px solid #fff;
   box-shadow:
@@ -1683,11 +1683,20 @@
 }
 
 .s1aw-route-alert-pill{
-  left:72%;
-  bottom:3%;
+  left:74%;
+  bottom:1.5%;
   transform:translateX(-50%);
   color:var(--red);
   border-color:rgba(108,21,74,0.20);
+}
+
+.s1aw-route-alert-pill::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  height:64px;
+  border-left:2px dashed rgba(108,21,74,0.35);
 }
 
 /* =========================================================
@@ -1859,24 +1868,25 @@
   }
 
   .s1aw-area-pill::after{
-    width:28px;
+    top:72%;
+    width:52px;
   }
 
   .s1aw-area-alert-node{
-    left:75%;
-    top:60%;
-    width:22px;
-    height:22px;
-  }
+  left:73.5%;
+  top:62%;
+  width:22px;
+  height:22px;
+}
 
   .s1aw-area-alert-pill{
-  left:74%;
-  bottom:6%;
+  left:76%;
+  bottom:4%;
   transform:translateX(-50%);
 }
 
   .s1aw-area-alert-pill::before{
-    height:40px;
+    height:46px;
   }
 
   /* Geplante Wege mobil */
@@ -1900,25 +1910,42 @@
     top:15%;
   }
 
-  .s1aw-route-alert-pill{
-  left:72%;
-  bottom:3%;
-  transform:translateX(-50%);
+  .s1aw-route-alert-node{
+  left:72.8%;
+  top:77.8%;
 }
 
-  .s1aw-route-alert-pill::before{
+.s1aw-route-alert-pill{
+  left:74.5%;
+  bottom:1.5%;
+  transform:translateX(-50%);
+  color:var(--red);
+  border-color:rgba(108,21,74,0.20);
+}
+
+.s1aw-route-alert-pill::before{
   content:"";
   position:absolute;
   left:50%;
   bottom:100%;
-  height:42px;
+  height:54px;
   border-left:2px dashed rgba(108,21,74,0.35);
 }
 
   .s1aw-route-alert-node{
-    left:71%;
-    top:77%;
-  }
+  left:72.8%;
+  top:78%;
+}
+
+.s1aw-route-alert-pill{
+  left:74%;
+  bottom:1.5%;
+  transform:translateX(-50%);
+}
+
+.s1aw-route-alert-pill::before{
+  height:50px;
+}
 
   .s1aw-mini-card{
     grid-template-columns:48px 1fr;
