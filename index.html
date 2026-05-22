@@ -622,68 +622,7 @@
       background:#fff;
     }
         
-        .map-preview{
-          margin-top:20px;
-          background:linear-gradient(135deg, #eef3f9, #dde8f5);
-          border:1px solid #cfdcec;
-          border-radius:16px;
-          padding:18px;
-          box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
-        }
-
-    .map-frame{
-      position:relative;
-      min-height:240px;
-      border-radius:14px;
-      background:
-        linear-gradient(90deg, rgba(15,39,71,0.04) 1px, transparent 1px),
-        linear-gradient(rgba(15,39,71,0.04) 1px, transparent 1px),
-        linear-gradient(135deg, #f9fbfd 0%, #edf3f9 100%);
-      background-size:32px 32px, 32px 32px, auto;
-      border:1px solid #d6e0eb;
-      overflow:hidden;
-    }
-
-    .map-pin{
-      position:absolute;
-      width:18px;
-      height:18px;
-      border-radius:50%;
-      background:var(--red);
-      box-shadow:0 0 0 6px rgba(108,21,74,0.16);
-      left:62%;
-      top:44%;
-      animation:pulsePin 2.4s ease-in-out infinite;
-    }
-
-    .map-route{
-      position:absolute;
-      left:18%;
-      top:24%;
-      width:50%;
-      height:38%;
-      border:2px dashed rgba(15,39,71,0.30);
-      border-radius:24px;
-      transform:rotate(-6deg);
-    }
-
-    .map-label{
-      position:absolute;
-      background:rgba(255,255,255,0.92);
-      color:var(--navy);
-      border:1px solid #d6e0eb;
-      border-radius:999px;
-      padding:7px 12px;
-      font-size:0.82rem;
-      font-weight:700;
-      box-shadow:var(--shadow-sm);
-    }
-
-    .map-label.a{left:12%; top:16%;}
-    .map-label.b{right:10%; bottom:14%;}
-    .map-label.c{right:20%; top:18%;}
-
-    .footer{
+     .footer{
       position:relative;
       margin-top:84px;
       background:
@@ -1474,23 +1413,24 @@
     font-size: 0.95rem;
   }
 }
-  /* =========================================================
+ /* =========================================================
    SAFETY1 – BEREICHE, WEGE & STANDORTLOGIK
+   Neue Version mit definierter Bereichsabweichung und geschlängeltem Wegkorridor
    ========================================================= */
 
-.bw-section{
+.s1aw-section{
   background:
     radial-gradient(circle at top right, rgba(108,21,74,0.08), transparent 34%),
     linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
 }
 
-.bw-wrap{
+.s1aw-grid{
   display:grid;
   gap:28px;
   margin-top:34px;
 }
 
-.bw-card{
+.s1aw-card{
   background:rgba(255,255,255,0.96);
   border:1px solid var(--border);
   border-radius:28px;
@@ -1499,14 +1439,14 @@
   overflow:hidden;
 }
 
-.bw-card h3{
+.s1aw-card h3{
   margin:0 0 22px;
   color:var(--navy);
   font-size:clamp(1.45rem, 2.4vw, 2rem);
   line-height:1.15;
 }
 
-.bw-text{
+.s1aw-text{
   margin:24px 0 0;
   max-width:940px;
   color:var(--text);
@@ -1514,7 +1454,7 @@
   line-height:1.65;
 }
 
-.bw-note{
+.s1aw-note{
   margin:22px 0 0;
   padding-top:16px;
   border-top:1px solid var(--border);
@@ -1523,257 +1463,253 @@
   line-height:1.6;
 }
 
-/* Kartenhintergrund */
+/* Gemeinsamer Kartenhintergrund mit leichter Kartenoptik */
 
-.bw-map{
+.s1aw-map{
   position:relative;
-  min-height:330px;
+  min-height:340px;
   border-radius:24px;
   border:1px solid rgba(199,211,226,0.74);
   overflow:hidden;
   background:
     linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
-    repeating-linear-gradient(0deg, rgba(15,39,71,0.055) 0 1px, transparent 1px 54px),
-    repeating-linear-gradient(90deg, rgba(15,39,71,0.055) 0 1px, transparent 1px 64px),
-    radial-gradient(circle at 32% 26%, rgba(108,21,74,0.045), transparent 30%),
-    #f8fbff;
+    repeating-linear-gradient(0deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 52px),
+    repeating-linear-gradient(90deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 62px),
+    linear-gradient(32deg, transparent 0 40%, rgba(15,39,71,0.08) 40% 41%, transparent 41% 100%),
+    linear-gradient(140deg, transparent 0 35%, rgba(15,39,71,0.06) 35% 36%, transparent 36% 100%),
+    linear-gradient(82deg, transparent 0 58%, rgba(15,39,71,0.06) 58% 59%, transparent 59% 100%),
+    linear-gradient(135deg, #f9fbfd 0%, #edf3f9 100%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
-.bw-map::before,
-.bw-map::after{
-  content:"";
+.s1aw-pill{
   position:absolute;
-  inset:-18%;
-  pointer-events:none;
-  opacity:0.16;
-  background:
-    linear-gradient(30deg, transparent 0 42%, rgba(15,39,71,0.12) 42% 43%, transparent 43% 100%),
-    linear-gradient(145deg, transparent 0 36%, rgba(15,39,71,0.10) 36% 37%, transparent 37% 100%),
-    linear-gradient(83deg, transparent 0 57%, rgba(15,39,71,0.10) 57% 58%, transparent 58% 100%);
-}
-
-.bw-map::after{
-  transform:rotate(7deg) scale(1.08);
-  opacity:0.10;
-}
-
-/* Definierte Bereiche */
-
-.bw-area-map{
-  min-height:350px;
-}
-
-.bw-defined-area{
-  position:absolute;
-  z-index:2;
-  left:31%;
-  top:23%;
-  width:44%;
-  height:42%;
-  border:3px dashed rgba(15,39,71,0.72);
-  border-radius:34px 24px 38px 26px;
-}
-
-.bw-area-point{
-  position:absolute;
-  right:12%;
-  top:48%;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:var(--red);
-  box-shadow:0 0 0 18px rgba(108,21,74,0.12);
-}
-
-.bw-area-label,
-.bw-last-label,
-.bw-route-label,
-.bw-corridor-label{
-  position:absolute;
-  z-index:5;
+  z-index:4;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:116px;
-  padding:10px 16px;
+  min-width:120px;
+  padding:9px 14px;
   background:rgba(255,255,255,0.94);
-  border:1px solid var(--border);
-  border-radius:16px;
   color:var(--navy);
+  border:1px solid #d6e0eb;
+  border-radius:999px;
+  font-size:0.84rem;
   font-weight:800;
-  font-size:0.95rem;
-  line-height:1.25;
   text-align:center;
-  box-shadow:0 10px 22px rgba(15,39,71,0.09);
+  box-shadow:0 10px 22px rgba(15,39,71,0.08);
+  line-height:1.25;
 }
 
-.bw-area-label{
-  left:14%;
-  top:19%;
+/* =========================================================
+   DEFINIERTE BEREICHE
+   Grün = erlaubter Aufenthaltsbereich
+   Bordeaux = letzter bekannter Aufenthaltsort außerhalb
+   ========================================================= */
+
+.s1aw-area-map{
+  min-height:340px;
 }
 
-.bw-area-label::after{
+.s1aw-area-zone{
+  position:absolute;
+  left:22%;
+  top:22%;
+  width:45%;
+  height:42%;
+  border:3px dashed var(--safe-green);
+  border-radius:34px 24px 38px 26px;
+  background:var(--safe-green-soft-2);
+  z-index:2;
+}
+
+.s1aw-area-pill{
+  left:7%;
+  top:18%;
+}
+
+.s1aw-area-pill::after{
   content:"";
   position:absolute;
   left:100%;
   top:50%;
-  width:64px;
+  width:58px;
   border-top:2px dashed rgba(15,39,71,0.35);
 }
 
-.bw-last-label{
-  right:18%;
-  bottom:20%;
-}
-
-.bw-last-label::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:100%;
-  height:78px;
-  border-left:2px dashed rgba(15,39,71,0.35);
-}
-
-/* Geplante Wege */
-
-.bw-route-map{
-  min-height:330px;
-}
-
-.bw-route-band{
-  position:absolute;
-  z-index:2;
-  left:12%;
-  right:9%;
-  top:43%;
-  height:70px;
-  background:var(--safe-green-soft);
-  border-radius:999px;
-  transform:skewY(-3deg);
-}
-
-.bw-route-band::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:999px;
-  transform:translateY(-26px) skewY(8deg);
-  background:var(--safe-green-soft-2);
-}
-
-.bw-route-line{
+.s1aw-area-alert-node{
   position:absolute;
   z-index:3;
-  left:14%;
-  right:11%;
-  top:50%;
-  height:0;
-  border-top:3px dashed var(--safe-green);
-  transform:skewY(-3deg);
-}
-    
-.bw-route-point{
-  position:absolute;
-  z-index:6;
-}
-
-.bw-route-point span{
-  display:block;
-  width:30px;
-  height:30px;
+  left:73%;
+  top:58%;
+  width:28px;
+  height:28px;
   border-radius:50%;
   background:var(--red);
-  border:6px solid #fff;
-  box-shadow:0 10px 24px rgba(15,39,71,0.16), 0 0 0 8px rgba(108,21,74,0.10);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 8px rgba(108,21,74,0.14);
 }
 
-.bw-start{
-  left:12%;
-  top:46%;
+.s1aw-area-alert-pill{
+  left:60%;
+  bottom:12%;
+  color:var(--red);
+  border-color:rgba(108,21,74,0.22);
 }
 
-.bw-middle{
-  left:63%;
-  top:45%;
-}
-
-.bw-end{
-  right:10%;
-  top:40%;
-}
-
-.bw-end span{
-  background:#fff;
-  border:6px solid var(--red);
-  box-shadow:0 0 0 7px #fff, 0 0 0 10px rgba(108,21,74,0.23), 0 12px 24px rgba(15,39,71,0.16);
-}
-
-.bw-start .bw-route-label{
-  left:-42px;
-  bottom:54px;
-}
-
-.bw-middle .bw-route-label{
-  left:-72px;
-  top:58px;
-}
-
-.bw-end .bw-route-label{
-  left:-38px;
-  bottom:58px;
-}
-
-.bw-start .bw-route-label::after,
-.bw-end .bw-route-label::after,
-.bw-corridor-label::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:100%;
-  height:44px;
-  border-left:2px dashed rgba(15,39,71,0.35);
-}
-
-.bw-middle .bw-route-label::after{
+.s1aw-area-alert-pill::before{
   content:"";
   position:absolute;
   left:50%;
   bottom:100%;
-  height:44px;
+  height:56px;
   border-left:2px dashed rgba(15,39,71,0.35);
 }
 
-.bw-corridor-label{
-  left:45%;
-  top:14%;
+/* =========================================================
+   GEPLANTE WEGE
+   Grün = geplanter Wegkorridor
+   Bordeaux = Abzweigung / Abweichungsbereich
+   ========================================================= */
+
+.s1aw-route-map{
+  min-height:340px;
 }
 
-.bw-corridor-label::after{
-  height:68px;
+.s1aw-route-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
 }
 
-/* Kleine Erklärungskarten */
+/* Hauptkorridor grün */
+.s1aw-route-corridor-main{
+  fill:none;
+  stroke:rgba(47,143,91,0.18);
+  stroke-width:72;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 
-.bw-mini-grid{
+/* Hauptlinie grün */
+.s1aw-route-line-main{
+  fill:none;
+  stroke:var(--safe-green);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:14 12;
+}
+
+/* Abzweigung / Abweichungsbereich Bordeaux */
+.s1aw-route-corridor-branch{
+  fill:none;
+  stroke:rgba(108,21,74,0.18);
+  stroke-width:58;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* Abweichungslinie Bordeaux */
+.s1aw-route-line-branch{
+  fill:none;
+  stroke:var(--red);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:12 10;
+}
+
+.s1aw-route-node{
+  position:absolute;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  z-index:3;
+}
+
+/* Startpunkt grün */
+.s1aw-route-start-node{
+  left:7%;
+  top:61%;
+  background:var(--safe-green);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 7px rgba(47,143,91,0.12);
+}
+
+/* Zielpunkt grün */
+.s1aw-route-end-node{
+  right:7%;
+  top:43%;
+  background:#fff;
+  border:5px solid var(--safe-green);
+  box-shadow:
+    0 0 0 7px #fff,
+    0 0 0 10px rgba(47,143,91,0.18),
+    0 10px 22px rgba(15,39,71,0.16);
+}
+
+/* Letzter bekannter Punkt im Bordeaux-Bereich */
+.s1aw-route-alert-node{
+  left:72%;
+  top:79%;
+  background:var(--red);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 8px rgba(108,21,74,0.14);
+}
+
+/* Labels geplante Wege */
+.s1aw-route-start-pill{
+  left:4%;
+  top:18%;
+}
+
+.s1aw-route-corridor-pill{
+  left:38%;
+  top:10%;
+}
+
+.s1aw-route-end-pill{
+  right:4%;
+  top:17%;
+}
+
+.s1aw-route-alert-pill{
+  left:63%;
+  bottom:8%;
+  color:var(--red);
+  border-color:rgba(108,21,74,0.20);
+}
+
+/* =========================================================
+   KLEINE ERKLÄRUNGSKARTEN
+   ========================================================= */
+
+.s1aw-mini-grid{
   display:grid;
   gap:18px;
   margin-top:22px;
 }
 
-.bw-mini-grid-two{
+.s1aw-mini-grid-two{
   grid-template-columns:repeat(2, minmax(0, 1fr));
-  max-width:840px;
+  max-width:860px;
   margin-left:auto;
   margin-right:auto;
 }
 
-.bw-mini-grid-four{
+.s1aw-mini-grid-four{
   grid-template-columns:repeat(4, minmax(0, 1fr));
 }
 
-.bw-mini-card{
+.s1aw-mini-card{
   position:relative;
   min-height:104px;
   display:grid;
@@ -1787,7 +1723,7 @@
   box-shadow:0 14px 30px rgba(15,39,71,0.07);
 }
 
-.bw-number{
+.s1aw-mini-number{
   position:absolute;
   top:12px;
   left:12px;
@@ -1802,14 +1738,14 @@
   font-size:0.84rem;
 }
 
-.bw-icon{
+.s1aw-mini-icon{
   color:var(--red);
-  font-size:2.35rem;
+  font-size:2.25rem;
   line-height:1;
   text-align:center;
 }
 
-.bw-mini-card p{
+.s1aw-mini-card p{
   margin:0;
   color:var(--navy);
   font-weight:800;
@@ -1817,19 +1753,21 @@
   font-size:0.95rem;
 }
 
-/* Ergänzende Möglichkeiten */
+/* =========================================================
+   ERGÄNZENDE MÖGLICHKEITEN
+   ========================================================= */
 
-.bw-extra-card{
+.s1aw-extra-card{
   padding-bottom:26px;
 }
 
-.bw-extra-grid{
+.s1aw-extra-grid{
   display:grid;
   grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:18px;
 }
 
-.bw-extra-item{
+.s1aw-extra-item{
   display:grid;
   grid-template-columns:72px 1fr;
   gap:18px;
@@ -1841,7 +1779,7 @@
   box-shadow:0 14px 30px rgba(15,39,71,0.06);
 }
 
-.bw-extra-icon{
+.s1aw-extra-icon{
   width:62px;
   height:62px;
   display:grid;
@@ -1853,191 +1791,144 @@
   font-weight:800;
 }
 
-.bw-extra-item h4{
+.s1aw-extra-item h4{
   margin:0 0 8px;
   color:var(--navy);
   font-size:1.05rem;
 }
 
-.bw-extra-item p{
+.s1aw-extra-item p{
   margin:0;
   color:var(--text);
   line-height:1.55;
   font-size:0.94rem;
 }
 
-/* Responsive */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 900px){
-  .bw-card{
+  .s1aw-card{
     padding:24px;
     border-radius:24px;
   }
 
-  .bw-mini-grid-four,
-  .bw-mini-grid-two,
-  .bw-extra-grid{
+  .s1aw-mini-grid-four,
+  .s1aw-mini-grid-two,
+  .s1aw-extra-grid{
     grid-template-columns:1fr;
   }
 
-  .bw-mini-card{
+  .s1aw-mini-card{
     min-height:92px;
   }
 }
 
-@media (max-width: 640px){
-  .bw-card{
+@media (max-width: 700px){
+  .s1aw-card{
     padding:18px;
   }
 
-  .bw-map,
-  .bw-area-map,
-  .bw-route-map{
+  .s1aw-map,
+  .s1aw-area-map,
+  .s1aw-route-map{
     min-height:285px;
-    border-radius:20px;
+    border-radius:18px;
   }
 
-  .bw-area-label,
-  .bw-last-label,
-  .bw-route-label,
-  .bw-corridor-label{
+  .s1aw-pill{
     min-width:auto;
-    padding:8px 12px;
-    font-size:0.76rem;
-    border-radius:13px;
+    font-size:0.72rem;
+    padding:7px 10px;
   }
 
-  .bw-defined-area{
-    left:22%;
-    top:26%;
-    width:58%;
-    height:38%;
+  /* Definierte Bereiche mobil */
+  .s1aw-area-zone{
+    left:17%;
+    top:25%;
+    width:53%;
+    height:35%;
   }
 
-  .bw-area-label{
-    left:7%;
+  .s1aw-area-pill{
+    left:4%;
     top:12%;
   }
 
-  .bw-area-label::after{
-    width:36px;
+  .s1aw-area-pill::after{
+    width:28px;
   }
 
-  .bw-last-label{
-    right:6%;
-    bottom:18%;
+  .s1aw-area-alert-node{
+    left:75%;
+    top:60%;
+    width:22px;
+    height:22px;
   }
 
-  .bw-last-label::before{
-    height:48px;
+  .s1aw-area-alert-pill{
+    left:46%;
+    bottom:8%;
   }
 
-  .bw-route-band{
-    left:10%;
-    right:8%;
-    top:45%;
-    height:50px;
+  .s1aw-area-alert-pill::before{
+    height:40px;
   }
 
-  .bw-route-line{
-    left:13%;
-    right:11%;
-    top:51%;
+  /* Geplante Wege mobil */
+  .s1aw-route-node{
+    width:22px;
+    height:22px;
   }
 
-  .bw-start{
-    left:10%;
-    top:46%;
+  .s1aw-route-start-pill{
+    left:3%;
+    top:14%;
   }
 
-  .bw-middle{
-    left:58%;
-    top:45%;
+  .s1aw-route-corridor-pill{
+    left:33%;
+    top:8%;
   }
 
-  .bw-end{
-    right:8%;
-    top:42%;
+  .s1aw-route-end-pill{
+    right:3%;
+    top:15%;
   }
 
-  .bw-route-point span{
-    width:24px;
-    height:24px;
-    border-width:5px;
+  .s1aw-route-alert-pill{
+    left:55%;
+    bottom:6%;
   }
 
-  .bw-start .bw-route-label{
-    left:-18px;
-    bottom:46px;
+  .s1aw-route-alert-node{
+    left:71%;
+    top:77%;
   }
 
-  .bw-middle .bw-route-label{
-    left:-50px;
-    top:50px;
-  }
-
-  .bw-end .bw-route-label{
-    left:-36px;
-    bottom:50px;
-  }
-
-  .bw-corridor-label{
-    left:38%;
-    top:12%;
-  }
-
-  .bw-mini-card{
+  .s1aw-mini-card{
     grid-template-columns:48px 1fr;
     padding:16px;
   }
 
-  .bw-icon{
+  .s1aw-mini-icon{
     font-size:2rem;
   }
 
-  .bw-mini-card p{
+  .s1aw-mini-card p{
     font-size:0.9rem;
   }
 
-  .bw-extra-item{
+  .s1aw-extra-item{
     grid-template-columns:54px 1fr;
     padding:18px;
   }
 
-  .bw-extra-icon{
+  .s1aw-extra-icon{
     width:50px;
     height:50px;
     font-size:1.6rem;
-  }
-  
-  /* Grünformatierung für geplanten Wegkorridor */
-  .bw-route-band{
-    background:var(--safe-green-soft);
-  }
-  
-  .bw-route-band::before{
-    background:var(--safe-green-soft-2);
-  }
-  
-  .bw-route-line{
-    border-top-color:var(--safe-green);
-  }
-  
-  .bw-start span{
-    background:var(--safe-green);
-  }
-  
-  .bw-end span{
-    border-color:var(--safe-green);
-  }
-  
-  /* Abweichung / letzter bekannter Punkt bleibt Bordeaux */
-  .bw-middle span{
-    background:var(--red) !important;
-    border-color:#fff !important;
-    box-shadow:
-      0 10px 24px rgba(15,39,71,0.16),
-      0 0 0 8px rgba(108,21,74,0.16) !important;
   }
 }
   </style>
@@ -2460,7 +2351,7 @@ if(!localStorage.getItem("cookieAccepted")){
   </div>
 </section>
 
-  <section class="section section-alt anchor-offset bw-section" id="bereiche">
+ <section class="section section-alt anchor-offset s1aw-section" id="bereiche">
   <div class="container">
     <div class="section-intro">
       <span class="eyebrow-dark">Bereiche &amp; Wege</span>
@@ -2473,113 +2364,139 @@ if(!localStorage.getItem("cookieAccepted")){
       </p>
 
       <p>
-        Die dargestellten Funktionen sind konzeptionell zu verstehen und abhängig von technischer, rechtlicher
-        und organisatorischer Umsetzbarkeit.
+        Die dargestellten Funktionen sind konzeptionell zu verstehen und abhängig von technischer,
+        rechtlicher und organisatorischer Umsetzbarkeit.
       </p>
     </div>
 
-    <div class="bw-wrap">
+    <div class="s1aw-grid">
 
       <!-- DEFINIERTE BEREICHE -->
-      <article class="bw-card">
+      <article class="s1aw-card">
         <h3>Definierte Bereiche</h3>
 
-        <div class="bw-map bw-area-map" aria-label="Schematische Darstellung eines definierten Aufenthaltsbereichs">
-          <div class="bw-area-label">Festgelegter<br>Aufenthaltsbereich</div>
+        <div class="s1aw-map s1aw-area-map" aria-label="Schematische Darstellung definierter Bereiche">
+          <div class="s1aw-area-zone"></div>
 
-          <div class="bw-defined-area">
-            <span class="bw-area-point"></span>
+          <div class="s1aw-pill s1aw-area-pill">
+            Festgelegter<br>Aufenthaltsbereich
           </div>
 
-          <div class="bw-last-label">Letzter bekannter Punkt</div>
+          <div class="s1aw-area-alert-node"></div>
+
+          <div class="s1aw-pill s1aw-area-alert-pill">
+            Letzter bekannter<br>Aufenthaltsort
+          </div>
         </div>
 
-        <p class="bw-text">
+        <p class="s1aw-text">
           Für bestimmte Orte kann ein festgelegter Aufenthaltsbereich definiert werden.
-          Im Anlassfall kann der letzte bekannte Punkt zur konzeptionellen Orientierung dargestellt werden.
+          Eine Benachrichtigung ist insbesondere dann denkbar, wenn der Bereich verlassen wird.
+          Der letzte bekannte Aufenthaltsort kann in diesem Fall außerhalb des festgelegten Bereichs
+          als Orientierungspunkt dargestellt werden.
         </p>
 
-        <div class="bw-mini-grid bw-mini-grid-two">
-          <div class="bw-mini-card">
-            <span class="bw-number">1</span>
-            <div class="bw-icon">⌖</div>
+        <div class="s1aw-mini-grid s1aw-mini-grid-two">
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">1</span>
+            <div class="s1aw-mini-icon">⌖</div>
             <p>Festgelegten Aufenthaltsbereich definieren</p>
           </div>
 
-          <div class="bw-mini-card">
-            <span class="bw-number">2</span>
-            <div class="bw-icon">◎</div>
-            <p>Letzten bekannten Punkt zur Orientierung darstellen</p>
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">2</span>
+            <div class="s1aw-mini-icon">◎</div>
+            <p>Letzten bekannten Aufenthaltsort außerhalb des Bereichs darstellen</p>
           </div>
         </div>
       </article>
 
       <!-- GEPLANTE WEGE -->
-      <article class="bw-card">
+      <article class="s1aw-card">
         <h3>Geplante Wege</h3>
 
-        <div class="bw-map bw-route-map" aria-label="Schematische Darstellung eines geplanten Weges">
-          <div class="bw-route-band"></div>
-          <div class="bw-route-line"></div>
+        <div class="s1aw-map s1aw-route-map" aria-label="Schematische Darstellung geplanter Wege">
+          <svg class="s1aw-route-svg" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Hauptkorridor in Grün -->
+            <path
+              class="s1aw-route-corridor-main"
+              d="M80 255
+                 C150 155, 260 135, 360 210
+                 C430 260, 520 265, 610 220
+                 C700 175, 785 165, 920 195" />
 
-          <div class="bw-route-point bw-start">
-            <span></span>
-            <div class="bw-route-label">Startpunkt</div>
-          </div>
+            <!-- Hauptlinie in Grün -->
+            <path
+              class="s1aw-route-line-main"
+              d="M80 255
+                 C150 155, 260 135, 360 210
+                 C430 260, 520 265, 610 220
+                 C700 175, 785 165, 920 195" />
 
-          <div class="bw-route-point bw-middle">
-            <span></span>
-            <div class="bw-route-label">Letzter<br>bekannter Punkt</div>
-          </div>
+            <!-- Bordeaux-Abzweigung / Abweichungsbereich -->
+            <path
+              class="s1aw-route-corridor-branch"
+              d="M595 223
+                 C650 265, 700 310, 760 345" />
 
-          <div class="bw-route-point bw-end">
-            <span></span>
-            <div class="bw-route-label">Zielpunkt</div>
-          </div>
+            <!-- Bordeaux-Abweichungslinie -->
+            <path
+              class="s1aw-route-line-branch"
+              d="M595 223
+                 C650 265, 700 310, 760 345" />
+          </svg>
 
-          <div class="bw-corridor-label">Wegkorridor</div>
+          <div class="s1aw-route-node s1aw-route-start-node"></div>
+          <div class="s1aw-route-node s1aw-route-end-node"></div>
+          <div class="s1aw-route-node s1aw-route-alert-node"></div>
+
+          <div class="s1aw-pill s1aw-route-start-pill">Startpunkt</div>
+          <div class="s1aw-pill s1aw-route-corridor-pill">Wegkorridor</div>
+          <div class="s1aw-pill s1aw-route-end-pill">Zielpunkt</div>
+          <div class="s1aw-pill s1aw-route-alert-pill">Letzter bekannter Punkt</div>
         </div>
 
-        <p class="bw-text">
-          Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer konzeptionell
-          festgelegt werden. Erfolgt keine Ankunft innerhalb des vorgesehenen Zeitfensters, kann eine
-          Benachrichtigung ausgelöst werden.
+        <p class="s1aw-text">
+          Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer
+          konzeptionell festgelegt werden. Erfolgt keine Ankunft innerhalb des vorgesehenen
+          Zeitfensters oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung
+          ausgelöst werden.
         </p>
 
-        <div class="bw-mini-grid bw-mini-grid-four">
-          <div class="bw-mini-card">
-            <span class="bw-number">1</span>
-            <div class="bw-icon">⌖</div>
+        <div class="s1aw-mini-grid s1aw-mini-grid-four">
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">1</span>
+            <div class="s1aw-mini-icon">⌖</div>
             <p>Startpunkt und Wegkorridor festlegen</p>
           </div>
 
-          <div class="bw-mini-card">
-            <span class="bw-number">2</span>
-            <div class="bw-icon">◎</div>
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">2</span>
+            <div class="s1aw-mini-icon">◎</div>
             <p>Zielpunkt festlegen</p>
           </div>
 
-          <div class="bw-mini-card">
-            <span class="bw-number">3</span>
-            <div class="bw-icon">◷</div>
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">3</span>
+            <div class="s1aw-mini-icon">◷</div>
             <p>Zeit + Puffer festlegen</p>
           </div>
 
-          <div class="bw-mini-card">
-            <span class="bw-number">4</span>
-            <div class="bw-icon">◔</div>
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">4</span>
+            <div class="s1aw-mini-icon">◔</div>
             <p>Benachrichtigung bei ausbleibender Ankunft</p>
           </div>
         </div>
       </article>
 
       <!-- ERGÄNZENDE MÖGLICHKEITEN -->
-      <article class="bw-card bw-extra-card">
+      <article class="s1aw-card s1aw-extra-card">
         <h3>Ergänzende konzeptionelle Möglichkeiten</h3>
 
-        <div class="bw-extra-grid">
-          <div class="bw-extra-item">
-            <div class="bw-extra-icon">▤</div>
+        <div class="s1aw-extra-grid">
+          <div class="s1aw-extra-item">
+            <div class="s1aw-extra-icon">▤</div>
             <div>
               <h4>Wegstrecken- &amp; Zeitabgleich</h4>
               <p>
@@ -2590,8 +2507,8 @@ if(!localStorage.getItem("cookieAccepted")){
             </div>
           </div>
 
-          <div class="bw-extra-item">
-            <div class="bw-extra-icon">♡</div>
+          <div class="s1aw-extra-item">
+            <div class="s1aw-extra-icon">♡</div>
             <div>
               <h4>Wearables &amp; Sturzerkennung</h4>
               <p>
@@ -2603,7 +2520,7 @@ if(!localStorage.getItem("cookieAccepted")){
           </div>
         </div>
 
-        <p class="bw-note">
+        <p class="s1aw-note">
           Die dargestellten Funktionen sind konzeptionell und abhängig von technischer,
           rechtlicher und organisatorischer Umsetzbarkeit. Safety1 ersetzt keine bestehenden
           Notrufsysteme.
