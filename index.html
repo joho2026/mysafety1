@@ -923,6 +923,220 @@
   }
 }
 
+    /* === Safety1 Video-Teaser + Vollbild-Modal === */
+    .s1-hero-video-teaser{
+      margin-top:22px;
+      max-width:420px;
+    }
+    
+    .s1-video-card{
+      width:100%;
+      display:grid;
+      grid-template-columns:132px 1fr;
+      gap:14px;
+      align-items:center;
+      padding:10px;
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(15,39,71,0.96), rgba(108,21,74,0.88));
+      color:#fff;
+      cursor:pointer;
+      box-shadow:0 18px 40px rgba(8,20,38,0.22);
+      text-align:left;
+      transition:transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    
+    .s1-video-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 24px 52px rgba(8,20,38,0.30);
+      border-color:rgba(255,255,255,0.28);
+    }
+    
+    .s1-video-thumb{
+      position:relative;
+      display:block;
+      aspect-ratio:16 / 9;
+      overflow:hidden;
+      border-radius:13px;
+      background:#0f2747;
+    }
+    
+    .s1-video-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    
+    .s1-video-thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(15,39,71,0.05), rgba(108,21,74,0.25));
+    }
+    
+    .s1-video-play{
+      position:absolute;
+      left:50%;
+      top:50%;
+      z-index:2;
+      transform:translate(-50%, -50%);
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding-left:3px;
+      background:rgba(255,255,255,0.92);
+      color:#6C154A;
+      font-size:1rem;
+      box-shadow:0 10px 24px rgba(0,0,0,0.24);
+    }
+    
+    .s1-video-card-text{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    
+    .s1-video-card-text strong{
+      font-size:1rem;
+      line-height:1.25;
+    }
+    
+    .s1-video-card-text small{
+      font-size:0.86rem;
+      color:rgba(255,255,255,0.78);
+    }
+    
+    .s1-video-mini-note{
+      margin:9px 4px 0;
+      font-size:0.78rem;
+      line-height:1.45;
+      color:rgba(255,255,255,0.72);
+    }
+    
+    .s1-video-modal{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    
+    .s1-video-modal[hidden]{
+      display:none;
+    }
+    
+    .s1-video-modal-backdrop{
+      position:absolute;
+      inset:0;
+      background:rgba(4,10,22,0.82);
+      backdrop-filter:blur(8px);
+    }
+    
+    .s1-video-modal-dialog{
+      position:relative;
+      z-index:1;
+      width:min(1080px, 94vw);
+      background:#071426;
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 28px 90px rgba(0,0,0,0.46);
+      border:1px solid rgba(255,255,255,0.14);
+    }
+    
+    .s1-video-modal-dialog video{
+      display:block;
+      width:100%;
+      max-height:78vh;
+      border-radius:16px;
+      background:#000;
+    }
+    
+    .s1-video-modal-close{
+      position:absolute;
+      right:-14px;
+      top:-14px;
+      z-index:2;
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:999px;
+      background:#ffffff;
+      color:#6C154A;
+      font-size:1.8rem;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:0 12px 28px rgba(0,0,0,0.25);
+    }
+    
+    .s1-video-modal-close:hover{
+      background:#f5eef3;
+    }
+    
+    .s1-video-modal-note{
+      margin:12px 4px 0;
+      font-size:0.86rem;
+      line-height:1.5;
+      text-align:center;
+      color:rgba(255,255,255,0.70);
+    }
+    
+    body.s1-modal-open{
+      overflow:hidden;
+    }
+    
+    @media (max-width: 760px){
+      .s1-hero-video-teaser{
+        max-width:100%;
+        margin-top:20px;
+        margin-bottom:24px;
+      }
+    
+      .s1-video-card{
+        grid-template-columns:112px 1fr;
+        border-radius:16px;
+      }
+    
+      .s1-video-play{
+        width:36px;
+        height:36px;
+        font-size:0.9rem;
+      }
+    
+      .s1-video-modal{
+        padding:14px;
+      }
+    
+      .s1-video-modal-dialog{
+        width:96vw;
+        padding:10px;
+        border-radius:18px;
+      }
+    
+      .s1-video-modal-dialog video{
+        max-height:72vh;
+        border-radius:13px;
+      }
+    
+      .s1-video-modal-close{
+        right:4px;
+        top:4px;
+        width:38px;
+        height:38px;
+        font-size:1.6rem;
+      }
+    
+      .s1-video-modal-note{
+        font-size:0.78rem;
+        padding:0 34px 0 4px;
+      }
+    }
+
 /* MOBILE */
 @media (max-width: 768px){
 
@@ -2086,7 +2300,26 @@ if(!localStorage.getItem("cookieAccepted")){
       <p class="hero-note">
         Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
       </p>
-    </div>
+      </div>
+
+      <div class="s1-hero-video-teaser">
+        <button class="s1-video-card" type="button" data-s1-video-open aria-label="Safety1 Kurzfilm öffnen">
+          <span class="s1-video-thumb">
+            <img src="img/safety1-video-poster.jpg" alt="Safety1 Kurzfilm Vorschau">
+            <span class="s1-video-play" aria-hidden="true">▶</span>
+          </span>
+      
+          <span class="s1-video-card-text">
+            <strong>Safety1 in 60 Sekunden</strong>
+            <small>Kurzfilm ansehen</small>
+          </span>
+        </button>
+      
+        <p class="s1-video-mini-note">
+          KI-generierter Konzeptfilm. Funktionen in Entwicklung.
+        </p>
+      </div>
+    
 
     <div class="hero-card">
       <h3>Frühzeitig informieren lassen</h3>
@@ -3078,6 +3311,69 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+</script>
+
+<div class="s1-video-modal" id="s1VideoModal" hidden aria-hidden="true">
+  <div class="s1-video-modal-backdrop" data-s1-video-close></div>
+
+  <div class="s1-video-modal-dialog" role="dialog" aria-modal="true" aria-label="Safety1 Kurzfilm">
+    <button class="s1-video-modal-close" type="button" data-s1-video-close aria-label="Video schließen">
+      ×
+    </button>
+
+    <video id="s1MainVideo" controls playsinline preload="metadata" poster="img/safety1-video-poster.jpg">
+      <source src="video/safety1-imagefilm-60s.mp4" type="video/mp4">
+      Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
+
+    <p class="s1-video-modal-note">
+      KI-generierter Konzeptfilm. Funktionen in Entwicklung. Safety1 ersetzt keine bestehenden Notrufsysteme.
+    </p>
+  </div>
+</div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const modal = document.getElementById("s1VideoModal");
+    const video = document.getElementById("s1MainVideo");
+    const openButtons = document.querySelectorAll("[data-s1-video-open]");
+    const closeButtons = document.querySelectorAll("[data-s1-video-close]");
+
+    function openVideo(){
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("s1-modal-open");
+
+      if(video){
+        video.currentTime = 0;
+        video.play().catch(function(){});
+      }
+    }
+
+    function closeVideo(){
+      if(video){
+        video.pause();
+      }
+
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("s1-modal-open");
+    }
+
+    openButtons.forEach(function(button){
+      button.addEventListener("click", openVideo);
+    });
+
+    closeButtons.forEach(function(button){
+      button.addEventListener("click", closeVideo);
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape" && !modal.hidden){
+        closeVideo();
+      }
+    });
+  });
 </script>
   
 </body>
