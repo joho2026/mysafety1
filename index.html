@@ -925,8 +925,8 @@
 
     /* === Safety1 Video-Teaser + Vollbild-Modal === */
     .s1-hero-video-teaser{
-      margin-top:22px;
-      max-width:420px;
+      margin-top:26px;
+      max-width:520px;
     }
     
     .s1-video-card{
@@ -1093,8 +1093,8 @@
     @media (max-width: 760px){
       .s1-hero-video-teaser{
         max-width:100%;
-        margin-top:20px;
-        margin-bottom:24px;
+        margin-top:22px;
+        margin-bottom:26px;
       }
     
       .s1-video-card{
@@ -1134,6 +1134,15 @@
       .s1-video-modal-note{
         font-size:0.78rem;
         padding:0 34px 0 4px;
+      }
+
+      @media (min-width: 901px){
+      .s1-hero-video-teaser{
+        max-width:520px;
+      }
+    
+      .s1-video-card{
+        min-height:118px;
       }
     }
 
@@ -2300,7 +2309,6 @@ if(!localStorage.getItem("cookieAccepted")){
       <p class="hero-note">
         Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
       </p>
-      </div>
 
       <div class="s1-hero-video-teaser">
         <button class="s1-video-card" type="button" data-s1-video-open aria-label="Safety1 Kurzfilm öffnen">
@@ -2319,7 +2327,6 @@ if(!localStorage.getItem("cookieAccepted")){
           KI-generierter Konzeptfilm. Funktionen in Entwicklung.
         </p>
       </div>
-    
 
     <div class="hero-card">
       <h3>Frühzeitig informieren lassen</h3>
