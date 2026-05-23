@@ -2208,6 +2208,51 @@
     height:52px;
     border-left:2px dashed rgba(108,21,74,0.28);
   }
+
+  /* === HERO: Desktop links Text + Video, rechts Warteliste === */
+
+@media (min-width: 901px){
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(360px, 470px);
+    gap:44px;
+    align-items:start;
+  }
+
+  .hero-grid > *:first-child{
+    grid-column:1;
+    min-width:0;
+  }
+
+  .hero-grid > .hero-card{
+    grid-column:2;
+    width:100%;
+    max-width:470px;
+    justify-self:end;
+  }
+
+  .s1-hero-video-teaser{
+    margin-top:24px;
+    max-width:520px;
+  }
+}
+
+@media (max-width: 900px){
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+
+  .hero-grid > *{
+    grid-column:auto;
+  }
+
+  .s1-hero-video-teaser{
+    max-width:100%;
+    margin-top:22px;
+    margin-bottom:24px;
+  }
 }
   </style>
 </head>
@@ -2327,6 +2372,7 @@ if(!localStorage.getItem("cookieAccepted")){
           KI-generierter Konzeptfilm. Funktionen in Entwicklung.
         </p>
       </div>
+    </div>
 
     <div class="hero-card">
       <h3>Frühzeitig informieren lassen</h3>
