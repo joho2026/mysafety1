@@ -2255,6 +2255,65 @@
     margin-top:22px;
     margin-bottom:24px;
   }
+
+  /* === Safety1 Feedback-Hinweis unter Videoteaser === */
+
+.s1-feedback-box{
+  margin-top:14px;
+  padding:15px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 14px 34px rgba(8,20,38,0.14);
+}
+
+.s1-feedback-box p{
+  margin:0 0 12px;
+  font-size:0.92rem;
+  line-height:1.55;
+  color:rgba(255,255,255,0.84);
+}
+
+.s1-feedback-box strong{
+  color:#ffffff;
+  font-weight:800;
+}
+
+.s1-feedback-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:#6C154A;
+  color:#ffffff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:0.92rem;
+  box-shadow:0 10px 24px rgba(108,21,74,0.28);
+  transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.s1-feedback-link:hover{
+  background:#54113A;
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(108,21,74,0.34);
+}
+
+@media (max-width: 760px){
+  .s1-feedback-box{
+    margin-top:12px;
+    padding:14px;
+  }
+
+  .s1-feedback-box p{
+    font-size:0.88rem;
+  }
+
+  .s1-feedback-link{
+    width:100%;
+  }
 }
   </style>
 </head>
@@ -2373,6 +2432,21 @@ if(!localStorage.getItem("cookieAccepted")){
         <p class="s1-video-mini-note">
           KI-generierter Konzeptfilm. Funktionen in Entwicklung.
         </p>
+
+        <div class="s1-feedback-box">
+  <p>
+    <strong>Ihre Meinung ist willkommen.</strong><br>
+    Safety1 soll praxisnah weiterentwickelt werden. Wenn Ihnen eine Funktion fehlt
+    oder Sie eine sinnvolle Ergänzungsidee haben, freuen wir uns über Ihr Feedback.
+  </p>
+
+  <a
+    class="s1-feedback-link"
+    href="mailto:info@mysafety1.app?subject=Feedback%20zu%20Safety1&body=Hallo%20Safety1-Team%2C%0A%0Aich%20habe%20folgendes%20Feedback%20zu%20Safety1%3A%0A%0A"
+    aria-label="Feedback zu Safety1 per E-Mail senden">
+    Feedback geben
+  </a>
+</div>
       </div>
     </div>
 
