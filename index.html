@@ -3792,48 +3792,55 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function(){
-    const modal = document.getElementById("s1VideoModal");
-    const video = document.getElementById("s1MainVideo");
-    const openButtons = document.querySelectorAll("[data-s1-video-open]");
-    const closeButtons = document.querySelectorAll("[data-s1-video-close]");
+document.addEventListener("DOMContentLoaded", function(){
+  const modal = document.getElementById("s1VideoModal");
+  const video = document.getElementById("s1MainVideo");
+  const openButtons = document.querySelectorAll("[data-s1-video-open]");
+  const closeButtons = document.querySelectorAll("[data-s1-video-close]");
 
-    function openVideo(){
-      modal.hidden = false;
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("s1-modal-open");
-
-      if(video){
-        video.currentTime = 0;
-        video.play().catch(function(){});
-      }
+  function openVideo(){
+    if(!modal){
+      return;
     }
 
-    function closeVideo(){
-      if(video){
-        video.pause();
-      }
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("s1-modal-open");
 
+    if(video){
+      video.currentTime = 0;
+      video.play().catch(function(){});
+    }
+  }
+
+  function closeVideo(){
+    if(video){
+      video.pause();
+    }
+
+    if(modal){
       modal.hidden = true;
       modal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("s1-modal-open");
     }
 
-    openButtons.forEach(function(button){
-      button.addEventListener("click", openVideo);
-    });
+    document.body.classList.remove("s1-modal-open");
+  }
 
-    closeButtons.forEach(function(button){
-      button.addEventListener("click", closeVideo);
-    });
-
-    document.addEventListener("keydown", function(event){
-      if(event.key === "Escape" && !modal.hidden){
-        closeVideo();
-      }
-    });
+  openButtons.forEach(function(button){
+    button.addEventListener("click", openVideo);
   });
-    <script>
+
+  closeButtons.forEach(function(button){
+    button.addEventListener("click", closeVideo);
+  });
+
+  document.addEventListener("keydown", function(event){
+    if(event.key === "Escape" && modal && !modal.hidden){
+      closeVideo();
+    }
+  });
+});
+
 const safety1ShareUrl = "https://mysafety1.app";
 const safety1ShareTitle = "Safety1 – Unterstützung im entscheidenden Moment";
 const safety1ShareText = "Ich finde die Idee von Safety1 spannend: eine digitale Lösung, die Menschen im Ernstfall dabei unterstützen soll, ausgewählte Kontakte rasch zu informieren und Hilfe strukturierter zu organisieren.";
@@ -3900,6 +3907,6 @@ function shareSafety1(){
   }
 }
 </script>
-  
+
 </body>
 </html>
