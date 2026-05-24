@@ -2314,6 +2314,74 @@
   .s1-feedback-link{
     width:100%;
   }
+
+  /* === Safety1 Feedback-Block unter Video – finale Darstellung === */
+
+.s1-feedback-box{
+  margin-top:30px;
+  max-width:640px;
+}
+
+.s1-feedback-title{
+  margin:0 0 8px;
+  font-size:1.08rem;
+  line-height:1.35;
+  font-weight:850;
+  color:#ffffff;
+}
+
+.s1-feedback-text{
+  margin:0 0 18px;
+  font-size:1rem;
+  line-height:1.58;
+  color:rgba(255,255,255,0.88);
+}
+
+.s1-feedback-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:12px 22px;
+  border-radius:999px;
+  background:#6C154A;
+  color:#ffffff !important;
+  text-decoration:none !important;
+  font-weight:850;
+  font-size:0.96rem;
+  letter-spacing:0.01em;
+  box-shadow:0 14px 30px rgba(108,21,74,0.32);
+  border:1px solid rgba(255,255,255,0.14);
+  transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.s1-feedback-button:hover{
+  background:#54113A;
+  color:#ffffff !important;
+  transform:translateY(-1px);
+  box-shadow:0 18px 38px rgba(108,21,74,0.40);
+}
+
+.s1-feedback-button:visited{
+  color:#ffffff !important;
+}
+
+@media (max-width: 760px){
+  .s1-feedback-box{
+    margin-top:26px;
+  }
+
+  .s1-feedback-title{
+    font-size:1rem;
+  }
+
+  .s1-feedback-text{
+    font-size:0.94rem;
+  }
+
+  .s1-feedback-button{
+    width:100%;
+  }
 }
   </style>
 </head>
@@ -2434,19 +2502,22 @@ if(!localStorage.getItem("cookieAccepted")){
         </p>
 
         <div class="s1-feedback-box">
-  <p>
-    <strong>Ihre Meinung ist willkommen.</strong><br>
-    Safety1 soll praxisnah weiterentwickelt werden. Wenn Ihnen eine Funktion fehlt
-    oder Sie eine sinnvolle Ergänzungsidee haben, freuen wir uns über Ihr Feedback.
-  </p>
-
-  <a
-    class="s1-feedback-link"
-    href="mailto:info@mysafety1.app?subject=Feedback%20zu%20Safety1&body=Hallo%20Safety1-Team%2C%0A%0Aich%20habe%20folgendes%20Feedback%20zu%20Safety1%3A%0A%0A"
-    aria-label="Feedback zu Safety1 per E-Mail senden">
-    Feedback geben
-  </a>
-</div>
+      <p class="s1-feedback-title">
+        Ihre Meinung ist willkommen.
+      </p>
+    
+      <p class="s1-feedback-text">
+        Safety1 soll praxisnah weiterentwickelt werden. Wenn Ihnen eine Funktion fehlt
+        oder Sie eine sinnvolle Ergänzungsidee haben, freuen wir uns über Ihr Feedback.
+      </p>
+    
+      <a
+        class="s1-feedback-button"
+        href="mailto:info@mysafety1.app?subject=Feedback%20zu%20Safety1&body=Hallo%20Safety1-Team%2C%0A%0Aich%20habe%20folgendes%20Feedback%20zu%20Safety1%3A%0A%0A"
+        aria-label="Feedback zu Safety1 per E-Mail senden">
+        Feedback geben
+      </a>
+    </div>
       </div>
     </div>
 
