@@ -1147,6 +1147,102 @@
 }
 </style>
 
+
+<style id="safety1-v9-bereiche-wege-images">
+.feature-visual-stack{display:grid;gap:28px;margin-top:26px}
+.feature-visual-item{background:rgba(255,255,255,.98);border:1px solid var(--border);border-radius:28px;padding:18px;box-shadow:var(--shadow-md)}
+.feature-visual-item .visual-card{margin-top:0;margin-bottom:18px}
+.feature-visual-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px);gap:24px;align-items:start}
+.feature-visual-copy .card{padding:22px}
+.feature-visual-copy .mini-points{display:grid;gap:14px}
+.feature-visual-copy .mini-points .mini-card{background:linear-gradient(135deg,var(--navy), var(--navy-2));color:#fff;border-radius:18px;padding:18px 20px;box-shadow:0 14px 30px rgba(15,39,71,.15)}
+.feature-visual-copy .mini-points .mini-card strong{display:block;margin-bottom:6px;font-size:1rem}
+@media (max-width:900px){.feature-visual-copy{grid-template-columns:1fr}}
+</style>
+
+
+<style id="safety1-v10-final-polish">
+/* ===== Safety1 V10 – Mobile, Abstände, Text & finaler optischer Abschluss ===== */
+.section{padding:88px 0;}
+.section.section-alt{border-top:1px solid rgba(217,226,238,.7);border-bottom:1px solid rgba(217,226,238,.7);}
+.section-intro{max-width:920px;margin-bottom:36px;}
+.section-intro p:last-child{margin-bottom:0;}
+.hero{padding:92px 0 76px;}
+.hero-card{padding:24px;}
+.hero-note{max-width:720px;line-height:1.55;}
+.card,.step-card,.faq-item,.info-box,.note-box{padding:28px;}
+.note-box,.info-box{border-radius:22px;}
+.comparison .box{border-radius:22px;}
+.visual-card{border-radius:30px;padding:16px;box-shadow:0 20px 46px rgba(15,39,71,.09);}
+.visual-card img{border-radius:20px;}
+.event-layout,.wearables-layout,.feature-visual-copy{gap:28px;}
+.event-steps .mini-card,.feature-visual-copy .mini-points .mini-card{line-height:1.55;}
+.feature-visual-item{border-radius:30px;padding:20px;}
+.feature-visual-copy .card{border-radius:22px;}
+.feature-visual-copy .mini-points .mini-card{border-radius:20px;}
+.cta-box{padding:40px 30px;border-radius:26px;}
+.footer-card{border-radius:22px;}
+.faq{gap:18px;}
+.faq-item{border-radius:22px;}
+.share-modal-content{border-radius:24px;}
+.inline-actions{margin-top:28px;}
+.inline-actions p{line-height:1.58;}
+
+@media (max-width: 1100px){
+  .nav{gap:14px;}
+  .nav a{font-size:.88rem;}
+}
+
+@media (max-width: 900px){
+  .section{padding:74px 0;}
+  .hero{padding:82px 0 66px;}
+  .hero-grid,.event-layout,.wearables-layout,.areas-layout,.footer-grid,.grid-4,.grid-3,.grid-2,.steps-simple,.comparison,.feature-visual-copy{grid-template-columns:1fr !important;}
+  .hero-proof{grid-template-columns:1fr 1fr 1fr;max-width:none;}
+  .topbar-inner{min-height:74px;}
+  .brand img{height:48px;}
+}
+
+@media (max-width: 700px){
+  html{scroll-padding-top:78px;}
+  .container{padding:0 18px;}
+  .section{padding:62px 0;}
+  .section-intro{margin-bottom:28px;}
+  .hero{padding:72px 0 56px;}
+  .hero-grid{gap:24px;}
+  .hero-proof{grid-template-columns:1fr;gap:10px;}
+  .hero-proof .mini{padding:13px 14px;border-radius:14px;}
+  .btn-row{gap:10px;}
+  .btn{min-height:48px;padding:13px 18px;font-size:.95rem;}
+  .inline-actions-buttons{display:grid;grid-template-columns:1fr;gap:10px;}
+  .inline-link-btn{width:100%;justify-content:center;}
+  .card,.step-card,.faq-item,.info-box,.note-box,.hero-card{padding:22px;}
+  .visual-card{padding:12px;border-radius:24px;}
+  .visual-card img{border-radius:16px;}
+  .feature-visual-item{padding:14px;border-radius:24px;}
+  .feature-visual-stack{gap:22px;}
+  .feature-visual-copy .mini-points{gap:12px;}
+  .feature-visual-copy .mini-points .mini-card,
+  .event-steps .mini-card{padding:16px 18px;border-radius:18px;}
+  .comparison .box{padding:20px;border-radius:18px;}
+  .cta-box{padding:32px 22px;border-radius:22px;}
+  .footer{padding:54px 0 24px;}
+  .footer-card{padding:20px;}
+  .share-modal-content{width:min(92vw,420px);padding:22px 18px;}
+  .share-modal-actions{grid-template-columns:1fr;}
+}
+
+@media (max-width: 768px){
+  #mobile-menu-toggle{display:block;position:absolute;opacity:0;pointer-events:none;}
+  .header-cta{display:none;}
+  .burger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;cursor:pointer;}
+  .burger span{display:block;width:28px;height:3px;background:var(--navy);border-radius:999px;}
+  .topbar-inner{position:relative;min-height:72px;}
+  .nav{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;background:#fff;padding:12px 18px 18px;border-bottom:1px solid rgba(217,226,238,.9);box-shadow:0 18px 38px rgba(15,39,71,.12);}
+  #mobile-menu-toggle:checked ~ .nav{display:flex;}
+  .nav a{padding:14px 4px;border-bottom:1px solid rgba(15,39,71,.08);font-size:1rem;}
+}
+</style>
+
 </head>
 <body id="top">
 
@@ -1465,7 +1561,7 @@
       <h2>Event-Modus: gut verständlich, sofort greifbar</h2>
       <p>
         Gerade bei Festivals, Konzerten oder größeren Veranstaltungen ist der Nutzen besonders leicht verständlich:
-        Eine temporäre Gruppe bleibt während eines Events verbunden und kann sich bei Bedarf schneller unterstützen.
+        Eine temporäre Gruppe bleibt während eines Events verbunden und kann sich bei Bedarf schneller gegenseitig unterstützen.
       </p>
     </div>
 
@@ -1510,7 +1606,7 @@
   </div>
 </section>
 
-<section class="section section-alt anchor-offset s1aw-section" id="bereiche">
+<section class="section section-alt anchor-offset" id="bereiche">
   <div class="container">
     <div class="section-intro">
       <span class="eyebrow-dark">Bereiche &amp; Wege</span>
@@ -1526,85 +1622,79 @@
       </p>
     </div>
 
-    <div class="s1aw-grid">
-      <article class="s1aw-card">
-        <h3>Definierte Bereiche</h3>
-        <div class="s1aw-map s1aw-area-map" aria-label="Schematische Darstellung definierter Bereiche">
-          <div class="s1aw-area-zone"></div>
-          <div class="s1aw-pill s1aw-area-pill">Festgelegter<br>Aufenthaltsbereich</div>
-          <div class="s1aw-area-alert-node"></div>
-          <div class="s1aw-pill s1aw-area-alert-pill">Letzter bekannter<br>Aufenthaltsort</div>
+    <div class="feature-visual-stack">
+      <article class="feature-visual-item">
+        <div class="visual-card">
+          <img src="definierter_aufenthaltsbereich_und_benachrichtigun.png" alt="Safety1 Visualisierung definierter Bereiche mit Aufenthaltsbereich und letztem bekannten Aufenthaltsort" loading="lazy">
         </div>
-        <p class="s1aw-text">
-          Für bestimmte Orte kann ein festgelegter Aufenthaltsbereich definiert werden.
-          Eine Benachrichtigung ist insbesondere dann denkbar, wenn der Bereich verlassen wird.
-          Der letzte bekannte Aufenthaltsort kann in diesem Fall außerhalb des festgelegten Bereichs
-          als Orientierungspunkt dargestellt werden.
-        </p>
-        <div class="s1aw-mini-grid s1aw-mini-grid-two">
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">1</span>
-            <div class="s1aw-mini-icon">⌖</div>
-            <p>Festgelegten Aufenthaltsbereich definieren</p>
+        <div class="feature-visual-copy">
+          <div class="card">
+            <h3>Definierte Bereiche</h3>
+            <p>
+              Für bestimmte Orte kann ein festgelegter Aufenthaltsbereich definiert werden.
+              Eine Benachrichtigung ist insbesondere dann denkbar, wenn der Bereich verlassen wird.
+            </p>
+            <p>
+              Der letzte bekannte Aufenthaltsort kann in diesem Fall außerhalb des festgelegten Bereichs
+              als zusätzlicher Orientierungspunkt dargestellt werden.
+            </p>
           </div>
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">2</span>
-            <div class="s1aw-mini-icon">◎</div>
-            <p>Letzten bekannten Aufenthaltsort außerhalb des Bereichs darstellen</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="s1aw-card">
-        <h3>Geplante Wege</h3>
-        <div class="s1aw-map s1aw-route-map" aria-label="Schematische Darstellung geplanter Wege">
-          <svg class="s1aw-route-svg" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
-            <path class="s1aw-route-corridor-main" d="M88 255 C170 150, 275 135, 380 200 C470 255, 565 265, 660 215 C745 170, 835 160, 928 185" />
-            <path class="s1aw-route-line-main" d="M88 255 C170 150, 275 135, 380 200 C470 255, 565 265, 660 215 C745 170, 835 160, 928 185" />
-            <path class="s1aw-route-corridor-branch" d="M600 223 C655 255, 708 296, 760 334" />
-            <path class="s1aw-route-line-branch" d="M600 223 C655 255, 708 296, 760 334" />
-          </svg>
-          <div class="s1aw-route-node s1aw-route-start-node"></div>
-          <div class="s1aw-route-node s1aw-route-end-node"></div>
-          <div class="s1aw-route-node s1aw-route-alert-node"></div>
-          <div class="s1aw-pill s1aw-route-start-pill">Startpunkt</div>
-          <div class="s1aw-pill s1aw-route-corridor-pill">Wegkorridor</div>
-          <div class="s1aw-pill s1aw-route-end-pill">Zielpunkt</div>
-          <div class="s1aw-pill s1aw-route-alert-pill">Letzter bekannter Punkt</div>
-        </div>
-        <p class="s1aw-text">
-          Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer
-          konzeptionell festgelegt werden. Erfolgt keine Ankunft innerhalb des vorgesehenen
-          Zeitfensters oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung
-          ausgelöst werden.
-        </p>
-        <div class="s1aw-mini-grid s1aw-mini-grid-four">
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">1</span>
-            <div class="s1aw-mini-icon">⌖</div>
-            <p>Startpunkt und Wegkorridor festlegen</p>
-          </div>
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">2</span>
-            <div class="s1aw-mini-icon">◎</div>
-            <p>Zielpunkt festlegen</p>
-          </div>
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">3</span>
-            <div class="s1aw-mini-icon">◷</div>
-            <p>Zeit + Puffer festlegen</p>
-          </div>
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">4</span>
-            <div class="s1aw-mini-icon">◔</div>
-            <p>Benachrichtigung bei ausbleibender Ankunft</p>
+          <div class="mini-points">
+            <div class="mini-card">
+              <strong>1. Aufenthaltsbereich definieren</strong>
+              Für einen bestimmten Ort kann ein gemeinsamer oder individueller Bereich festgelegt werden.
+            </div>
+            <div class="mini-card">
+              <strong>2. Bereich verlassen erkennen</strong>
+              Wird der festgelegte Bereich verlassen, kann eine strukturierte Benachrichtigung ausgelöst werden.
+            </div>
+            <div class="mini-card">
+              <strong>3. Letzten bekannten Punkt darstellen</strong>
+              Der letzte bekannte Aufenthaltsort außerhalb des Bereichs kann zur Orientierung dienen.
+            </div>
           </div>
         </div>
       </article>
 
-      <div class="s1aw-note">
-        <strong>Hinweis:</strong> Vorgesehen ist ausdrücklich kein permanentes Live-Tracking als Grundidee,
-        sondern eine geregelte, zweckgebundene Standortlogik innerhalb definierter Situationen.
+      <article class="feature-visual-item">
+        <div class="visual-card">
+          <img src="geplante_wege_und_abweichungen_visualisieren.png" alt="Safety1 Visualisierung geplanter Wege mit Wegkorridor, Zielpunkt und Abweichung" loading="lazy">
+        </div>
+        <div class="feature-visual-copy">
+          <div class="card">
+            <h3>Geplante Wege</h3>
+            <p>
+              Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer
+              konzeptionell festgelegt werden.
+            </p>
+            <p>
+              Erfolgt keine Ankunft innerhalb des vorgesehenen Zeitfensters oder wird eine auffällige
+              Abweichung erkannt, kann eine Benachrichtigung ausgelöst werden.
+            </p>
+          </div>
+          <div class="mini-points">
+            <div class="mini-card">
+              <strong>1. Startpunkt und Zielpunkt festlegen</strong>
+              Ein geplanter Weg kann mit Start, Ziel und einem vorgesehenen Korridor hinterlegt werden.
+            </div>
+            <div class="mini-card">
+              <strong>2. Zeit + Puffer definieren</strong>
+              Zusätzlich kann ein Zeitfenster mit passendem Puffer festgelegt werden.
+            </div>
+            <div class="mini-card">
+              <strong>3. Abweichung oder ausbleibende Ankunft</strong>
+              Bei auffälliger Abweichung oder ausbleibender Ankunft kann eine Benachrichtigung erfolgen.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="note-box">
+        <h3>Hinweis</h3>
+        <p>
+          Vorgesehen ist ausdrücklich kein permanentes Live-Tracking als Grundidee,
+          sondern eine geregelte, zweckgebundene Standortlogik innerhalb definierter Situationen.
+        </p>
       </div>
     </div>
   </div>
