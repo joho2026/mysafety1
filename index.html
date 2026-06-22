@@ -851,6 +851,664 @@
   }
 }
 
+
+/* =========================
+     SAFETY1 EVENT-MODUS
+     ========================= */
+  
+  .event-card{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:28px;
+    margin-top:34px;
+    align-items:stretch;
+  }
+  
+  .event-content{
+    background:rgba(255,255,255,0.94);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 18px 45px rgba(15,39,71,0.08);
+  }
+  
+  .event-content h3{
+    margin-top:0;
+    margin-bottom:16px;
+    color:var(--navy);
+    font-size:1.55rem;
+  }
+  
+  .event-content p{
+    color:var(--text);
+    margin-bottom:16px;
+  }
+  
+  .event-note{
+    margin-top:22px;
+    padding:18px 20px;
+    border-left:5px solid var(--red);
+    background:#f8eef4;
+    border-radius:14px;
+    font-weight:600;
+  }
+  
+  .event-steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  
+  .event-step{
+    background:linear-gradient(135deg, var(--navy), var(--navy-2));
+    color:#ffffff;
+    border-radius:22px;
+    padding:22px 24px;
+    box-shadow:0 18px 42px rgba(15,39,71,0.18);
+  }
+  
+  .event-step span{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:var(--red);
+    color:#ffffff;
+    font-weight:800;
+    margin-bottom:14px;
+  }
+  
+  .event-step strong{
+    display:block;
+    font-size:1.05rem;
+    margin-bottom:8px;
+  }
+  
+  .event-step p{
+    margin:0;
+    color:rgba(255,255,255,0.86);
+    font-size:0.95rem;
+  }
+
+    
+
+/* =========================================================
+   SAFETY1 – BEREICHE, WEGE & STANDORTLOGIK
+   Neue Version mit definierter Bereichsabweichung und geschlängeltem Wegkorridor
+   ========================================================= */
+
+.s1aw-section{
+  background:
+    radial-gradient(circle at top right, rgba(108,21,74,0.08), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
+}
+
+.s1aw-grid{
+  display:grid;
+  gap:28px;
+  margin-top:34px;
+}
+
+.s1aw-card{
+  background:rgba(255,255,255,0.96);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 18px 45px rgba(15,39,71,0.08);
+  overflow:hidden;
+}
+
+.s1aw-card h3{
+  margin:0 0 22px;
+  color:var(--navy);
+  font-size:clamp(1.45rem, 2.4vw, 2rem);
+  line-height:1.15;
+}
+
+.s1aw-text{
+  margin:24px 0 0;
+  max-width:940px;
+  color:var(--text);
+  font-size:1.02rem;
+  line-height:1.65;
+}
+
+.s1aw-note{
+  margin:22px 0 0;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:0.94rem;
+  line-height:1.6;
+}
+
+/* Gemeinsamer Kartenhintergrund mit leichter Kartenoptik */
+
+.s1aw-map{
+  position:relative;
+  min-height:340px;
+  border-radius:24px;
+  border:1px solid rgba(199,211,226,0.74);
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
+    repeating-linear-gradient(0deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 52px),
+    repeating-linear-gradient(90deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 62px),
+    linear-gradient(32deg, transparent 0 40%, rgba(15,39,71,0.08) 40% 41%, transparent 41% 100%),
+    linear-gradient(140deg, transparent 0 35%, rgba(15,39,71,0.06) 35% 36%, transparent 36% 100%),
+    linear-gradient(82deg, transparent 0 58%, rgba(15,39,71,0.06) 58% 59%, transparent 59% 100%),
+    linear-gradient(135deg, #f9fbfd 0%, #edf3f9 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.s1aw-pill{
+  position:absolute;
+  z-index:4;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:120px;
+  padding:9px 14px;
+  background:rgba(255,255,255,0.94);
+  color:var(--navy);
+  border:1px solid #d6e0eb;
+  border-radius:999px;
+  font-size:0.84rem;
+  font-weight:800;
+  text-align:center;
+  box-shadow:0 10px 22px rgba(15,39,71,0.08);
+  line-height:1.25;
+}
+
+/* =========================================================
+   DEFINIERTE BEREICHE
+   Grün = erlaubter Aufenthaltsbereich
+   Bordeaux = letzter bekannter Aufenthaltsort außerhalb
+   ========================================================= */
+
+.s1aw-area-map{
+  min-height:340px;
+}
+
+.s1aw-area-zone{
+  position:absolute;
+  left:22%;
+  top:22%;
+  width:45%;
+  height:42%;
+  border:3px dashed var(--safe-green);
+  border-radius:34px 24px 38px 26px;
+  background:var(--safe-green-soft-2);
+  z-index:2;
+}
+
+.s1aw-area-pill{
+  left:7%;
+  top:18%;
+}
+
+.s1aw-area-pill::after{
+  content:"";
+  position:absolute;
+  left:100%;
+  top:72%;
+  width:92px;
+  border-top:2px dashed rgba(15,39,71,0.35);
+}
+
+.s1aw-area-alert-node{
+  position:absolute;
+  z-index:3;
+  left:74.5%;
+  top:60.5%;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--red);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 8px rgba(108,21,74,0.14);
+}
+
+.s1aw-area-alert-pill{
+  left:76.5%;
+  bottom:6%;
+  transform:translateX(-50%);
+  color:var(--red);
+  border-color:rgba(108,21,74,0.22);
+}
+
+.s1aw-area-alert-pill::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  height:52px;
+  border-left:2px dashed rgba(15,39,71,0.35);
+}
+
+/* =========================================================
+   GEPLANTE WEGE
+   Grün = geplanter Wegkorridor
+   Bordeaux = Abzweigung / Abweichungsbereich
+   ========================================================= */
+
+.s1aw-route-map{
+  min-height:340px;
+}
+
+.s1aw-route-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+/* Hauptkorridor grün */
+.s1aw-route-corridor-main{
+  fill:none;
+  stroke:rgba(47,143,91,0.18);
+  stroke-width:72;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* Hauptlinie grün */
+.s1aw-route-line-main{
+  fill:none;
+  stroke:var(--safe-green);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:14 12;
+}
+
+/* Abzweigung / Abweichungsbereich Bordeaux */
+.s1aw-route-corridor-branch{
+  fill:none;
+  stroke:rgba(108,21,74,0.18);
+  stroke-width:58;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* Abweichungslinie Bordeaux */
+.s1aw-route-line-branch{
+  fill:none;
+  stroke:var(--red);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:12 10;
+}
+
+.s1aw-route-node{
+  position:absolute;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  z-index:3;
+}
+
+/* Startpunkt grün */
+.s1aw-route-start-node{
+  left:7%;
+  top:61%;
+  background:var(--safe-green);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 7px rgba(47,143,91,0.12);
+}
+
+/* Zielpunkt grün */
+.s1aw-route-end-node{
+  right:7%;
+  top:43%;
+  background:#fff;
+  border:5px solid var(--safe-green);
+  box-shadow:
+    0 0 0 7px #fff,
+    0 0 0 10px rgba(47,143,91,0.18),
+    0 10px 22px rgba(15,39,71,0.16);
+}
+
+/* Letzter bekannter Punkt im Bordeaux-Bereich */
+.s1aw-route-alert-node{
+  left:72.8%;
+  top:78%;
+  background:var(--red);
+  border:5px solid #fff;
+  box-shadow:
+    0 10px 22px rgba(15,39,71,0.16),
+    0 0 0 8px rgba(108,21,74,0.14);
+}
+
+/* Labels geplante Wege – verbessert mit Verbindungslinien */
+.s1aw-route-start-pill{
+  left:2%;
+  top:12%;
+}
+
+.s1aw-route-start-pill::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:100%;
+  height:140px;
+  border-left:2px dashed rgba(15,39,71,0.30);
+}
+
+.s1aw-route-corridor-pill{
+  left:38%;
+  top:6%;
+}
+
+.s1aw-route-corridor-pill::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:100%;
+  height:88px;
+  border-left:2px dashed rgba(15,39,71,0.30);
+}
+
+.s1aw-route-end-pill{
+  right:2%;
+  top:11%;
+}
+
+.s1aw-route-end-pill::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:100%;
+  height:108px;
+  border-left:2px dashed rgba(15,39,71,0.30);
+}
+
+.s1aw-route-alert-pill{
+  left:76%;
+  bottom:0.5%;
+  transform:translateX(-50%);
+  color:var(--red);
+  border-color:rgba(108,21,74,0.20);
+}
+
+.s1aw-route-alert-pill::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:100%;
+    height:52px;
+    border-left:2px dashed rgba(108,21,74,0.28);
+  }
+}
+
+/* =========================================================
+   KLEINE ERKLÄRUNGSKARTEN
+   ========================================================= */
+
+.s1aw-mini-grid{
+  display:grid;
+  gap:18px;
+  margin-top:22px;
+}
+
+.s1aw-mini-grid-two{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  max-width:860px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.s1aw-mini-grid-four{
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+}
+
+.s1aw-mini-card{
+  position:relative;
+  min-height:104px;
+  display:grid;
+  grid-template-columns:58px 1fr;
+  align-items:center;
+  gap:16px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px 20px;
+  box-shadow:0 14px 30px rgba(15,39,71,0.07);
+}
+
+.s1aw-mini-number{
+  position:absolute;
+  top:12px;
+  left:12px;
+  width:26px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-weight:900;
+  font-size:0.84rem;
+}
+
+.s1aw-mini-icon{
+  color:var(--red);
+  font-size:2.25rem;
+  line-height:1;
+  text-align:center;
+}
+
+.s1aw-mini-card p{
+  margin:0;
+  color:var(--navy);
+  font-weight:800;
+  line-height:1.35;
+  font-size:0.95rem;
+}
+
+/* =========================================================
+   ERGÄNZENDE MÖGLICHKEITEN
+   ========================================================= */
+
+.s1aw-extra-card{
+  padding-bottom:26px;
+}
+
+.s1aw-extra-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
+}
+
+.s1aw-extra-item{
+  display:grid;
+  grid-template-columns:72px 1fr;
+  gap:18px;
+  align-items:flex-start;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 14px 30px rgba(15,39,71,0.06);
+}
+
+.s1aw-extra-icon{
+  width:62px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:rgba(108,21,74,0.07);
+  color:var(--red);
+  font-size:2rem;
+  font-weight:800;
+}
+
+.s1aw-extra-item h4{
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:1.05rem;
+}
+
+.s1aw-extra-item p{
+  margin:0;
+  color:var(--text);
+  line-height:1.55;
+  font-size:0.94rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px){
+  .s1aw-card{
+    padding:24px;
+    border-radius:24px;
+  }
+
+  .s1aw-mini-grid-four,
+  .s1aw-mini-grid-two,
+  .s1aw-extra-grid{
+    grid-template-columns:1fr;
+  }
+
+  .s1aw-mini-card{
+    min-height:92px;
+  }
+}
+
+@media (max-width: 700px){
+  .s1aw-card{
+    padding:18px;
+  }
+
+  .s1aw-map,
+  .s1aw-area-map,
+  .s1aw-route-map{
+    min-height:285px;
+    border-radius:18px;
+  }
+
+  .s1aw-pill{
+    min-width:auto;
+    font-size:0.72rem;
+    padding:7px 10px;
+  }
+
+  /* Definierte Bereiche mobil */
+  .s1aw-area-zone{
+    left:17%;
+    top:25%;
+    width:53%;
+    height:35%;
+  }
+
+  .s1aw-area-pill{
+    left:4%;
+    top:12%;
+  }
+
+    .s1aw-area-pill::after{
+    top:78%;
+    width:64px;
+  }
+
+     .s1aw-area-alert-node{
+    left:74%;
+    top:61%;
+    width:22px;
+    height:22px;
+  }
+
+    .s1aw-area-alert-pill{
+    left:76%;
+    bottom:3%;
+    transform:translateX(-50%);
+  }
+
+  .s1aw-area-alert-pill::before{
+    height:50px;
+  }
+
+  /* Geplante Wege mobil – sauberere Positionierung */
+  .s1aw-route-node{
+    width:22px;
+    height:22px;
+  }
+  
+  .s1aw-route-start-pill{
+    left:1%;
+    top:8%;
+  }
+  
+  .s1aw-route-start-pill::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:100%;
+    height:108px;
+    border-left:2px dashed rgba(15,39,71,0.22);
+  }
+  
+  .s1aw-route-corridor-pill{
+    left:31%;
+    top:5%;
+  }
+  
+  .s1aw-route-corridor-pill::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:100%;
+    height:70px;
+    border-left:2px dashed rgba(15,39,71,0.22);
+  }
+  
+  .s1aw-route-end-pill{
+    right:1%;
+    top:8%;
+  }
+  
+  .s1aw-route-end-pill::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:100%;
+    height:88px;
+    border-left:2px dashed rgba(15,39,71,0.22);
+  }
+  
+  .s1aw-route-alert-node{
+    left:73.2%;
+    top:78%;
+  }
+  
+  .s1aw-route-alert-pill{
+    left:75.5%;
+    bottom:0.5%;
+    transform:translateX(-50%);
+    color:var(--red);
+    border-color:rgba(108,21,74,0.20);
+  }
+  
+  .s1aw-route-alert-pill::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:100%;
+    height:52px;
+    border-left:2px dashed rgba(108,21,74,0.28);
+  }
+
+  
 </style>
 </head>
 <body id="top">
@@ -1163,115 +1821,263 @@
   </div>
 </section>
 
-<section class="section" id="event-modus">
+<section id="event-modus" class="section section-soft">
   <div class="container">
-    <div class="section-intro">
-      <span class="eyebrow-dark">Anwendungsfall</span>
-      <h2>Event-Modus: gut verständlich, sofort greifbar</h2>
-      <p>
-        Gerade bei Festivals, Konzerten oder größeren Veranstaltungen ist der Nutzen besonders leicht verständlich:
-        Eine temporäre Gruppe bleibt während eines Events verbunden und kann sich bei Bedarf schneller unterstützen.
-      </p>
-    </div>
+    <div class="section-kicker">Anwendungsfall</div>
+    <h2>Safety1 Event-Modus</h2>
+    <p class="section-lead">
+      Für Festivals, Konzerte und größere Veranstaltungen soll Safety1 künftig eine
+      temporäre Gruppenverbindung ermöglichen – damit vertraute Personen während
+      eines Events besser aufeinander achten können.
+    </p>
 
-    <div class="visual-card" style="margin-bottom:24px;">
-      <img src="Safety1_Eventmodus.png" alt="Safety1 Event-Modus mit temporärer Gruppe und gemeinsamer Unterstützung" loading="lazy">
-    </div>
-
-    <div class="event-layout">
-      <div class="card">
+    <div class="event-card">
+      <div class="event-content">
         <h3>Temporär verbunden – nur für die Dauer des Events</h3>
         <p>
-          Im Safety1 Event-Modus könnten sich mehrere Personen für eine Veranstaltung zu einer temporären Gruppe verbinden –
-          etwa über Code, QR-Code oder Einladung.
+          Gerade bei Festivals oder großen Veranstaltungen kann es schnell passieren,
+          dass sich Gruppenmitglieder aus den Augen verlieren, Hilfe benötigen oder
+          einen gemeinsam vereinbarten Bereich verlassen.
         </p>
+
         <p>
-          Benötigt eine Person Unterstützung oder verlässt einen gemeinsam definierten Bereich, können die verbundenen Gruppenmitglieder informiert werden.
+          Im Safety1 Event-Modus könnten sich mehrere Personen für die Dauer einer
+          Veranstaltung zu einer temporären Gruppe verbinden – zum Beispiel über
+          einen Gruppen-Code, QR-Code oder eine andere sichere Kopplungsfunktion.
         </p>
+
         <p>
-          Die Verbindung wäre zeitlich begrenzt und zweckgebunden. Nach Ende des Events kann die Gruppe automatisch oder manuell beendet werden.
+          Benötigt eine Person Unterstützung, können die verbundenen Gruppenmitglieder
+          informiert und – sofern freigegeben – mit einer Standortangabe benachrichtigt
+          werden. Zusätzlich könnte ein gemeinsam definierter Aufenthaltsbereich
+          hinterlegt werden, damit die Gruppe eine Meldung erhält, wenn eine Person
+          diesen Bereich verlässt.
+        </p>
+
+        <p>
+          Die Verbindung wäre zeitlich begrenzt, zweckgebunden und nur für die jeweilige
+          Veranstaltung vorgesehen. Nach Ende des Events kann die temporäre Gruppe
+          automatisch oder manuell beendet werden.
+        </p>
+
+        <p class="event-note">
+          Safety1 ersetzt keinen offiziellen Notruf, keinen Sicherheitsdienst und keine
+          behördlichen Einsatzkräfte. Der Event-Modus soll vielmehr helfen, innerhalb
+          einer vertrauten Gruppe schneller zu reagieren und Unterstützung besser zu
+          organisieren.
         </p>
       </div>
 
       <div class="event-steps">
-        <div class="mini-card">
-          <strong>1. Gruppe erstellen</strong>
-          Eine Person legt für das Event eine temporäre Gruppe an.
+        <div class="event-step">
+          <span>1</span>
+          <strong>Gruppe erstellen</strong>
+          <p>Eine Person legt für das Festival oder Event eine temporäre Gruppe an.</p>
         </div>
-        <div class="mini-card">
-          <strong>2. Personen verbinden</strong>
-          Freunde oder Familienmitglieder treten über Code, QR-Code oder Einladung bei.
+
+        <div class="event-step">
+          <span>2</span>
+          <strong>Personen verbinden</strong>
+          <p>Freunde oder Familienmitglieder treten über Code, QR-Code oder Einladung bei.</p>
         </div>
-        <div class="mini-card">
-          <strong>3. Bereich definieren</strong>
-          Optional kann ein gemeinsamer Aufenthaltsbereich festgelegt werden.
+
+        <div class="event-step">
+          <span>3</span>
+          <strong>Bereich definieren</strong>
+          <p>Optional wird ein gemeinsamer Aufenthaltsbereich für das Event festgelegt.</p>
         </div>
-        <div class="mini-card">
-          <strong>4. Im Ernstfall informieren</strong>
-          Bei Unterstützungsbedarf oder Verlassen des Bereichs wird die Gruppe benachrichtigt.
+
+        <div class="event-step">
+          <span>4</span>
+          <strong>Im Ernstfall informieren</strong>
+          <p>Bei Unterstützungsbedarf oder Verlassen des Bereichs wird die Gruppe benachrichtigt.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="bereiche">
+  <section class="section section-alt anchor-offset s1aw-section" id="bereiche">
   <div class="container">
     <div class="section-intro">
-      <span class="eyebrow-dark">Bereiche & Wege</span>
-      <h2>Bereiche, Wege und Standortlogik</h2>
+      <span class="eyebrow-dark">Bereiche &amp; Wege</span>
+      <h2>Bereiche, Wege &amp; Standortlogik</h2>
+
       <p>
-        Safety1 soll perspektivisch auch mit festgelegten Aufenthaltsbereichen und geplanten Wegen arbeiten können.
-        So können bestimmte Situationen strukturierter eingeordnet werden, ohne dass permanentes Live-Tracking im Vordergrund steht.
+        Safety1 soll perspektivisch mit festgelegten Aufenthaltsbereichen und geplanten Wegen arbeiten können.
+        Dadurch können bestimmte Situationen strukturierter eingeordnet werden, ohne dass eine permanente
+        Echtzeitüberwachung im Vordergrund steht.
+      </p>
+
+      <p>
+        Die dargestellten Funktionen sind konzeptionell zu verstehen und abhängig von technischer,
+        rechtlicher und organisatorischer Umsetzbarkeit.
       </p>
     </div>
 
-    <div class="visual-card" style="margin-bottom:24px;">
-      <img src="Safety1_Bereiche_Wege_Standortlogik.png" alt="Safety1 Visualisierung zu Bereichen, Wegen und Standortlogik" loading="lazy">
-    </div>
+    <div class="s1aw-grid">
 
-    <div class="areas-layout">
-      <div class="card">
+      <!-- DEFINIERTE BEREICHE -->
+      <article class="s1aw-card">
         <h3>Definierte Bereiche</h3>
-        <p>
-          Für bestimmte Orte kann ein Aufenthaltsbereich festgelegt werden. Denkbar ist eine Meldung, wenn dieser Bereich verlassen wird.
-        </p>
-        <p>
-          Der letzte bekannte Aufenthaltsort kann in diesem Fall als Orientierungspunkt dargestellt werden.
-        </p>
-        <h3 style="margin-top:22px;">Geplante Wege</h3>
-        <p>
-          Bei geplanten Wegen können Startpunkt, Ziel, Zeit und Puffer festgelegt werden. Erfolgt keine Ankunft oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung ausgelöst werden.
-        </p>
-      </div>
 
-      <div class="areas-points">
-        <div class="mini-card">
-          <strong>Festgelegter Aufenthaltsbereich</strong>
-          Bereich definieren und auffälliges Verlassen erkennen.
-        </div>
-        <div class="mini-card">
-          <strong>Geplanter Weg</strong>
-          Startpunkt, Ziel und Zeitfenster als Orientierung festlegen.
-        </div>
-        <div class="mini-card">
-          <strong>Letzter bekannter Punkt</strong>
-          Kann im Anlassfall als zusätzliche Orientierung dienen.
-        </div>
-      </div>
-    </div>
+        <div class="s1aw-map s1aw-area-map" aria-label="Schematische Darstellung definierter Bereiche">
+          <div class="s1aw-area-zone"></div>
 
-    <div class="note-box" style="margin-top:22px;">
-      <h3>Kein permanentes Live-Tracking als Grundidee</h3>
-      <p>
-        Vorgesehen ist ausdrücklich kein permanentes, lückenloses Dauertracking als Standardfunktion,
-        sondern eine geregelte, zweckgebundene Standortlogik im Rahmen definierter Situationen.
-      </p>
+          <div class="s1aw-pill s1aw-area-pill">
+            Festgelegter<br>Aufenthaltsbereich
+          </div>
+
+          <div class="s1aw-area-alert-node"></div>
+
+          <div class="s1aw-pill s1aw-area-alert-pill">
+            Letzter bekannter<br>Aufenthaltsort
+          </div>
+        </div>
+
+        <p class="s1aw-text">
+          Für bestimmte Orte kann ein festgelegter Aufenthaltsbereich definiert werden.
+          Eine Benachrichtigung ist insbesondere dann denkbar, wenn der Bereich verlassen wird.
+          Der letzte bekannte Aufenthaltsort kann in diesem Fall außerhalb des festgelegten Bereichs
+          als Orientierungspunkt dargestellt werden.
+        </p>
+
+        <div class="s1aw-mini-grid s1aw-mini-grid-two">
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">1</span>
+            <div class="s1aw-mini-icon">⌖</div>
+            <p>Festgelegten Aufenthaltsbereich definieren</p>
+          </div>
+
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">2</span>
+            <div class="s1aw-mini-icon">◎</div>
+            <p>Letzten bekannten Aufenthaltsort außerhalb des Bereichs darstellen</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- GEPLANTE WEGE -->
+      <article class="s1aw-card">
+        <h3>Geplante Wege</h3>
+
+        <div class="s1aw-map s1aw-route-map" aria-label="Schematische Darstellung geplanter Wege">
+          <svg class="s1aw-route-svg" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Hauptkorridor in Grün -->
+            <path
+              class="s1aw-route-corridor-main"
+              d="M80 255
+                 C150 155, 260 135, 360 210
+                 C430 260, 520 265, 610 220
+                 C700 175, 785 165, 920 195" />
+
+            <!-- Hauptlinie in Grün -->
+            <path
+              class="s1aw-route-line-main"
+              d="M80 255
+                 C150 155, 260 135, 360 210
+                 C430 260, 520 265, 610 220
+                 C700 175, 785 165, 920 195" />
+
+            <!-- Bordeaux-Abzweigung / Abweichungsbereich -->
+            <path
+              class="s1aw-route-corridor-branch"
+              d="M595 223
+                 C650 265, 700 310, 760 345" />
+
+            <!-- Bordeaux-Abweichungslinie -->
+            <path
+              class="s1aw-route-line-branch"
+              d="M595 223
+                 C650 265, 700 310, 760 345" />
+          </svg>
+
+          <div class="s1aw-route-node s1aw-route-start-node"></div>
+          <div class="s1aw-route-node s1aw-route-end-node"></div>
+          <div class="s1aw-route-node s1aw-route-alert-node"></div>
+
+          <div class="s1aw-pill s1aw-route-start-pill">Startpunkt</div>
+          <div class="s1aw-pill s1aw-route-corridor-pill">Wegkorridor</div>
+          <div class="s1aw-pill s1aw-route-end-pill">Zielpunkt</div>
+          <div class="s1aw-pill s1aw-route-alert-pill">Letzter bekannter Punkt</div>
+        </div>
+
+        <p class="s1aw-text">
+          Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer
+          konzeptionell festgelegt werden. Erfolgt keine Ankunft innerhalb des vorgesehenen
+          Zeitfensters oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung
+          ausgelöst werden.
+        </p>
+
+        <div class="s1aw-mini-grid s1aw-mini-grid-four">
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">1</span>
+            <div class="s1aw-mini-icon">⌖</div>
+            <p>Startpunkt und Wegkorridor festlegen</p>
+          </div>
+
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">2</span>
+            <div class="s1aw-mini-icon">◎</div>
+            <p>Zielpunkt festlegen</p>
+          </div>
+
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">3</span>
+            <div class="s1aw-mini-icon">◷</div>
+            <p>Zeit + Puffer festlegen</p>
+          </div>
+
+          <div class="s1aw-mini-card">
+            <span class="s1aw-mini-number">4</span>
+            <div class="s1aw-mini-icon">◔</div>
+            <p>Benachrichtigung bei ausbleibender Ankunft</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ERGÄNZENDE MÖGLICHKEITEN -->
+      <article class="s1aw-card s1aw-extra-card">
+        <h3>Ergänzende konzeptionelle Möglichkeiten</h3>
+
+        <div class="s1aw-extra-grid">
+          <div class="s1aw-extra-item">
+            <div class="s1aw-extra-icon">▤</div>
+            <div>
+              <h4>Wegstrecken- &amp; Zeitabgleich</h4>
+              <p>
+                Eine Benachrichtigung könnte auch dann erfolgen, wenn anhand von Wegstrecke
+                und Zeitabweichung auffällt, dass sich eine Person unberechtigt in einem
+                Zug oder Auto befindet.
+              </p>
+            </div>
+          </div>
+
+          <div class="s1aw-extra-item">
+            <div class="s1aw-extra-icon">♡</div>
+            <div>
+              <h4>Wearables &amp; Sturzerkennung</h4>
+              <p>
+                Bei Nutzung geeigneter Wearables könnte zudem ein erkannter Sturz als
+                zusätzlicher Hinweis berücksichtigt werden, insbesondere bei hilfsbedürftigen
+                Personen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="s1aw-note">
+          Die dargestellten Funktionen sind konzeptionell und abhängig von technischer,
+          rechtlicher und organisatorischer Umsetzbarkeit. Safety1 ersetzt keine bestehenden
+          Notrufsysteme.
+        </p>
+      </article>
+
     </div>
   </div>
 </section>
 
-<section class="section" id="wearables">
+  <section class="section" id="wearables">
   <div class="container">
     <div class="section-intro">
       <span class="eyebrow-dark">Wearables</span>
