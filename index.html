@@ -4,37 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Safety1 – Unterstützung im entscheidenden Moment</title>
-  <meta name="description" content="Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll, im Ernstfall ausgewählte Kontakte rasch zu informieren und Hilfe strukturiert zu organisieren." />
-
+  <meta name="description" content="Safety1 ist eine digitale Lösung in Entwicklung, die Menschen im Ernstfall dabei unterstützen soll, ausgewählte Kontakte rasch zu informieren und Hilfe strukturiert zu organisieren." />
   <style>
     :root{
-      --navy:#0f2747;
-      --navy-2:#16365f;
-      --navy-3:#21497c;
-      --navy-4:#0b203a;
-      --bg:#f3f6fb;
-      --bg-soft:#eef3f9;
-      --white:#ffffff;
-      --text:#182231;
-      --muted:#5a6678;
-      --muted-2:#7a8798;
-      --border:#d9e2ee;
-      --border-strong:#c7d3e2;
+      --navy:#0F2747;
+      --navy-2:#16365F;
+      --navy-3:#21497C;
+      --navy-4:#0B203A;
       --red:#6C154A;
       --red-hover:#54113A;
-      
-      --safe-green:#2f8f5b;
-      --safe-green-soft:rgba(47,143,91,0.14);
-      --safe-green-soft-2:rgba(47,143,91,0.10);
-      
-      --shadow-sm:0 8px 24px rgba(10, 31, 58, 0.06);
-      --shadow-md:0 18px 48px rgba(10, 31, 58, 0.10);
-      --shadow-lg:0 30px 80px rgba(8, 25, 46, 0.16);
-      --radius-sm:12px;
-      --radius:18px;
-      --radius-lg:26px;
+      --bg:#F3F6FB;
+      --bg-soft:#EEF3F9;
+      --white:#FFFFFF;
+      --text:#182231;
+      --muted:#5A6678;
+      --border:#D9E2EE;
+      --green:#2F8F5B;
+      --green-soft:rgba(47,143,91,0.10);
+      --shadow-sm:0 10px 24px rgba(10,31,58,0.06);
+      --shadow-md:0 18px 48px rgba(10,31,58,0.10);
+      --shadow-lg:0 28px 80px rgba(10,31,58,0.18);
+      --radius-sm:14px;
+      --radius:20px;
+      --radius-lg:28px;
       --max:1160px;
-      --transition:260ms cubic-bezier(.2,.8,.2,1);
+      --transition:240ms ease;
     }
 
     *{box-sizing:border-box}
@@ -43,2584 +37,834 @@
       margin:0;
       font-family:Arial, Helvetica, sans-serif;
       color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.8), rgba(255,255,255,0) 35%),
-        linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
-      line-height:1.68;
+      background:linear-gradient(180deg,#f8fafd 0%, var(--bg) 100%);
+      line-height:1.65;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
-
-    a{
-      color:var(--navy-3);
-      text-decoration:none;
-      transition:color var(--transition);
+    img{max-width:100%;display:block}
+    a{color:var(--navy-3);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+    .section{padding:84px 0}
+    .section-alt{
+      background:linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 100%), var(--bg-soft);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
     }
-
-    a:hover{
-      text-decoration:underline;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    .container{
-      width:100%;
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 24px;
-    }
-
-    .anchor-offset{
-      scroll-margin-top:104px;
-    }
-
     .eyebrow{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:8px 14px;
       border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.18);
+      font-size:0.82rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
       color:#fff;
-      font-size:0.84rem;
-      font-weight:700;
-      letter-spacing:0.02em;
-      margin-bottom:18px;
-      animation:fadeUp 700ms ease both;
     }
-
     .eyebrow-dark{
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
       padding:8px 14px;
       border-radius:999px;
-      background:rgba(15,39,71,0.06);
-      border:1px solid rgba(15,39,71,0.10);
-      color:var(--navy);
-      font-size:0.84rem;
-      font-weight:700;
-      letter-spacing:0.02em;
-      margin-bottom:18px;
-    }
-
-    .topbar{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.96);
-  border-bottom: 1px solid rgba(217,226,238,0.9);
-  backdrop-filter: blur(10px);
-}
-
-.topbar-inner{
-  height: 78px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  column-gap: 24px;
-}
-
-.brand{
-  display: flex;
-  align-items: center;
-  min-width: 0;
-}
-
-.brand a{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-decoration: none;
-  color: var(--navy);
-}
-
-.brand img{
-  height: 58px;
-  width: auto;
-  display: block;
-}
-
-.brand span{
-  font-size: 1.22rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--navy);
-  white-space: nowrap;
-}
-
-.nav{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  min-width: 0;
-  white-space: nowrap;
-}
-
-.nav a{
-  color: var(--navy);
-  font-weight: 700;
-  font-size: 0.88rem;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.nav a:hover{
-  text-decoration: none;
-  color: var(--navy-3);
-}
-
-.nav .btn{
-  min-height: 42px;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-}
-
-.header-cta{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  white-space: nowrap;
-}
-
-.header-cta .btn{
-  min-height: 42px;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 0.92rem;
-  font-weight: 800;
-  box-shadow: none;
-}
-
-.btn-primary{
-  background: var(--red);
-  color: #fff;
-}
-
-.btn-primary:hover{
-  background: var(--red-hover);
-  text-decoration: none;
-  transform: translateY(-1px);
-}
-    
-    .hero{
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.10), rgba(255,255,255,0) 26%),
-    radial-gradient(circle at 80% 15%, rgba(255,255,255,0.08), rgba(255,255,255,0) 20%),
-    linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 48%, var(--navy-3) 100%);
-  color:#fff;
-  padding:150px 0 20px;
-}
-
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:auto -120px -160px auto;
-      width:420px;
-      height:420px;
-      background:radial-gradient(circle, rgba(255,255,255,0.12), rgba(255,255,255,0));
-      border-radius:50%;
-      pointer-events:none;
-      animation:floatGlow 7s ease-in-out infinite;
-    }
-
-    .hero:after{
-      content:"";
-      position:absolute;
-      left:-100px;
-      top:60px;
-      width:240px;
-      height:240px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.06), rgba(255,255,255,0));
-      pointer-events:none;
-      animation:floatGlow 9s ease-in-out infinite reverse;
-    }
-
-    .hero-grid{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.22fr 0.88fr;
-      gap:34px;
-      align-items:start;
-    }
-
-    h1,h2,h3{
-      margin:0 0 14px 0;
-      line-height:1.18;
-    }
-
-    h1{
-      font-size:3.45rem;
+      font-size:0.82rem;
       font-weight:800;
-      letter-spacing:-0.03em;
-      color:#fff;
-      animation:fadeUp 900ms ease both;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      background:rgba(15,39,71,.06);
+      border:1px solid rgba(15,39,71,.10);
+      color:var(--red);
     }
+    h1,h2,h3{margin:0 0 14px;line-height:1.15}
+    h1{font-size:clamp(2.5rem, 5vw, 4rem);font-weight:800;letter-spacing:-.03em}
+    h2{font-size:clamp(2rem, 3.2vw, 3rem);font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+    h3{font-size:1.15rem;font-weight:800;color:var(--navy)}
+    p{margin:0 0 14px}
+    .lead{font-size:1.14rem;color:rgba(255,255,255,.95)}
+    .section-intro{max-width:900px;margin-bottom:30px}
+    .section-subtitle{font-size:1.05rem;color:var(--muted);font-weight:600}
+    .small{font-size:.92rem;color:var(--muted)}
 
-    h2{
-      font-size:2.18rem;
-      font-weight:800;
-      letter-spacing:-0.02em;
-      color:var(--navy);
-    }
-
-    h3{
-      font-size:1.16rem;
-      font-weight:800;
-      color:var(--navy);
-    }
-
-    .hero h3{
-      color:#fff;
-      animation:fadeUp 980ms ease both;
-    }
-
-    .lead{
-      font-size:1.12rem;
-      max-width:760px;
-      color:rgba(255,255,255,0.95);
-      margin-bottom:18px;
-      animation:fadeUp 1100ms ease both;
-    }
-
-    .hero-note{
-      margin-top:18px;
-      color:rgba(255,255,255,0.82);
-      font-size:0.92rem;
-      max-width:760px;
-      animation:fadeUp 1250ms ease both;
-    }
-
-    .btn-row{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-      animation:fadeUp 1180ms ease both;
-    }
-
+    .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       min-height:50px;
       padding:14px 22px;
-      border-radius:12px;
+      border-radius:14px;
       border:none;
       cursor:pointer;
-      font-size:0.98rem;
+      font-size:.98rem;
       font-weight:800;
       transition:all var(--transition);
       text-decoration:none;
-      box-shadow:var(--shadow-sm);
     }
-
+    .btn:hover{text-decoration:none}
     .btn-primary{
       background:var(--red);
       color:#fff;
+      box-shadow:0 16px 34px rgba(108,21,74,.20);
     }
-
-    .btn-primary:hover{
-      background:var(--red-hover);
-      text-decoration:none;
-      transform:translateY(-2px);
-      box-shadow:0 16px 36px rgba(108,21,74,0.22);
-    }
-
+    .btn-primary:hover{background:var(--red-hover);transform:translateY(-2px)}
     .btn-secondary{
-      background:rgba(255,255,255,0.10);
+      background:rgba(255,255,255,.10);
       color:#fff;
-      border:1px solid rgba(255,255,255,0.18);
-      box-shadow:none;
+      border:1px solid rgba(255,255,255,.18);
     }
+    .btn-secondary:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
 
-    .btn-secondary:hover{
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid rgba(217,226,238,.92);
+      backdrop-filter:blur(12px);
+    }
+    .topbar-inner{
+      min-height:80px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand a{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:var(--navy);
       text-decoration:none;
-      background:rgba(255,255,255,0.16);
-      transform:translateY(-1px);
+      font-weight:800;
+    }
+    .brand img{height:54px;width:auto}
+    .brand span{font-size:1.28rem;white-space:nowrap}
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:18px;
+      flex:1 1 auto;
+    }
+    .nav a{
+      color:var(--navy);
+      font-size:.92rem;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .header-cta{flex:0 0 auto}
+    #mobile-menu-toggle,.burger{display:none}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,.12), rgba(255,255,255,0) 28%),
+        radial-gradient(circle at 84% 16%, rgba(255,255,255,.09), rgba(255,255,255,0) 24%),
+        linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 48%, var(--navy-3) 100%);
+      color:#fff;
+      padding:86px 0 70px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(340px,420px);
+      gap:34px;
+      align-items:start;
+    }
+    .hero-note{
+      margin-top:18px;
+      color:rgba(255,255,255,.82);
+      font-size:.93rem;
+      max-width:760px;
+    }
+    .hero-proof{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      margin-top:26px;
+      max-width:760px;
+    }
+    .hero-proof .mini{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      padding:14px;
+      font-weight:700;
+      font-size:.94rem;
+      color:#fff;
     }
 
-    .hero-card,
-    .card,
-    .faq-item,
-    .legal-box,
-    .cta,
-    .step-card{
+    .hero-card,.card,.step-card,.faq-item,.cta-box,.info-box,.note-box{
+      background:rgba(255,255,255,.98);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-sm);
       border-radius:var(--radius);
     }
+    .hero-card{padding:22px;box-shadow:var(--shadow-lg)}
+    .card,.step-card,.faq-item,.info-box,.note-box{padding:26px}
+    .card,.step-card,.faq-item{height:100%}
 
-    .hero-card{
-      background:rgba(255,255,255,0.98);
-      color:var(--text);
-      border:1px solid rgba(255,255,255,0.55);
-      box-shadow:var(--shadow-lg);
-      padding:20px 22px 22px;
-      animation:fadeUp 1050ms ease both;
-    }
-
-    .hero-card h3{
-      color:var(--navy);
-      margin-bottom:10px;
-    }
-
-    .hero-card > p{
-      margin-top:0;
-      margin-bottom:12px;
-      line-height:1.55;
-    }
-    
-    form{
-      display:grid;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    input[type="email"]{
-      width:100%;
-      padding:15px 16px;
-      border:1px solid var(--border);
-      border-radius:12px;
-      font-size:1rem;
-      color:var(--text);
-      background:#fff;
-      outline:none;
-      transition:border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-    }
-
-    input[type="email"]:focus{
-      border-color:var(--navy-3);
-      box-shadow:0 0 0 4px rgba(33,73,124,0.12);
-      transform:translateY(-1px);
-    }
-
-    .checkbox{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      color:var(--muted);
-      font-size:0.92rem;
-      line-height:1.55;
-    }
-
-    .checkbox input{
-      margin-top:4px;
-      flex:0 0 auto;
-    }
-
-    .small{
-      color:var(--muted);
-      font-size:0.91rem;
-      line-height:1.55;
-    }
-
-    .section{
-      padding:84px 0;
-      position:relative;
-    }
-
-    .section-alt{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.2) 100%),
-        var(--bg-soft);
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-    }
-
-    .section-intro{
-      max-width:920px;
-      margin-bottom:30px;
-    }
-
-    .section-intro h2{
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 3vw, 3rem);
-      color: var(--navy);
-    }
-    
-    .section-subtitle{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      font-weight: 600;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .grid-4{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:22px;
-    }
-
-    .card{
-      background:rgba(255,255,255,0.98);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-sm);
-      padding:26px;
-      height:100%;
-      position:relative;
-      overflow:hidden;
-      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-      border-color:var(--border-strong);
-    }
-
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:0 auto 0 0;
-      width:5px;
-      background:linear-gradient(180deg, var(--navy-2), var(--navy-3));
-      opacity:0.9;
-    }
-
-    .card h3{
-      margin-bottom:12px;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-      margin-top:18px;
-    }
-
-    .step-card{
-      background:rgba(255,255,255,0.98);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-sm);
-      padding:26px;
-      height:100%;
-      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .step-card:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-md);
-      border-color:var(--border-strong);
-    }
-
-    .step-number{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:linear-gradient(135deg, var(--navy), var(--navy-3));
-      color:#fff;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      font-size:0.98rem;
-      box-shadow:0 10px 20px rgba(15,39,71,0.18);
-      margin-bottom:14px;
-      transition:transform var(--transition);
-    }
-
-    .step-card:hover .step-number{
-      transform:scale(1.05);
-    }
-
-    .faq{
-      display:grid;
-      gap:16px;
-    }
-
-    .faq-item{
-      background:rgba(255,255,255,0.98);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-sm);
-      padding:24px 26px;
-      transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-    }
-
-    .faq-item:hover{
-      transform:translateY(-2px);
-      box-shadow:var(--shadow-md);
-      border-color:var(--border-strong);
-    }
-
-    .faq-item h3{
-      margin-bottom:10px;
-    }
-
-    .legal-box{
-      background:linear-gradient(180deg, #fffaf9 0%, #fff6f6 100%);
-      border:1px solid #eed3da;
-      box-shadow:var(--shadow-sm);
-      padding:28px;
-    }
-
-    .cta{
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.09), rgba(255,255,255,0) 28%),
-        linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
-      color:#fff;
-      padding:44px 30px;
-      box-shadow:var(--shadow-md);
-      border:1px solid rgba(255,255,255,0.10);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cta:after{
-      content:"";
-      position:absolute;
-      right:-80px;
-      bottom:-80px;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.10), rgba(255,255,255,0));
-      pointer-events:none;
-    }
-
-    .cta h2,
-    .cta h3,
-    .cta p{
-      color:#fff;
-      position:relative;
-      z-index:1;
-    }
-
-    .cta .checkbox,
-    .cta form,
-    .cta .small,
-    .cta .btn{
-      position:relative;
-      z-index:1;
-    }
-
-    .cta .checkbox{
-      color:rgba(255,255,255,0.88);
-    }
-
-    .brevo-form-wrap{
-      margin-top:12px;
-    }
-    
     .brevo-form-wrap iframe{
-      width:100% !important;
-      max-width:100% !important;
+      width:100%!important;
+      max-width:100%!important;
       border:0;
       display:block;
-      margin:0 auto;
       border-radius:14px;
       background:#fff;
     }
-        
-     .footer{
-      position:relative;
-      margin-top:84px;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.08), rgba(255,255,255,0) 20%),
-        linear-gradient(180deg, var(--navy) 0%, var(--navy-4) 100%);
+
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+
+    .card.highlight{
+      background:linear-gradient(180deg,#fff 0%, #f7f1f5 100%);
+      border-color:#ead5df;
+    }
+
+    .icon-badge{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--navy), var(--navy-3));
       color:#fff;
-      padding:62px 0 26px;
+      font-size:1rem;
+      font-weight:800;
+      margin-bottom:14px;
     }
 
-    .footer h2,
-    .footer h3{
-      color:#fff;
-    }
-
-    .footer a{
-      color:#dce8ff;
-    }
-
-    .footer-grid{
+    .steps-simple{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:34px;
-      margin-bottom:28px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:22px;
+    }
+    .step-number{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--red), var(--red-hover));
+      color:#fff;
+      font-weight:800;
+      margin-bottom:14px;
+      box-shadow:0 10px 22px rgba(108,21,74,.24);
     }
 
-    .footer-card{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:var(--radius);
+    .comparison{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+    .comparison .box{
       padding:24px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:var(--shadow-sm);
     }
-
-    .subfooter{
-      margin-top:28px;
-      border-top:1px solid rgba(255,255,255,0.14);
-      padding-top:18px;
-      color:rgba(255,255,255,0.80);
-      font-size:0.92rem;
+    .comparison .box.us{
+      border-color:#e8d1db;
+      background:linear-gradient(180deg,#fff 0%, #f9f0f5 100%);
     }
+    .comparison ul{margin:0;padding-left:20px}
+    .comparison li{margin-bottom:8px}
 
-    ul{
-      padding-left:22px;
-    }
-
-    li{
-      margin-bottom:8px;
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(18px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes floatGlow{
-      0%,100%{transform:translateY(0) translateX(0)}
-      50%{transform:translateY(-12px) translateX(8px)}
-    }
-
-    @keyframes pulsePin{
-      0%,100%{
-        transform:scale(1);
-        box-shadow:0 0 0 6px rgba(108,21,74,0.16);
-      }
-      50%{
-        transform:scale(1.08);
-        box-shadow:0 0 0 12px rgba(108,21,74,0.10);
-      }
-    }
-
-    @media (max-width: 1020px){
-      .hero-grid,
-      .grid-3,
-      .grid-4,
-      .steps,
-      .footer-grid{
-        grid-template-columns:1fr;
-      }
-
-      .nav{
-        justify-content:flex-start;
-      }
-    }
-
-    @media (max-width: 960px){
-      .topbar-inner{
-        min-height:auto;
-        padding:14px 0;
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      h1{
-        font-size:2.5rem;
-      }
-
-      h2{
-        font-size:1.82rem;
-      }
-
-      .hero{
-        padding:82px 0 68px;
-      }
-
-      .hero-logo img{
-        margin-left:0;
-        max-width:260px; margin-left:120px;
-      }
-
-      .container{
-        padding:0 18px;
-      }
-
-      .section{
-        padding:68px 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *, *:before, *:after{
-        animation:none !important;
-        transition:none !important;
-        scroll-behavior:auto !important;
-      }
-    }
-  .back-to-top{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:#6C154A;
-  color:#fff;
-  text-decoration:none;
-  width:44px;
-  height:44px;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:20px;
-  font-weight:bold;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
-  transition:all 0.2s ease;
-  z-index:9999;
-}
-
-.back-to-top:hover{
-  background:#54113A;
-  text-decoration:none;
-  transform:translateY(-2px);
-}
-
-.logo-lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(10, 20, 35, 0.82);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  padding:24px;
-}
-
-.logo-lightbox:target{
-  display:flex;
-}
-
-.logo-lightbox-backdrop{
-  position:absolute;
-  inset:0;
-}
-
-.logo-lightbox-content{
-  position:relative;
-  z-index:2;
-  background:rgba(255,255,255,0.98);
-  border-radius:20px;
-  padding:24px;
-  box-shadow:0 30px 80px rgba(0,0,0,0.25);
-  max-width:min(90vw, 900px);
-  max-height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.logo-lightbox-content img{
-  max-width:100%;
-  max-height:75vh;
-  width:auto;
-  height:auto;
-  display:block;
-}
-
-.logo-lightbox-close{
-  position:absolute;
-  top:10px;
-  right:16px;
-  font-size:32px;
-  line-height:1;
-  color:var(--navy);
-  text-decoration:none;
-  font-weight:700;
-}    
-
-/* =========================
-   FINAL SAFETY1 HEADER
-   ========================= */
-
-#mobile-menu-toggle{
-  display:none !important;
-}
-
-.burger,
-.mobile-nav-cta{
-  display:none !important;
-}
-
-/* DESKTOP */
-@media (min-width: 769px){
-
-  .topbar{
-    position:sticky !important;
-    top:0 !important;
-    z-index:1000 !important;
-    height:86px !important;
-    background:#fff !important;
-  }
-
-  .topbar-inner{
-    max-width:1520px !important;
-    height:86px !important;
-    margin:0 auto !important;
-    padding:0 32px !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    gap:28px !important;
-  }
-
-  .brand{
-    flex:0 0 auto !important;
-  }
-
-  .brand a{
-    display:flex !important;
-    align-items:center !important;
-    gap:14px !important;
-  }
-
-  .brand img{
-    height:54px !important;
-  }
-
-  .brand span{
-    font-size:1.38rem !important;
-    font-weight:800 !important;
-  }
-
-  .nav{
-    flex:1 1 auto !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    gap:26px !important;
-    white-space:nowrap !important;
-  }
-
-  .nav a{
-    font-size:0.95rem !important;
-    font-weight:800 !important;
-    padding:0 !important;
-    border:0 !important;
-    text-decoration:none !important;
-  }
-
-  .header-cta{
-    flex:0 0 auto !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:flex-end !important;
-  }
-
-  .header-cta .btn{
-    min-height:48px !important;
-    padding:13px 24px !important;
-    border-radius:14px !important;
-    font-size:0.95rem !important;
-    white-space:nowrap !important;
-  }
-
-  .hero{
-    padding-top:150px !important;
-  }
-}
-
-    /* === Safety1 Video-Teaser + Vollbild-Modal === */
-    .s1-hero-video-teaser{
+    .visual-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:14px;
+      box-shadow:var(--shadow-md);
+      overflow:hidden;
       margin-top:26px;
-      max-width:520px;
     }
-    
-    .s1-video-card{
+    .visual-card img{border-radius:18px;width:100%;height:auto}
+
+    .event-layout,.wearables-layout,.areas-layout{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:26px;
+      align-items:start;
+      margin-top:26px;
+    }
+    .event-steps,.areas-points{
+      display:grid;
+      gap:16px;
+    }
+    .event-steps .mini-card,.areas-points .mini-card{
+      background:linear-gradient(135deg,var(--navy), var(--navy-2));
+      color:#fff;
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 16px 36px rgba(15,39,71,.16);
+    }
+    .event-steps .mini-card strong,.areas-points .mini-card strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .share-box,.feedback-box{
+      margin-top:24px;
+      padding:22px;
+      border-radius:20px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .share-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:16px;
+    }
+    .share-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:12px 18px;
+      border-radius:999px;
+      font-size:.95rem;
+      font-weight:800;
+      transition:all var(--transition);
+      text-decoration:none;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .share-button.primary{
+      background:#fff;
+      color:var(--navy);
+      box-shadow:0 12px 24px rgba(0,0,0,.15);
+    }
+    .share-button.secondary{
+      background:rgba(255,255,255,.08);
+      color:#fff;
+    }
+    .share-button:hover{transform:translateY(-1px);text-decoration:none}
+    .share-note{margin-top:12px;min-height:20px;color:rgba(255,255,255,.86);font-weight:700;font-size:.92rem}
+
+    .video-card{
       width:100%;
       display:grid;
       grid-template-columns:132px 1fr;
       gap:14px;
       align-items:center;
       padding:10px;
-      border:1px solid rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,.16);
       border-radius:18px;
-      background:linear-gradient(135deg, rgba(15,39,71,0.96), rgba(108,21,74,0.88));
+      background:linear-gradient(135deg, rgba(15,39,71,.96), rgba(108,21,74,.88));
       color:#fff;
       cursor:pointer;
-      box-shadow:0 18px 40px rgba(8,20,38,0.22);
+      box-shadow:0 18px 40px rgba(8,20,38,.22);
       text-align:left;
-      transition:transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      transition:all var(--transition);
+      margin-top:26px;
     }
-    
-    .s1-video-card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 24px 52px rgba(8,20,38,0.30);
-      border-color:rgba(255,255,255,0.28);
-    }
-    
-    .s1-video-thumb{
+    .video-card:hover{transform:translateY(-2px)}
+    .video-thumb{
       position:relative;
-      display:block;
-      aspect-ratio:16 / 9;
+      aspect-ratio:16/9;
       overflow:hidden;
       border-radius:13px;
       background:#0f2747;
     }
-    
-    .s1-video-thumb img{
+    .video-thumb img{
       width:100%;
       height:100%;
       object-fit:cover;
-      display:block;
     }
-    
-    .s1-video-thumb::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg, rgba(15,39,71,0.05), rgba(108,21,74,0.25));
-    }
-    
-    .s1-video-play{
+    .video-play{
       position:absolute;
       left:50%;
       top:50%;
-      z-index:2;
       transform:translate(-50%, -50%);
       width:42px;
       height:42px;
-      border-radius:999px;
+      border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding-left:3px;
-      background:rgba(255,255,255,0.92);
-      color:#6C154A;
+      background:rgba(255,255,255,.92);
+      color:var(--red);
       font-size:1rem;
-      box-shadow:0 10px 24px rgba(0,0,0,0.24);
+      padding-left:2px;
+      box-shadow:0 10px 24px rgba(0,0,0,.24);
     }
-    
-    .s1-video-card-text{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
+    .video-note{margin-top:8px;font-size:.8rem;color:rgba(255,255,255,.72)}
+
+    .cta-box{
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.08), rgba(255,255,255,0) 28%),
+        linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 100%);
+      color:#fff;
+      padding:40px 30px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow-md);
     }
-    
-    .s1-video-card-text strong{
-      font-size:1rem;
-      line-height:1.25;
+    .cta-box h2,.cta-box p{color:#fff}
+
+    .faq{display:grid;gap:16px}
+    .faq-item h3{margin-bottom:8px}
+
+    .footer{
+      margin-top:84px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.08), rgba(255,255,255,0) 20%),
+        linear-gradient(180deg,var(--navy) 0%, var(--navy-4) 100%);
+      color:#fff;
+      padding:58px 0 24px;
     }
-    
-    .s1-video-card-text small{
-      font-size:0.86rem;
-      color:rgba(255,255,255,0.78);
+    .footer a{color:#dce8ff}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+    .footer-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      padding:24px;
     }
-    
-    .s1-video-mini-note{
-      margin:9px 4px 0;
-      font-size:0.78rem;
-      line-height:1.45;
-      color:rgba(255,255,255,0.72);
+    .subfooter{
+      margin-top:24px;
+      border-top:1px solid rgba(255,255,255,.14);
+      padding-top:16px;
+      color:rgba(255,255,255,.78);
+      font-size:.92rem;
     }
-    
-    .s1-video-modal{
+
+    .back-to-top{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:var(--red);
+      color:#fff;
+      font-size:20px;
+      font-weight:800;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+      z-index:900;
+    }
+
+    .logo-lightbox,.video-modal{
       position:fixed;
       inset:0;
-      z-index:9999;
-      display:flex;
+      z-index:2000;
+      display:none;
       align-items:center;
       justify-content:center;
       padding:24px;
-    }
-    
-    .s1-video-modal[hidden]{
-      display:none;
-    }
-    
-    .s1-video-modal-backdrop{
-      position:absolute;
-      inset:0;
-      background:rgba(4,10,22,0.82);
+      background:rgba(7,18,34,.84);
       backdrop-filter:blur(8px);
     }
-    
-    .s1-video-modal-dialog{
+    .logo-lightbox:target{display:flex}
+    .logo-lightbox-content,.video-modal-dialog{
       position:relative;
-      z-index:1;
-      width:min(1080px, 94vw);
-      background:#071426;
+      width:min(900px,92vw);
+      background:rgba(255,255,255,.98);
       border-radius:22px;
-      padding:16px;
-      box-shadow:0 28px 90px rgba(0,0,0,0.46);
-      border:1px solid rgba(255,255,255,0.14);
+      padding:24px;
+      box-shadow:0 30px 80px rgba(0,0,0,.25);
     }
-    
-    .s1-video-modal-dialog video{
-      display:block;
+    .logo-lightbox-content img{max-height:76vh;margin:0 auto}
+    .close-x{
+      position:absolute;
+      right:14px;
+      top:10px;
+      font-size:32px;
+      line-height:1;
+      color:var(--navy);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .video-modal[hidden]{display:none}
+    .video-modal:not([hidden]){display:flex}
+    .video-modal-dialog{
+      width:min(1080px,94vw);
+      background:#071426;
+      padding:16px;
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .video-modal-dialog video{
       width:100%;
       max-height:78vh;
       border-radius:16px;
       background:#000;
+      display:block;
     }
-    
-    .s1-video-modal-close{
+    .video-modal-note{
+      margin:12px 4px 0;
+      text-align:center;
+      color:rgba(255,255,255,.72);
+      font-size:.86rem;
+    }
+    .video-modal-close{
       position:absolute;
       right:-14px;
       top:-14px;
-      z-index:2;
       width:42px;
       height:42px;
       border:none;
-      border-radius:999px;
-      background:#ffffff;
-      color:#6C154A;
+      border-radius:50%;
+      background:#fff;
+      color:var(--red);
       font-size:1.8rem;
-      line-height:1;
       cursor:pointer;
-      box-shadow:0 12px 28px rgba(0,0,0,0.25);
+      box-shadow:0 12px 28px rgba(0,0,0,.25);
     }
-    
-    .s1-video-modal-close:hover{
-      background:#f5eef3;
-    }
-    
-    .s1-video-modal-note{
-      margin:12px 4px 0;
-      font-size:0.86rem;
-      line-height:1.5;
-      text-align:center;
-      color:rgba(255,255,255,0.70);
-    }
-    
-    body.s1-modal-open{
-      overflow:hidden;
-    }
-    
-    @media (max-width: 760px){
-      .s1-hero-video-teaser{
+
+    @media (max-width: 980px){
+      .hero-grid,.event-layout,.wearables-layout,.areas-layout,.footer-grid,.grid-4,.grid-3,.grid-2,.steps-simple,.comparison{
+        grid-template-columns:1fr;
+      }
+      .hero-proof{
+        grid-template-columns:1fr;
         max-width:100%;
-        margin-top:22px;
-        margin-bottom:26px;
       }
-    
-      .s1-video-card{
+      .topbar-inner{
+        min-height:72px;
+        padding:12px 0;
+        flex-wrap:wrap;
+      }
+      .nav{
+        width:100%;
+        justify-content:flex-start;
+      }
+    }
+
+    @media (max-width: 768px){
+      .container{padding:0 18px}
+      .section{padding:68px 0}
+      .topbar-inner{
+        padding:0;
+        min-height:72px;
+      }
+      .brand img{height:44px}
+      .brand span{font-size:1.14rem}
+      .header-cta{display:none}
+      .burger{
+        display:flex;
+        flex-direction:column;
+        gap:6px;
+        width:44px;
+        height:44px;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+      }
+      .burger span{
+        display:block;
+        width:30px;
+        height:3px;
+        border-radius:999px;
+        background:var(--navy);
+      }
+      .nav{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+        background:#fff;
+        padding:18px 20px 24px;
+        box-shadow:0 18px 40px rgba(15,39,71,.16);
+      }
+      .nav a{
+        display:block;
+        width:100%;
+        text-align:center;
+        padding:14px 0;
+        border-bottom:1px solid rgba(15,39,71,.10);
+      }
+      #mobile-menu-toggle:checked ~ .nav{display:flex}
+      .hero{
+        padding:72px 0 56px;
+      }
+      .video-card{
         grid-template-columns:112px 1fr;
-        border-radius:16px;
       }
-    
-      .s1-video-play{
-        width:36px;
-        height:36px;
-        font-size:0.9rem;
-      }
-    
-      .s1-video-modal{
-        padding:14px;
-      }
-    
-      .s1-video-modal-dialog{
-        width:96vw;
-        padding:10px;
-        border-radius:18px;
-      }
-    
-      .s1-video-modal-dialog video{
-        max-height:72vh;
-        border-radius:13px;
-      }
-    
-      .s1-video-modal-close{
+      .share-actions{flex-direction:column}
+      .share-button,.btn{width:100%}
+      .video-modal{padding:14px}
+      .video-modal-dialog{padding:10px}
+      .video-modal-close{
         right:4px;
         top:4px;
         width:38px;
         height:38px;
         font-size:1.6rem;
       }
-    
-      .s1-video-modal-note{
-        font-size:0.78rem;
-        padding:0 34px 0 4px;
-      }
     }
 
-    @media (min-width: 901px){
-      .s1-hero-video-teaser{
-        max-width:520px;
-      }
-    
-      .s1-video-card{
-        min-height:118px;
-      }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{transition:none!important}
     }
-
-/* MOBILE */
-@media (max-width: 768px){
-
-  html{
-    scroll-padding-top:82px !important;
-  }
-
-  .topbar{
-    position:sticky !important;
-    top:0 !important;
-    z-index:1000 !important;
-    height:72px !important;
-    background:#fff !important;
-  }
-
-  .topbar-inner{
-    width:100% !important;
-    max-width:none !important;
-    height:72px !important;
-    padding:0 18px !important;
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-  }
-
-  .brand{
-    margin:0 !important;
-    width:auto !important;
-    flex:0 0 auto !important;
-  }
-
-  .brand a{
-    display:flex !important;
-    flex-direction:row !important;
-    align-items:center !important;
-    gap:10px !important;
-  }
-
-  .brand img{
-    height:44px !important;
-  }
-
-  .brand span{
-    font-size:1.18rem !important;
-  }
-
-  .header-cta{
-    display:none !important;
-  }
-
-  .burger{
-    margin:0 !important;
-    flex:0 0 44px !important;
-    display:flex !important;
-    flex-direction:column !important;
-    justify-content:center !important;
-    align-items:center !important;
-    gap:6px !important;
-    width:44px !important;
-    height:44px !important;
-    cursor:pointer !important;
-  }
-
-  .burger span{
-    display:block !important;
-    width:30px !important;
-    height:3px !important;
-    background:var(--navy) !important;
-    border-radius:999px !important;
-  }
-
-  .nav{
-    position:absolute !important;
-    top:72px !important;
-    left:0 !important;
-    right:0 !important;
-    display:none !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    gap:0 !important;
-    background:#fff !important;
-    padding:20px 22px 28px !important;
-    box-shadow:0 18px 40px rgba(15,39,71,0.16) !important;
-    z-index:9999 !important;
-  }
-
-  #mobile-menu-toggle:checked ~ .nav{
-    display:flex !important;
-  }
-
-  .nav a{
-    display:block !important;
-    width:100% !important;
-    text-align:center !important;
-    padding:16px 0 !important;
-    font-size:1.08rem !important;
-    font-weight:800 !important;
-    color:var(--navy) !important;
-    border-bottom:1px solid rgba(15,39,71,0.10) !important;
-  }
-
-  .nav a.mobile-nav-cta{
-    display:flex !important;
-    justify-content:center !important;
-    max-width:280px !important;
-    margin-top:18px !important;
-    padding:15px 18px !important;
-    background:var(--red) !important;
-    color:#fff !important;
-    border-radius:16px !important;
-    border-bottom:none !important;
-  }
-
-  .hero{
-    padding-top:96px !important;
-    padding-bottom:56px !important;
-  }
-
-  .hero-grid{
-    grid-template-columns:1fr !important;
-    gap:26px !important;
-  }
-
-  .hero h1{
-    display:block !important;
-    visibility:visible !important;
-    opacity:1 !important;
-    margin-top:0 !important;
-    margin-bottom:12px !important;
-    font-size:2.45rem !important;
-    line-height:1.1 !important;
-    color:#fff !important;
-  }
-}
-
-  /* =========================
-   SAFETY1 PROCESS VISUALISIERUNG
-   ========================= */
-
-  .process-visual-section{
-    padding:72px 0;
-    background:
-      radial-gradient(circle at top right, rgba(108,21,74,0.10), transparent 34%),
-      linear-gradient(180deg, #f3f6fb 0%, #ffffff 100%);
-  }
   
-  .process-visual-header{
-    max-width:860px;
-    margin:0 auto 34px auto;
-    text-align:center;
-  }
-  
-  .process-visual-header .eyebrow{
-    display:inline-block;
-    margin-bottom:12px;
-    color:var(--red);
-    font-size:0.82rem;
-    font-weight:800;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-  }
-  
-  .process-visual-header h2{
-    margin:0 0 14px 0;
-    color:var(--navy);
-    font-size:clamp(2rem, 4vw, 3.1rem);
-    line-height:1.08;
-    letter-spacing:-0.04em;
-  }
-  
-  .process-visual-header p{
-    margin:0 auto;
-    max-width:760px;
-    color:var(--muted);
-    font-size:1.08rem;
-    line-height:1.7;
-  }
-  
-  .process-visual-card{
-    background:rgba(255,255,255,0.82);
-    border:1px solid var(--border);
-    border-radius:28px;
-    padding:14px;
-    box-shadow:0 24px 70px rgba(15,39,71,0.14);
-    overflow:hidden;
-  }
-  
-  .process-visual-card img{
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:20px;
-  }
 
-    .section-soft{
-    background:
-      radial-gradient(circle at top right, rgba(108,21,74,0.08), transparent 34%),
-      linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-  }
-  
-  .section-kicker{
-    display:inline-block;
-    margin-bottom:14px;
-    padding:8px 14px;
-    border-radius:999px;
-    background:rgba(15,39,71,0.06);
-    border:1px solid rgba(15,39,71,0.10);
-    color:var(--red);
-    font-size:0.82rem;
-    font-weight:800;
-    letter-spacing:0.10em;
-    text-transform:uppercase;
-  }
-  
-  .section-lead{
-    max-width:860px;
-    margin:0;
-    color:var(--muted);
-    font-size:1.08rem;
-    line-height:1.7;
-  }
-  
-  /* =========================
-     SAFETY1 EVENT-MODUS
-     ========================= */
-  
-  .event-card{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:28px;
-    margin-top:34px;
-    align-items:stretch;
-  }
-  
-  .event-content{
-    background:rgba(255,255,255,0.94);
-    border:1px solid var(--border);
-    border-radius:24px;
-    padding:32px;
-    box-shadow:0 18px 45px rgba(15,39,71,0.08);
-  }
-  
-  .event-content h3{
-    margin-top:0;
-    margin-bottom:16px;
-    color:var(--navy);
-    font-size:1.55rem;
-  }
-  
-  .event-content p{
-    color:var(--text);
-    margin-bottom:16px;
-  }
-  
-  .event-note{
-    margin-top:22px;
-    padding:18px 20px;
-    border-left:5px solid var(--red);
-    background:#f8eef4;
-    border-radius:14px;
-    font-weight:600;
-  }
-  
-  .event-steps{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  
-  .event-step{
-    background:linear-gradient(135deg, var(--navy), var(--navy-2));
-    color:#ffffff;
-    border-radius:22px;
-    padding:22px 24px;
-    box-shadow:0 18px 42px rgba(15,39,71,0.18);
-  }
-  
-  .event-step span{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:var(--red);
-    color:#ffffff;
-    font-weight:800;
-    margin-bottom:14px;
-  }
-  
-  .event-step strong{
-    display:block;
-    font-size:1.05rem;
-    margin-bottom:8px;
-  }
-  
-  .event-step p{
-    margin:0;
-    color:rgba(255,255,255,0.86);
-    font-size:0.95rem;
-  }
-
-    /* Safety1 Empfehlungs-/Teilen-Box */
-    .s1-share-box{
-      margin:38px auto 0;
-      max-width:780px;
-      padding:32px 26px;
-      border-radius:26px;
-      background:linear-gradient(135deg, #0f2747 0%, #16365f 100%);
-      border:1px solid rgba(255,255,255,0.14);
-      box-shadow:0 22px 55px rgba(15,39,71,0.22);
-      text-align:center;
-      color:#ffffff;
-      position:relative;
-      overflow:hidden;
-    }
-    
-    .s1-share-box::before{
-      content:"";
-      position:absolute;
-      inset:auto -80px -120px auto;
-      width:240px;
-      height:240px;
-      border-radius:50%;
-      background:rgba(108,21,74,0.30);
-      pointer-events:none;
-    }
-    
-    .s1-share-eyebrow{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 0 12px;
-      padding:7px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.18);
-      color:rgba(255,255,255,0.86);
-      font-size:0.78rem;
-      font-weight:800;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      position:relative;
-      z-index:1;
-    }
-    
-    .s1-share-box h3{
-      margin:0 0 10px;
-      color:#ffffff;
-      font-size:1.45rem;
-      line-height:1.25;
-      position:relative;
-      z-index:1;
-    }
-    
-    .s1-share-box p{
-      margin:0 auto 20px;
-      color:rgba(255,255,255,0.78);
-      line-height:1.65;
-      max-width:640px;
-      position:relative;
-      z-index:1;
-    }
-    
-    .s1-share-actions{
+    .inline-actions{
+      margin-top:24px;
       display:flex;
       flex-wrap:wrap;
-      justify-content:center;
+      align-items:center;
       gap:12px;
-      position:relative;
-      z-index:1;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow:0 12px 28px rgba(8,20,38,0.12);
     }
-    
-    .s1-share-button{
+
+    .inline-actions.light{
+      background:#ffffff;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-sm);
+    }
+
+    .inline-actions p{
+      margin:0;
+      flex:1 1 280px;
+      font-size:0.95rem;
+      line-height:1.55;
+    }
+
+    .inline-actions.hero-inline p{
+      color:rgba(255,255,255,0.88);
+    }
+
+    .inline-actions.light p{
+      color:var(--muted);
+    }
+
+    .inline-actions-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .inline-link-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:46px;
+      min-height:42px;
+      padding:10px 16px;
       border-radius:999px;
-      padding:12px 19px;
-      font-weight:800;
-      font-size:0.96rem;
-      text-decoration:none;
-      cursor:pointer;
-      transition:transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .s1-share-button-primary{
-      border:1px solid rgba(255,255,255,0.24);
-      background:#ffffff;
-      color:#0f2747;
-      box-shadow:0 12px 28px rgba(0,0,0,0.18);
-    }
-    
-    .s1-share-button-primary:hover{
-      transform:translateY(-2px);
-      background:#f3f6fb;
-      color:#0f2747;
-      box-shadow:0 16px 34px rgba(0,0,0,0.22);
-    }
-    
-    .s1-share-button-secondary{
-      border:1px solid rgba(255,255,255,0.24);
-      background:rgba(255,255,255,0.08);
-      color:#ffffff;
-    }
-    
-    .s1-share-button-secondary:hover{
-      transform:translateY(-2px);
-      background:rgba(108,21,74,0.42);
-      border-color:rgba(255,255,255,0.34);
-      color:#ffffff;
-    }
-    
-    .s1-share-note{
-      min-height:22px;
-      margin:16px auto 0 !important;
-      color:rgba(255,255,255,0.86) !important;
       font-size:0.92rem;
-      font-weight:700;
-      position:relative;
-      z-index:1;
+      font-weight:800;
+      text-decoration:none;
+      transition:all var(--transition);
+      border:1px solid transparent;
+      cursor:pointer;
+      white-space:nowrap;
     }
-    
-    @media (max-width: 620px){
-      .s1-share-box{
-        margin-top:30px;
-        padding:28px 18px;
-        border-radius:22px;
+
+    .inline-link-btn.primary{
+      background:var(--red);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(108,21,74,0.22);
+    }
+
+    .inline-link-btn.primary:hover{
+      background:var(--red-hover);
+      color:#fff;
+      text-decoration:none;
+      transform:translateY(-1px);
+    }
+
+    .inline-link-btn.ghost{
+      background:transparent;
+      color:inherit;
+      border-color:rgba(255,255,255,0.18);
+    }
+
+    .inline-actions.light .inline-link-btn.ghost{
+      color:var(--navy);
+      border-color:var(--border-strong);
+    }
+
+    .inline-link-btn.ghost:hover{
+      text-decoration:none;
+      transform:translateY(-1px);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .inline-actions.light .inline-link-btn.ghost:hover{
+      background:rgba(15,39,71,0.04);
+    }
+
+    .share-note-inline{
+      width:100%;
+      margin-top:4px !important;
+      font-size:0.9rem !important;
+      font-weight:700;
+    }
+
+    .inline-actions.light .share-note-inline{
+      color:var(--red) !important;
+    }
+
+    .inline-actions.hero-inline .share-note-inline{
+      color:rgba(255,255,255,0.92) !important;
+    }
+
+    @media (max-width:760px){
+      .inline-actions{
+        padding:14px;
       }
-    
-      .s1-share-box h3{
-        font-size:1.28rem;
+
+      .inline-actions-buttons{
+        width:100%;
       }
-    
-      .s1-share-actions{
-        flex-direction:column;
-        align-items:stretch;
-      }
-    
-      .s1-share-button{
+
+      .inline-link-btn{
         width:100%;
       }
     }
-  
-  /* Tablet */
-  @media (max-width: 900px){
-    .event-card{
-      grid-template-columns:1fr;
-    }
-  
-    .event-content{
-      padding:26px 22px;
-    }
-  }
-  
-  /* Mobile */
-  @media (max-width: 700px){
-    .process-visual-section{
-      padding:48px 0;
-    }
-  
-    .process-visual-header{
-      text-align:left;
-      margin-bottom:24px;
-    }
-  
-    .process-visual-header p{
-      font-size:1rem;
-    }
-  
-    .process-visual-card{
-      border-radius:20px;
-      padding:8px;
-      box-shadow:0 16px 40px rgba(15,39,71,0.12);
-    }
-  
-    .process-visual-card img{
-      border-radius:14px;
-    }
-  
-    .event-card{
-      gap:18px;
-      margin-top:24px;
-    }
-  
-    .event-content{
-      padding:24px 20px;
-      border-radius:20px;
-    }
-  
-    .event-step{
-      border-radius:18px;
-      padding:20px;
-    }
-  }
 
-    /* ==============================
-   Safety1 Wearables Section
-   ============================== */
 
-.wearables-section {
-  background:
-    radial-gradient(circle at top right, rgba(108, 21, 74, 0.08), transparent 32%),
-    linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.wearables-section .section-header {
-  max-width: 920px;
-  margin-bottom: 30px;
-}
-
-.wearables-section .eyebrow {
-  color: #6C154A;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.wearables-section h2 {
-  color: #0f2747;
-}
-
-.wearables-section .lead {
-  color: #5a6678;
-  max-width: 900px;
-}
-
-.wearables-showcase {
-  background: #ffffff;
-  border: 1px solid #d9e2ee;
-  border-radius: 24px;
-  box-shadow: 0 18px 46px rgba(15, 39, 71, 0.14);
-  padding: 12px;
-  margin: 28px 0 34px;
-}
-
-.wearables-showcase img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-}
-
-.wearables-content-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.wearables-text-card {
-  background: #ffffff;
-  border: 1px solid #d9e2ee;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 12px 30px rgba(15, 39, 71, 0.08);
-}
-
-.wearables-text-card h3 {
-  margin: 0 0 10px;
-  color: #0f2747;
-  font-size: 1.08rem;
-  line-height: 1.3;
-}
-
-.wearables-text-card p {
-  margin: 0;
-  color: #5a6678;
-  font-size: 0.96rem;
-  line-height: 1.65;
-}
-
-.wearables-disclaimer {
-  margin-top: 24px;
-  padding: 18px 20px;
-  border-left: 4px solid #6C154A;
-  background: #ffffff;
-  border-radius: 14px;
-  color: #5a6678;
-  box-shadow: 0 10px 24px rgba(15, 39, 71, 0.07);
-}
-
-.wearables-disclaimer strong {
-  color: #0f2747;
-}
-
-/* Mobile Optimierung */
-@media (max-width: 900px) {
-  .wearables-content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .wearables-showcase {
-    border-radius: 20px;
-    padding: 10px;
-  }
-
-  .wearables-showcase img {
-    border-radius: 15px;
-  }
-}
-
-@media (max-width: 640px) {
-  .wearables-section .section-header {
-    margin-bottom: 22px;
-  }
-
-  .wearables-showcase {
-    margin: 22px 0 26px;
-    padding: 8px;
-    border-radius: 18px;
-  }
-
-  .wearables-showcase img {
-    border-radius: 13px;
-  }
-
-  .wearables-text-card {
-    padding: 18px;
-  }
-
-  .wearables-disclaimer {
-    padding: 16px;
-    font-size: 0.95rem;
-  }
-}
- /* =========================================================
-   SAFETY1 – BEREICHE, WEGE & STANDORTLOGIK
-   Neue Version mit definierter Bereichsabweichung und geschlängeltem Wegkorridor
-   ========================================================= */
-
-.s1aw-section{
-  background:
-    radial-gradient(circle at top right, rgba(108,21,74,0.08), transparent 34%),
-    linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
-}
-
-.s1aw-grid{
-  display:grid;
-  gap:28px;
-  margin-top:34px;
-}
-
-.s1aw-card{
-  background:rgba(255,255,255,0.96);
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 18px 45px rgba(15,39,71,0.08);
-  overflow:hidden;
-}
-
-.s1aw-card h3{
-  margin:0 0 22px;
-  color:var(--navy);
-  font-size:clamp(1.45rem, 2.4vw, 2rem);
-  line-height:1.15;
-}
-
-.s1aw-text{
-  margin:24px 0 0;
-  max-width:940px;
-  color:var(--text);
-  font-size:1.02rem;
-  line-height:1.65;
-}
-
-.s1aw-note{
-  margin:22px 0 0;
-  padding-top:16px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:0.94rem;
-  line-height:1.6;
-}
-
-/* Gemeinsamer Kartenhintergrund mit leichter Kartenoptik */
-
-.s1aw-map{
-  position:relative;
-  min-height:340px;
-  border-radius:24px;
-  border:1px solid rgba(199,211,226,0.74);
-  overflow:hidden;
-  background:
-    linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
-    repeating-linear-gradient(0deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 52px),
-    repeating-linear-gradient(90deg, rgba(15,39,71,0.045) 0 1px, transparent 1px 62px),
-    linear-gradient(32deg, transparent 0 40%, rgba(15,39,71,0.08) 40% 41%, transparent 41% 100%),
-    linear-gradient(140deg, transparent 0 35%, rgba(15,39,71,0.06) 35% 36%, transparent 36% 100%),
-    linear-gradient(82deg, transparent 0 58%, rgba(15,39,71,0.06) 58% 59%, transparent 59% 100%),
-    linear-gradient(135deg, #f9fbfd 0%, #edf3f9 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);
-}
-
-.s1aw-pill{
-  position:absolute;
-  z-index:4;
-  display:inline-flex;
+/* Share modal */
+.share-modal{
+  position:fixed;
+  inset:0;
+  display:flex;
   align-items:center;
   justify-content:center;
-  min-width:120px;
-  padding:9px 14px;
-  background:rgba(255,255,255,0.94);
-  color:var(--navy);
-  border:1px solid #d6e0eb;
-  border-radius:999px;
-  font-size:0.84rem;
-  font-weight:800;
-  text-align:center;
-  box-shadow:0 10px 22px rgba(15,39,71,0.08);
-  line-height:1.25;
+  padding:24px;
+  z-index:10001;
 }
-
-/* =========================================================
-   DEFINIERTE BEREICHE
-   Grün = erlaubter Aufenthaltsbereich
-   Bordeaux = letzter bekannter Aufenthaltsort außerhalb
-   ========================================================= */
-
-.s1aw-area-map{
-  min-height:340px;
-}
-
-.s1aw-area-zone{
-  position:absolute;
-  left:22%;
-  top:22%;
-  width:45%;
-  height:42%;
-  border:3px dashed var(--safe-green);
-  border-radius:34px 24px 38px 26px;
-  background:var(--safe-green-soft-2);
-  z-index:2;
-}
-
-.s1aw-area-pill{
-  left:7%;
-  top:18%;
-}
-
-.s1aw-area-pill::after{
-  content:"";
-  position:absolute;
-  left:100%;
-  top:72%;
-  width:92px;
-  border-top:2px dashed rgba(15,39,71,0.35);
-}
-
-.s1aw-area-alert-node{
-  position:absolute;
-  z-index:3;
-  left:74.5%;
-  top:60.5%;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:var(--red);
-  border:5px solid #fff;
-  box-shadow:
-    0 10px 22px rgba(15,39,71,0.16),
-    0 0 0 8px rgba(108,21,74,0.14);
-}
-
-.s1aw-area-alert-pill{
-  left:76.5%;
-  bottom:6%;
-  transform:translateX(-50%);
-  color:var(--red);
-  border-color:rgba(108,21,74,0.22);
-}
-
-.s1aw-area-alert-pill::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:100%;
-  height:52px;
-  border-left:2px dashed rgba(15,39,71,0.35);
-}
-
-/* =========================================================
-   GEPLANTE WEGE
-   Grün = geplanter Wegkorridor
-   Bordeaux = Abzweigung / Abweichungsbereich
-   ========================================================= */
-
-.s1aw-route-map{
-  min-height:340px;
-}
-
-.s1aw-route-svg{
+.share-modal[hidden]{display:none}
+.share-modal-backdrop{
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
+  background:rgba(5,16,31,0.72);
+  backdrop-filter:blur(8px);
 }
-
-/* Hauptkorridor grün */
-.s1aw-route-corridor-main{
-  fill:none;
-  stroke:rgba(47,143,91,0.18);
-  stroke-width:72;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-/* Hauptlinie grün */
-.s1aw-route-line-main{
-  fill:none;
-  stroke:var(--safe-green);
-  stroke-width:4;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-dasharray:14 12;
-}
-
-/* Abzweigung / Abweichungsbereich Bordeaux */
-.s1aw-route-corridor-branch{
-  fill:none;
-  stroke:rgba(108,21,74,0.18);
-  stroke-width:58;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-/* Abweichungslinie Bordeaux */
-.s1aw-route-line-branch{
-  fill:none;
-  stroke:var(--red);
-  stroke-width:4;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-dasharray:12 10;
-}
-
-.s1aw-route-node{
-  position:absolute;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  z-index:3;
-}
-
-/* Startpunkt grün */
-.s1aw-route-start-node{
-  left:7%;
-  top:61%;
-  background:var(--safe-green);
-  border:5px solid #fff;
-  box-shadow:
-    0 10px 22px rgba(15,39,71,0.16),
-    0 0 0 7px rgba(47,143,91,0.12);
-}
-
-/* Zielpunkt grün */
-.s1aw-route-end-node{
-  right:7%;
-  top:43%;
-  background:#fff;
-  border:5px solid var(--safe-green);
-  box-shadow:
-    0 0 0 7px #fff,
-    0 0 0 10px rgba(47,143,91,0.18),
-    0 10px 22px rgba(15,39,71,0.16);
-}
-
-/* Letzter bekannter Punkt im Bordeaux-Bereich */
-.s1aw-route-alert-node{
-  left:72.8%;
-  top:78%;
-  background:var(--red);
-  border:5px solid #fff;
-  box-shadow:
-    0 10px 22px rgba(15,39,71,0.16),
-    0 0 0 8px rgba(108,21,74,0.14);
-}
-
-/* Labels geplante Wege – verbessert mit Verbindungslinien */
-.s1aw-route-start-pill{
-  left:2%;
-  top:12%;
-}
-
-.s1aw-route-start-pill::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:100%;
-  height:140px;
-  border-left:2px dashed rgba(15,39,71,0.30);
-}
-
-.s1aw-route-corridor-pill{
-  left:38%;
-  top:6%;
-}
-
-.s1aw-route-corridor-pill::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:100%;
-  height:88px;
-  border-left:2px dashed rgba(15,39,71,0.30);
-}
-
-.s1aw-route-end-pill{
-  right:2%;
-  top:11%;
-}
-
-.s1aw-route-end-pill::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:100%;
-  height:108px;
-  border-left:2px dashed rgba(15,39,71,0.30);
-}
-
-.s1aw-route-alert-pill{
-  left:76%;
-  bottom:0.5%;
-  transform:translateX(-50%);
-  color:var(--red);
-  border-color:rgba(108,21,74,0.20);
-}
-
-.s1aw-route-alert-pill::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:100%;
-    height:52px;
-    border-left:2px dashed rgba(108,21,74,0.28);
-  }
-}
-
-/* =========================================================
-   KLEINE ERKLÄRUNGSKARTEN
-   ========================================================= */
-
-.s1aw-mini-grid{
-  display:grid;
-  gap:18px;
-  margin-top:22px;
-}
-
-.s1aw-mini-grid-two{
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  max-width:860px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.s1aw-mini-grid-four{
-  grid-template-columns:repeat(4, minmax(0, 1fr));
-}
-
-.s1aw-mini-card{
+.share-modal-dialog{
   position:relative;
-  min-height:104px;
-  display:grid;
-  grid-template-columns:58px 1fr;
-  align-items:center;
-  gap:16px;
+  z-index:1;
+  width:min(560px, 94vw);
   background:#fff;
   border:1px solid var(--border);
-  border-radius:22px;
-  padding:18px 20px;
-  box-shadow:0 14px 30px rgba(15,39,71,0.07);
+  border-radius:24px;
+  box-shadow:var(--shadow-lg);
+  padding:28px 24px 22px;
 }
-
-.s1aw-mini-number{
+.share-modal-close{
   position:absolute;
   top:12px;
-  left:12px;
-  width:26px;
-  height:26px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:var(--navy);
-  color:#fff;
-  font-weight:900;
-  font-size:0.84rem;
-}
-
-.s1aw-mini-icon{
-  color:var(--red);
-  font-size:2.25rem;
+  right:14px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:999px;
+  background:#f3f6fb;
+  color:var(--navy);
+  font-size:1.8rem;
   line-height:1;
+  cursor:pointer;
+}
+.share-modal-title{
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:1.5rem;
+  line-height:1.2;
+}
+.share-modal-text{
+  margin:0 0 18px;
+  color:var(--muted);
+}
+.share-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.share-option{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:12px 16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--navy);
+  font-weight:800;
+  font-size:0.98rem;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  box-shadow:var(--shadow-sm);
+}
+.share-option:hover{
+  text-decoration:none;
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-md);
+  border-color:#c7d3e2;
+  background:#f8fbff;
+}
+.share-option.primary{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+.share-option.primary:hover{
+  background:var(--red-hover);
+  border-color:var(--red-hover);
+}
+.share-option.full{
+  grid-column:1 / -1;
+}
+.share-modal-note{
+  margin:16px 4px 0;
+  min-height:22px;
+  color:var(--muted);
+  font-size:0.92rem;
+  font-weight:700;
   text-align:center;
 }
-
-.s1aw-mini-card p{
-  margin:0;
-  color:var(--navy);
-  font-weight:800;
-  line-height:1.35;
-  font-size:0.95rem;
-}
-
-/* =========================================================
-   ERGÄNZENDE MÖGLICHKEITEN
-   ========================================================= */
-
-.s1aw-extra-card{
-  padding-bottom:26px;
-}
-
-.s1aw-extra-grid{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:18px;
-}
-
-.s1aw-extra-item{
-  display:grid;
-  grid-template-columns:72px 1fr;
-  gap:18px;
-  align-items:flex-start;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 14px 30px rgba(15,39,71,0.06);
-}
-
-.s1aw-extra-icon{
-  width:62px;
-  height:62px;
-  display:grid;
-  place-items:center;
-  border-radius:18px;
-  background:rgba(108,21,74,0.07);
-  color:var(--red);
-  font-size:2rem;
-  font-weight:800;
-}
-
-.s1aw-extra-item h4{
-  margin:0 0 8px;
-  color:var(--navy);
-  font-size:1.05rem;
-}
-
-.s1aw-extra-item p{
-  margin:0;
-  color:var(--text);
-  line-height:1.55;
-  font-size:0.94rem;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 900px){
-  .s1aw-card{
-    padding:24px;
-    border-radius:24px;
+@media (max-width:640px){
+  .share-modal-dialog{
+    padding:24px 18px 18px;
+    border-radius:20px;
   }
-
-  .s1aw-mini-grid-four,
-  .s1aw-mini-grid-two,
-  .s1aw-extra-grid{
+  .share-grid{
     grid-template-columns:1fr;
   }
-
-  .s1aw-mini-card{
-    min-height:92px;
-  }
 }
 
-@media (max-width: 700px){
-  .s1aw-card{
-    padding:18px;
-  }
-
-  .s1aw-map,
-  .s1aw-area-map,
-  .s1aw-route-map{
-    min-height:285px;
-    border-radius:18px;
-  }
-
-  .s1aw-pill{
-    min-width:auto;
-    font-size:0.72rem;
-    padding:7px 10px;
-  }
-
-  /* Definierte Bereiche mobil */
-  .s1aw-area-zone{
-    left:17%;
-    top:25%;
-    width:53%;
-    height:35%;
-  }
-
-  .s1aw-area-pill{
-    left:4%;
-    top:12%;
-  }
-
-    .s1aw-area-pill::after{
-    top:78%;
-    width:64px;
-  }
-
-     .s1aw-area-alert-node{
-    left:74%;
-    top:61%;
-    width:22px;
-    height:22px;
-  }
-
-    .s1aw-area-alert-pill{
-    left:76%;
-    bottom:3%;
-    transform:translateX(-50%);
-  }
-
-  .s1aw-area-alert-pill::before{
-    height:50px;
-  }
-
-  /* Geplante Wege mobil – sauberere Positionierung */
-  .s1aw-route-node{
-    width:22px;
-    height:22px;
-  }
-  
-  .s1aw-route-start-pill{
-    left:1%;
-    top:8%;
-  }
-  
-  .s1aw-route-start-pill::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:100%;
-    height:108px;
-    border-left:2px dashed rgba(15,39,71,0.22);
-  }
-  
-  .s1aw-route-corridor-pill{
-    left:31%;
-    top:5%;
-  }
-  
-  .s1aw-route-corridor-pill::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:100%;
-    height:70px;
-    border-left:2px dashed rgba(15,39,71,0.22);
-  }
-  
-  .s1aw-route-end-pill{
-    right:1%;
-    top:8%;
-  }
-  
-  .s1aw-route-end-pill::after{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:100%;
-    height:88px;
-    border-left:2px dashed rgba(15,39,71,0.22);
-  }
-  
-  .s1aw-route-alert-node{
-    left:73.2%;
-    top:78%;
-  }
-  
-  .s1aw-route-alert-pill{
-    left:75.5%;
-    bottom:0.5%;
-    transform:translateX(-50%);
-    color:var(--red);
-    border-color:rgba(108,21,74,0.20);
-  }
-  
-  .s1aw-route-alert-pill::before{
-    content:"";
-    position:absolute;
-    left:50%;
-    bottom:100%;
-    height:52px;
-    border-left:2px dashed rgba(108,21,74,0.28);
-  }
-
-  /* === HERO: Desktop links Text + Video, rechts Warteliste === */
-
-@media (min-width: 901px){
-  .hero-grid{
-    display:grid;
-    grid-template-columns:minmax(0, 1fr) minmax(360px, 470px);
-    gap:44px;
-    align-items:start;
-  }
-
-  .hero-grid > *:first-child{
-    grid-column:1;
-    min-width:0;
-  }
-
-  .hero-grid > .hero-card{
-    grid-column:2;
-    width:100%;
-    max-width:470px;
-    justify-self:end;
-  }
-
-  .s1-hero-video-teaser{
-    margin-top:24px;
-    max-width:520px;
-  }
-}
-
-@media (max-width: 900px){
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:26px;
-  }
-
-  .hero-grid > *{
-    grid-column:auto;
-  }
-
-  .s1-hero-video-teaser{
-    max-width:100%;
-    margin-top:22px;
-    margin-bottom:24px;
-  }
-
-  /* === Safety1 Feedback-Hinweis unter Videoteaser === */
-
-.s1-feedback-box{
-  margin-top:14px;
-  padding:15px 16px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.14);
-  box-shadow:0 14px 34px rgba(8,20,38,0.14);
-}
-
-.s1-feedback-box p{
-  margin:0 0 12px;
-  font-size:0.92rem;
-  line-height:1.55;
-  color:rgba(255,255,255,0.84);
-}
-
-.s1-feedback-box strong{
-  color:#ffffff;
-  font-weight:800;
-}
-
-.s1-feedback-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:10px 16px;
-  border-radius:999px;
-  background:#6C154A;
-  color:#ffffff;
-  text-decoration:none;
-  font-weight:800;
-  font-size:0.92rem;
-  box-shadow:0 10px 24px rgba(108,21,74,0.28);
-  transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.s1-feedback-link:hover{
-  background:#54113A;
-  transform:translateY(-1px);
-  box-shadow:0 14px 30px rgba(108,21,74,0.34);
-}
-
-@media (max-width: 760px){
-  .s1-feedback-box{
-    margin-top:12px;
-    padding:14px;
-  }
-
-  .s1-feedback-box p{
-    font-size:0.88rem;
-  }
-
-  .s1-feedback-link{
-    width:100%;
-  }
-
-  /* === Safety1 Feedback-Block unter Video – finale Darstellung === */
-
-.s1-feedback-box{
-  margin-top:30px;
-  max-width:640px;
-}
-
-.s1-feedback-title{
-  margin:0 0 8px;
-  font-size:1.08rem;
-  line-height:1.35;
-  font-weight:850;
-  color:#ffffff;
-}
-
-.s1-feedback-text{
-  margin:0 0 18px;
-  font-size:1rem;
-  line-height:1.58;
-  color:rgba(255,255,255,0.88);
-}
-
-.s1-feedback-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:46px;
-  padding:12px 22px;
-  border-radius:999px;
-  background:#6C154A;
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-weight:850;
-  font-size:0.96rem;
-  letter-spacing:0.01em;
-  box-shadow:0 14px 30px rgba(108,21,74,0.32);
-  border:1px solid rgba(255,255,255,0.14);
-  transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.s1-feedback-button:hover{
-  background:#54113A;
-  color:#ffffff !important;
-  transform:translateY(-1px);
-  box-shadow:0 18px 38px rgba(108,21,74,0.40);
-}
-
-.s1-feedback-button:visited{
-  color:#ffffff !important;
-}
-
-@media (max-width: 760px){
-  .s1-feedback-box{
-    margin-top:26px;
-  }
-
-  .s1-feedback-title{
-    font-size:1rem;
-  }
-
-  .s1-feedback-text{
-    font-size:0.94rem;
-  }
-
-  .s1-feedback-button{
-    width:100%;
-  }
-}
-}
-}
-</style>
-
-<style id="s1-feedback-final-fix">
-/* === Safety1 Feedback-Block – FINALER FIX === */
-
-.s1-hero-video-teaser .s1-feedback-box{
-  margin-top:34px !important;
-  max-width:640px !important;
-  padding:20px 22px !important;
-  border-radius:18px !important;
-  background:rgba(255,255,255,0.075) !important;
-  border:1px solid rgba(255,255,255,0.15) !important;
-  box-shadow:0 16px 38px rgba(8,20,38,0.16) !important;
-}
-
-.s1-hero-video-teaser .s1-feedback-title{
-  margin:0 0 10px !important;
-  font-size:1.08rem !important;
-  line-height:1.35 !important;
-  font-weight:850 !important;
-  color:#ffffff !important;
-}
-
-.s1-hero-video-teaser .s1-feedback-text{
-  margin:0 0 18px !important;
-  font-size:1rem !important;
-  line-height:1.6 !important;
-  color:rgba(255,255,255,0.88) !important;
-}
-
-.s1-hero-video-teaser .s1-feedback-button{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  min-height:48px !important;
-  padding:12px 24px !important;
-  border-radius:999px !important;
-  background:#6C154A !important;
-  color:#ffffff !important;
-  text-decoration:none !important;
-  font-weight:850 !important;
-  font-size:0.96rem !important;
-  letter-spacing:0.01em !important;
-  box-shadow:0 14px 30px rgba(108,21,74,0.34) !important;
-  border:1px solid rgba(255,255,255,0.16) !important;
-  transition:transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-.s1-hero-video-teaser .s1-feedback-button:hover{
-  background:#54113A !important;
-  color:#ffffff !important;
-  text-decoration:none !important;
-  transform:translateY(-1px) !important;
-  box-shadow:0 18px 38px rgba(108,21,74,0.42) !important;
-}
-
-.s1-hero-video-teaser .s1-feedback-button:visited{
-  color:#ffffff !important;
-}
-
-@media (max-width:760px){
-  .s1-hero-video-teaser .s1-feedback-box{
-    margin-top:28px !important;
-    padding:18px !important;
-  }
-
-  .s1-hero-video-teaser .s1-feedback-title{
-    font-size:1rem !important;
-  }
-
-  .s1-hero-video-teaser .s1-feedback-text{
-    font-size:0.94rem !important;
-  }
-
-  .s1-hero-video-teaser .s1-feedback-button{
-    width:100% !important;
-  }
-}
 </style>
 </head>
-  
 <body id="top">
 
-<div id="cookie-banner" style="position:fixed; bottom:0; left:0; width:100%; background:#0f2747; color:#fff; padding:16px; font-size:14px; z-index:9999; display:none;">
-  <div style="max-width:1100px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#0f2747;color:#fff;padding:16px;font-size:14px;z-index:9999;display:none;">
+  <div style="max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
     <div style="max-width:750px;">
       Diese Website verwendet derzeit keine zustimmungspflichtigen Cookies oder Tracking-Tools.
       Technisch notwendige Daten können zur Sicherstellung des Betriebs verarbeitet werden.
-      Weitere Informationen finden Sie in der 
-      <a href="/datenschutz" style="color:#fff; text-decoration:underline;">Datenschutzerklärung</a>.
+      Weitere Informationen finden Sie in der
+      <a href="/datenschutz" style="color:#fff;text-decoration:underline;">Datenschutzerklärung</a>.
     </div>
     <div>
-      <button onclick="acceptCookies()" style="background:#6C154A; color:#fff; border:none; padding:10px 16px; cursor:pointer;">
+      <button onclick="acceptCookies()" style="background:#6C154A;color:#fff;border:none;padding:10px 16px;cursor:pointer;border-radius:10px;">
         Verstanden
       </button>
     </div>
@@ -2628,27 +872,14 @@
 </div>
 
 <div id="logo-lightbox" class="logo-lightbox">
-  <a href="#" class="logo-lightbox-backdrop" aria-label="Logo schließen"></a>
   <div class="logo-lightbox-content">
-    <a href="#" class="logo-lightbox-close" aria-label="Schließen">×</a>
+    <a href="#" class="close-x" aria-label="Schließen">×</a>
     <img src="logo-safety1.png" alt="Safety1 Logo groß">
   </div>
 </div>
 
-  <script>
-function acceptCookies(){
-  localStorage.setItem("cookieAccepted", "true");
-  document.getElementById("cookie-banner").style.display = "none";
-}
-
-if(!localStorage.getItem("cookieAccepted")){
-  document.getElementById("cookie-banner").style.display = "block";
-}
-</script>
-  
-  <header class="topbar">
+<header class="topbar">
   <div class="container topbar-inner">
-
     <div class="brand">
       <a href="#logo-lightbox">
         <img src="logo-safety1.png" alt="Safety1 Logo">
@@ -2656,127 +887,77 @@ if(!localStorage.getItem("cookieAccepted")){
       </a>
     </div>
 
-    <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle" hidden>
-
+    <input type="checkbox" id="mobile-menu-toggle" hidden>
     <label for="mobile-menu-toggle" class="burger" aria-label="Menü öffnen">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </label>
 
     <nav class="nav">
-      <a href="#wofuer">Über Safety1</a>
-      <a href="#funktion">Funktionsprinzip</a>
+      <a href="#warum">Warum Safety1</a>
+      <a href="#so-funktionierts">So funktioniert’s</a>
       <a href="#event-modus">Event-Modus</a>
+      <a href="#bereiche">Bereiche & Wege</a>
       <a href="#wearables">Wearables</a>
-      <a href="#bereiche">Bereiche &amp; Wege</a>
       <a href="#zielgruppen">Zielgruppen</a>
       <a href="#faq">FAQ</a>
       <a href="#footer">Kontakt</a>
-      <a href="#warteliste-formular" class="mobile-nav-cta">Jetzt vormerken</a>
     </nav>
 
     <div class="header-cta">
       <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
     </div>
-
   </div>
 </header>
 
-  <section class="hero">
+<section class="hero">
   <div class="container hero-grid">
     <div>
-      <h1>Safety1</h1>
+      <span class="eyebrow">Safety1 steht für Safety First</span>
+      <h1>Hilfe im Ernstfall einfacher, klarer und strukturierter auslösen.</h1>
       <p class="lead">
-        Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll,
-        in dringenden oder unübersichtlichen Situationen rasch ausgewählte Kontakte zu informieren
-        und einen klaren, strukturierten Benachrichtigungsablauf in Gang zu setzen.
+        Safety1 ist eine digitale Lösung in Entwicklung, mit der ausgewählte Kontakte im entscheidenden Moment
+        rasch informiert und Unterstützungsabläufe gestuft in Gang gesetzt werden können.
       </p>
       <p class="lead">
-        Ob Familie, Kinder, alleinlebende Personen oder Betreuungssituationen: Safety1 verfolgt das Ziel,
-        Kommunikation und Reaktionsfähigkeit einfach, nachvollziehbar und verantwortungsvoll zu unterstützen –
-        mit klar definierten Abläufen und, je nach Ausgestaltung, der ergänzenden Einbindung vorab geprüfter Personen.
+        Nicht als Ersatz für den Notruf, sondern als ergänzendes Werkzeug für Situationen, in denen
+        klare Kommunikation, schnelle Reaktion und definierte Abläufe besonders wichtig sind.
       </p>
 
+      <div class="hero-proof">
+        <div class="mini">Schneller Hilfeimpuls statt langem Erklären</div>
+        <div class="mini">Gestufte Benachrichtigung statt unkontrollierter Alarmierung</div>
+        <div class="mini">Keine Dauerüberwachung als Grundprinzip</div>
+      </div>
+
       <div class="btn-row">
-        <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
-        <a href="#wofuer" class="btn btn-secondary">Mehr erfahren</a>
+        <a href="#so-funktionierts" class="btn btn-primary">So funktioniert’s</a>
+        <a href="#warum" class="btn btn-secondary">Warum Safety1?</a>
       </div>
 
       <p class="hero-note">
-        Safety1 befindet sich derzeit in Vorbereitung. Die dargestellten Funktionen können sich bis zum finalen Produktstart noch ändern.
+        Safety1 befindet sich derzeit in Vorbereitung. Funktionsumfang, Darstellung und technische Umsetzung können sich bis zum Produktstart noch ändern.
       </p>
 
-      <div class="s1-hero-video-teaser">
-        <button class="s1-video-card" type="button" data-s1-video-open aria-label="Safety1 Kurzfilm öffnen">
-          <span class="s1-video-thumb">
-            <img src="safety1-video-poster.png" alt="Safety1 Kurzfilm Vorschau">
-            <span class="s1-video-play" aria-hidden="true">▶</span>
-          </span>
-      
-          <span class="s1-video-card-text">
-            <strong>Safety1 in 180 Sekunden erklärt</strong>
-            <small>Kurzfilm ansehen</small>
-          </span>
-        </button>
-      
-        <p class="s1-video-mini-note">
-          KI-generierter Konzeptfilm. Funktionen in Entwicklung.
+      <button class="video-card" type="button" data-s1-video-open aria-label="Safety1 Kurzfilm öffnen">
+        <span class="video-thumb">
+          <img src="safety1-video-poster.png" alt="Safety1 Kurzfilm Vorschau">
+          <span class="video-play" aria-hidden="true">▶</span>
+        </span>
+        <span>
+          <strong style="display:block;font-size:1rem;margin-bottom:4px;">Safety1 in 180 Sekunden erklärt</strong>
+          <small style="color:rgba(255,255,255,.78);font-size:.86rem;">Kurzfilm ansehen</small>
+        </span>
+      </button>
+      <p class="video-note">KI-generierter Konzeptfilm. Funktionen in Entwicklung.</p>
+      <div class="inline-actions hero-inline">
+        <p>
+          Safety1 soll praxisnah weiterentwickelt werden. Feedback und Weiterempfehlungen sind ausdrücklich willkommen.
         </p>
-
-        <div class="s1-feedback-box">
-      <p class="s1-feedback-title">
-        Ihre Meinung ist willkommen.
-      </p>
-    
-      <p class="s1-feedback-text">
-        Safety1 soll praxisnah weiterentwickelt werden. Wenn Ihnen eine Funktion fehlt
-        oder Sie eine sinnvolle Ergänzungsidee haben, freuen wir uns über Ihr Feedback.
-      </p>
-    
-      <a
-        class="s1-feedback-button"
-        href="mailto:info@mysafety1.app?subject=Feedback%20zu%20Safety1&body=Hallo%20Safety1-Team%2C%0A%0Aich%20habe%20folgendes%20Feedback%20zu%20Safety1%3A%0A%0A"
-        aria-label="Feedback zu Safety1 per E-Mail senden">
-        Feedback geben
-      </a>
-    </div>
-
-        <div class="s1-share-box">
-          <span class="s1-share-eyebrow">Weiterempfehlen</span>
-        
-          <h3>Safety1 mit anderen teilen</h3>
-        
-          <p>
-            Wenn du die Idee sinnvoll findest, teile Safety1 gerne mit Familie, Freunden oder Personen,
-            für die eine strukturierte Notfall-Kommunikation hilfreich sein könnte.
-          </p>
-        
-          <div class="s1-share-actions">
-            <button class="s1-share-button s1-share-button-primary" type="button" onclick="shareSafety1()">
-              Safety1 empfehlen
-            </button>
-        
-            <a class="s1-share-button s1-share-button-secondary"
-               href="https://wa.me/?text=Safety1%20%E2%80%93%20Unterst%C3%BCtzung%20im%20entscheidenden%20Moment%3A%20https%3A%2F%2Fmysafety1.app"
-               target="_blank"
-               rel="noopener">
-              Per WhatsApp
-            </a>
-        
-            <a class="s1-share-button s1-share-button-secondary"
-               href="mailto:?subject=Safety1%20%E2%80%93%20Unterst%C3%BCtzung%20im%20entscheidenden%20Moment&body=Ich%20finde%20die%20Idee%20von%20Safety1%20spannend%3A%20eine%20digitale%20L%C3%B6sung%2C%20die%20Menschen%20im%20Ernstfall%20dabei%20unterst%C3%BCtzen%20soll%2C%20ausgew%C3%A4hlte%20Kontakte%20rasch%20zu%20informieren%20und%20Hilfe%20strukturierter%20zu%20organisieren.%0A%0Ahttps%3A%2F%2Fmysafety1.app">
-              Per E-Mail
-            </a>
-        
-            <button class="s1-share-button s1-share-button-secondary" type="button" onclick="copySafety1Link()">
-              Link kopieren
-            </button>
-          </div>
-
-  <p class="s1-share-note" id="shareNote" aria-live="polite"></p>
-</div>
-        
+        <div class="inline-actions-buttons">
+          <a class="inline-link-btn primary" href="mailto:info@mysafety1.app?subject=Feedback%20zu%20Safety1&body=Hallo%20Safety1-Team%2C%0A%0Aich%20habe%20folgendes%20Feedback%20zu%20Safety1%3A%0A%0A">Feedback geben</a>
+          <button class="inline-link-btn ghost" type="button" onclick="shareSafety1()">Safety1 teilen</button>
+        </div>
+        <p class="share-note-inline" id="shareNote" aria-live="polite"></p>
       </div>
     </div>
 
@@ -2800,797 +981,503 @@ if(!localStorage.getItem("cookieAccepted")){
     </div>
   </div>
 </section>
-  
-  <section class="section anchor-offset" id="wofuer">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Einordnung</span>
-        <h2>Wofür Safety1 gedacht ist</h2>
 
-        <p>
-          Safety1 soll Menschen dabei unterstützen, in dringenden oder unübersichtlichen Situationen schneller 
-          mit vertrauten Personen in Kontakt zu treten und einen klaren, strukturierten Benachrichtigungsablauf 
-          in Gang zu setzen.
-        </p>
 
-        <p>
-          Die Anwendung ist als ergänzendes Werkzeug im privaten und organisatorischen Umfeld konzipiert und verfolgt
-          keinen behördlichen, rettungsdienstlichen oder sicherheitsbehördlichen Zweck.
-        </p>
-
-        <p>
-          <strong>Abgrenzung:</strong> Safety1 ist ausdrücklich nicht als Ersatz für Notrufsysteme, Rettungsorganisationen,
-          Polizei, Feuerwehr oder sonstige professionelle Einsatzkräfte gedacht.
-        </p>
-
-        <p>
-          Safety1 soll definierte Abläufe bestmöglich unterstützen, kann jedoch keine erfolgreiche Zustellung,
-          keine Reaktion Dritter und keine tatsächliche Hilfeleistung garantieren.
-        </p>
-        
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt anchor-offset" id="nutzen">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Nutzen</span>
-        <h2>Wenn jede Minute zählt, braucht es Klarheit</h2>
-
-        <p>
-          In kritischen Situationen besteht häufig nicht nur Zeitdruck, sondern auch ein Mangel an klaren
-          Kommunikationsstrukturen: Zuständigkeiten sind unklar, Reaktionsketten nicht definiert und relevante
-          Informationen nicht unmittelbar verfügbar.
-        </p>
-
-        <p>
-          Safety1 soll dazu beitragen, genau diese Abläufe nachvollziehbarer, strukturierter und kontrollierbarer
-          zu gestalten.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Definierte Erstkontakte</h3>
-          <p>
-            Primär festgelegte Vertrauenspersonen können im Anlassfall priorisiert informiert werden, um eine
-            rasche Erstreaktion aus dem persönlichen Umfeld zu ermöglichen.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Gestufte Eskalation</h3>
-          <p>
-            Erfolgt innerhalb eines festgelegten Zeitfensters keine Reaktion, kann optional eine verifizierte
-            Community im räumlich definierten Umfeld eingebunden werden.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Kontrollierter Rahmen</h3>
-          <p>
-            Der Informationsfluss soll nicht unkontrolliert erfolgen, sondern auf Basis definierter Einstellungen,
-            Freigaben und klar nachvollziehbarer, gestufter Benachrichtigungsschritte (in weiterer Folge auch "Eskalationsstufen" genannt).
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="process-visual-section" id="klarheit-visualisierung">
-  <div class="container">
-    <div class="process-visual-header">
-      <span class="eyebrow">Strukturierter Ablauf</span>
-      <h2>Vom Anlassfall zur kontrollierten Reaktion</h2>
-      <p>
-        Die Visualisierung zeigt, wie Safety1 kritische Situationen in klar nachvollziehbare
-        Benachrichtigungsschritte übersetzen soll – von definierten Erstkontakten bis zur
-        optionalen gestuften Eskalation.
-      </p>
-    </div>
-
-    <div class="process-visual-card">
-      <img
-        src="Safety1_Visualisierung.png"
-        alt="Safety1 Visualisierung: kritische Situation, definierte Erstkontakte, gestufte Eskalation und kontrollierter Rahmen"
-        loading="lazy"
-      />
-    </div>
-  </div>
-</section>
-<section class="section anchor-offset" id="funktion">
+<section class="section section-alt" id="wofuer">
   <div class="container">
     <div class="section-intro">
-      <span class="eyebrow-dark">Funktionsprinzip</span>
-
-      <h2>Funktionsprinzip und Eskalationslogik</h2>
-
+      <span class="eyebrow-dark">Über Safety1</span>
+      <h2>Wofür Safety1 gedacht ist</h2>
       <p class="section-subtitle">
-        So funktioniert der gestufte Benachrichtigungsablauf
+        Safety1 soll nicht den Notruf ersetzen, sondern dort unterstützen, wo klare Kommunikation und definierte Reaktionswege fehlen.
       </p>
-
       <p>
-        Safety1 basiert auf einer mehrstufigen Kommunikationslogik, die individuell konfiguriert werden kann
-        und auf Nachvollziehbarkeit sowie kontrollierter Freigabe beruht.
+        In vielen belastenden Situationen besteht das Problem nicht nur im Ereignis selbst, sondern darin,
+        dass Zuständigkeiten unklar sind, Kontakte nicht rasch genug reagieren oder Unterstützung nicht strukturiert koordiniert wird.
+      </p>
+      <p>
+        Safety1 ist als ergänzendes Werkzeug gedacht, das im privaten und organisatorischen Umfeld nachvollziehbare Abläufe
+        unterstützen soll – mit definierten Erstkontakten, gestufter Benachrichtigung und einer datensensiblen Grundlogik.
       </p>
     </div>
 
-    <div class="steps">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h3>Primäre Kontaktgruppe</h3>
-        <p>
-          Im Vorfeld definierte Personen werden im Anlassfall unmittelbar informiert. Dadurch wird eine
-          priorisierte Verständigung vertrauter Kontakte ermöglicht.
-        </p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Für den entscheidenden Moment</h3>
+        <p>Wenn rasches Informieren wichtiger ist als langes Erklären, soll Safety1 mit einem einfachen Hilfeimpuls unterstützen.</p>
       </div>
-
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h3>Reaktionszeitfenster</h3>
-        <p>
-          Für die primäre Kontaktgruppe kann ein definierter Zeitraum vorgesehen werden, innerhalb dessen
-          eine Reaktion erfolgen kann.
-        </p>
+      <div class="card">
+        <h3>Für kontrollierte Abläufe</h3>
+        <p>Benachrichtigungen sollen nicht unkontrolliert verbreitet werden, sondern in einer vorher festgelegten Reihenfolge erfolgen.</p>
       </div>
-
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h3>Erweiterte Community</h3>
-        <p>
-          Erfolgt innerhalb dieses Zeitfensters keine Reaktion, kann optional eine zusätzliche, verifizierte
-          Community im geografisch definierten Umfeld eingebunden werden, um die Wahrscheinlichkeit einer
-          unterstützenden Reaktion zu erhöhen. Mit „verifiziert“ ist dabei gemeint, dass eine Teilnahme nicht
-          völlig anonym und unkontrolliert erfolgen soll, sondern nur auf Basis definierter Prüf- und
-          Freigabeschritte.
-        </p>
-      </div>
-
-      <div class="step-card">
-        <div class="step-number">4</div>
-        <h3>Unterstützungskoordination</h3>
-        <p>
-          Eingehende Rückmeldungen können strukturiert erfasst und zur weiteren
-          Abstimmung genutzt werden. Die Einbindung zusätzlicher Personen oder
-          Strukturen erfolgt ausschließlich auf Basis vordefinierter Einstellungen.
-        </p>
-
-        <p>
-          Vorbehaltlich rechtlicher, technischer und organisatorischer Zulässigkeit
-          ist perspektivisch angedacht, am Ende einer Eskalationskette auch geeignete
-          professionelle Hilfsorganisationen oder Einsatzstrukturen einbinden zu können.
-          Safety1 ersetzt dabei keine bestehenden Notrufsysteme.
-        </p>
+      <div class="card">
+        <h3>Für reale Alltagssituationen</h3>
+        <p>Von Familien über Betreuungssituationen bis zu Events, definierten Wegen oder ergänzenden Wearables ist der Nutzen praxisnah gedacht.</p>
       </div>
     </div>
   </div>
 </section>
 
-  <section id="event-modus" class="section section-soft">
+<section class="section" id="warum">
   <div class="container">
-    <div class="section-kicker">Anwendungsfall</div>
-    <h2>Safety1 Event-Modus</h2>
-    <p class="section-lead">
-      Für Festivals, Konzerte und größere Veranstaltungen soll Safety1 künftig eine
-      temporäre Gruppenverbindung ermöglichen – damit vertraute Personen während
-      eines Events besser aufeinander achten können.
-    </p>
+    <div class="section-intro">
+      <span class="eyebrow-dark">Warum Safety1</span>
+      <h2>Warum man weiterlesen sollte</h2>
+      <p class="section-subtitle">
+        Safety1 richtet sich an Situationen, in denen klassische Kommunikation oft zu langsam, zu unklar oder zu unstrukturiert ist.
+      </p>
+      <p>
+        In belastenden oder unübersichtlichen Momenten fehlt häufig nicht nur Zeit, sondern auch ein sauberer Ablauf:
+        Wen informiere ich zuerst? Wer reagiert wirklich? Was passiert, wenn niemand reagiert?
+      </p>
+      <p>
+        Genau dort setzt Safety1 an: mit einem einfachen Auslöseimpuls, vordefinierten Kontakten, klarer Reihenfolge und optionalen weiteren Benachrichtigungsschritten.
+      </p>
+    </div>
 
-    <div class="event-card">
-      <div class="event-content">
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon-badge">1</div>
+        <h3>Nutzen sofort erkennbar</h3>
+        <p>Statt in einer Stresssituation alles manuell organisieren zu müssen, soll ein definierter Ablauf mit wenigen Schritten gestartet werden können.</p>
+      </div>
+      <div class="card">
+        <div class="icon-badge">2</div>
+        <h3>Kein unkontrolliertes Alarmieren</h3>
+        <p>Safety1 verfolgt keine offene Alarmierungslogik, sondern eine gestufte Benachrichtigung mit vorher festgelegten Personen und Regeln.</p>
+      </div>
+      <div class="card">
+        <div class="icon-badge">3</div>
+        <h3>Alltagstauglich gedacht</h3>
+        <p>Neben dem klassischen Hilfe-Impuls sind auch Bereiche, Wege, Event-Modus und ergänzende Wearables als praktische Nutzungsszenarien vorgesehen.</p>
+      </div>
+    </div>
+
+    <div class="comparison">
+      <div class="box">
+        <h3>Was viele bestehende Lösungen oft sind</h3>
+        <ul>
+          <li>entweder reiner Notrufgedanke</li>
+          <li>oder reine Standortfreigabe</li>
+          <li>oder unklare Gruppenkommunikation</li>
+          <li>oft ohne gestufte Logik</li>
+        </ul>
+      </div>
+      <div class="box us">
+        <h3>Was Safety1 besonders machen soll</h3>
+        <ul>
+          <li>einfacher Hilfe-Impuls</li>
+          <li>gestufter Benachrichtigungsablauf</li>
+          <li>definierte Primärkontakte</li>
+          <li>optionale verifizierte Community</li>
+          <li>zusätzliche Modi wie Event, Bereiche und Wege</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="so-funktionierts">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">So funktioniert’s</span>
+      <h2>Der Ablauf in einfach</h2>
+      <p class="section-subtitle">
+        Die häufigste Rückfrage war: Muss ich die App öffnen? Wie rufe ich Hilfe? Was passiert dann?
+      </p>
+      <p>
+        Die genaue spätere Bedienung kann sich noch ändern. Das Grundprinzip ist aber einfach:
+        Eine Person löst in der App oder perspektivisch über eine ergänzende Lösung einen Hilfeimpuls aus,
+        definierte Kontakte werden informiert und – wenn nötig – weitere Schritte werden nach klaren Regeln ausgelöst.
+      </p>
+    </div>
+
+    <div class="steps-simple">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Hilfe auslösen</h3>
+        <p>Im Anlassfall wird ein Hilfeimpuls ausgelöst – künftig je nach Ausgestaltung in der App oder über ergänzende Lösungen besonders einfach und schnell.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Primärkontakte informieren</h3>
+        <p>Zuerst werden im Vorfeld definierte Vertrauenspersonen benachrichtigt, damit das persönliche Umfeld priorisiert reagieren kann.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Falls nötig weiter eskalieren</h3>
+        <p>Erfolgt keine Reaktion, kann – je nach Einstellung – ein weiterer, kontrollierter Benachrichtigungsschritt ausgelöst werden.</p>
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <img src="Safety1_Visualisierung.png" alt="Safety1 Visualisierung mit Anlassfall, Primärkontakten und gestufter Eskalation" loading="lazy">
+    </div>
+
+    <div class="grid-2" style="margin-top:22px;">
+      <div class="info-box">
+        <h3>Primäre Kontaktgruppe</h3>
+        <p>Im Vorfeld definierte Personen werden zuerst informiert. So bleibt der erste Schritt vertraut, nachvollziehbar und kontrolliert.</p>
+      </div>
+      <div class="info-box">
+        <h3>Optionale weitere Eskalation</h3>
+        <p>Wenn innerhalb eines Zeitfensters keine Reaktion erfolgt, kann optional eine verifizierte Community im definierten Umfeld eingebunden werden.</p>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:22px;">
+      <h3>Wichtige Abgrenzung</h3>
+      <p>
+        Safety1 ist ausdrücklich nicht als Ersatz für Notrufnummern, Rettungsorganisationen, Polizei, Feuerwehr oder sonstige professionelle Hilfe gedacht.
+        In akuten Notfällen sind weiterhin unverzüglich die offiziellen Notrufnummern zu kontaktieren.
+      </p>
+    </div>
+
+    <div class="section-intro" style="margin-top:34px;">
+      <span class="eyebrow-dark">Vertiefung</span>
+      <h2>Funktionsprinzip und Eskalationslogik im Detail</h2>
+      <p>
+        Der spätere Ablauf kann je nach Produktstand noch angepasst werden. Das Grundprinzip bleibt aber eine kontrollierte,
+        nachvollziehbare Reihenfolge statt einer unklaren Alarmierung an beliebige Personen.
+      </p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <h3>1. Primäre Kontaktgruppe</h3>
+        <p>Im Vorfeld definierte Vertrauenspersonen werden zuerst informiert. So bleibt der erste Schritt persönlich und priorisiert.</p>
+      </div>
+      <div class="card">
+        <h3>2. Reaktionszeitfenster</h3>
+        <p>Für diese primäre Kontaktgruppe kann ein definierter Zeitraum vorgesehen werden, innerhalb dessen eine Reaktion möglich ist.</p>
+      </div>
+      <div class="card">
+        <h3>3. Erweiterte Community</h3>
+        <p>Erfolgt keine Reaktion, kann optional eine zusätzliche verifizierte Community im definierten Umfeld eingebunden werden.</p>
+      </div>
+      <div class="card">
+        <h3>4. Weitere Koordination</h3>
+        <p>Rückmeldungen können strukturiert erfasst werden. Perspektivisch sind – vorbehaltlich rechtlicher und technischer Zulässigkeit – auch weitere Eskalationspfade denkbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="event-modus">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">Anwendungsfall</span>
+      <h2>Event-Modus: gut verständlich, sofort greifbar</h2>
+      <p>
+        Gerade bei Festivals, Konzerten oder größeren Veranstaltungen ist der Nutzen besonders leicht verständlich:
+        Eine temporäre Gruppe bleibt während eines Events verbunden und kann sich bei Bedarf schneller unterstützen.
+      </p>
+    </div>
+
+    <div class="visual-card" style="margin-bottom:24px;">
+      <img src="safety1-video-poster.png" alt="Safety1 Event- und Anwendungsszenarien visuell angeteasert" loading="lazy">
+    </div>
+
+    <div class="event-layout">
+      <div class="card">
         <h3>Temporär verbunden – nur für die Dauer des Events</h3>
         <p>
-          Gerade bei Festivals oder großen Veranstaltungen kann es schnell passieren,
-          dass sich Gruppenmitglieder aus den Augen verlieren, Hilfe benötigen oder
-          einen gemeinsam vereinbarten Bereich verlassen.
+          Im Safety1 Event-Modus könnten sich mehrere Personen für eine Veranstaltung zu einer temporären Gruppe verbinden –
+          etwa über Code, QR-Code oder Einladung.
         </p>
-
         <p>
-          Im Safety1 Event-Modus könnten sich mehrere Personen für die Dauer einer
-          Veranstaltung zu einer temporären Gruppe verbinden – zum Beispiel über
-          einen Gruppen-Code, QR-Code oder eine andere sichere Kopplungsfunktion.
+          Benötigt eine Person Unterstützung oder verlässt einen gemeinsam definierten Bereich, können die verbundenen Gruppenmitglieder informiert werden.
         </p>
-
         <p>
-          Benötigt eine Person Unterstützung, können die verbundenen Gruppenmitglieder
-          informiert und – sofern freigegeben – mit einer Standortangabe benachrichtigt
-          werden. Zusätzlich könnte ein gemeinsam definierter Aufenthaltsbereich
-          hinterlegt werden, damit die Gruppe eine Meldung erhält, wenn eine Person
-          diesen Bereich verlässt.
-        </p>
-
-        <p>
-          Die Verbindung wäre zeitlich begrenzt, zweckgebunden und nur für die jeweilige
-          Veranstaltung vorgesehen. Nach Ende des Events kann die temporäre Gruppe
-          automatisch oder manuell beendet werden.
-        </p>
-
-        <p class="event-note">
-          Safety1 ersetzt keinen offiziellen Notruf, keinen Sicherheitsdienst und keine
-          behördlichen Einsatzkräfte. Der Event-Modus soll vielmehr helfen, innerhalb
-          einer vertrauten Gruppe schneller zu reagieren und Unterstützung besser zu
-          organisieren.
+          Die Verbindung wäre zeitlich begrenzt und zweckgebunden. Nach Ende des Events kann die Gruppe automatisch oder manuell beendet werden.
         </p>
       </div>
 
       <div class="event-steps">
-        <div class="event-step">
-          <span>1</span>
-          <strong>Gruppe erstellen</strong>
-          <p>Eine Person legt für das Festival oder Event eine temporäre Gruppe an.</p>
+        <div class="mini-card">
+          <strong>1. Gruppe erstellen</strong>
+          Eine Person legt für das Event eine temporäre Gruppe an.
         </div>
-
-        <div class="event-step">
-          <span>2</span>
-          <strong>Personen verbinden</strong>
-          <p>Freunde oder Familienmitglieder treten über Code, QR-Code oder Einladung bei.</p>
+        <div class="mini-card">
+          <strong>2. Personen verbinden</strong>
+          Freunde oder Familienmitglieder treten über Code, QR-Code oder Einladung bei.
         </div>
-
-        <div class="event-step">
-          <span>3</span>
-          <strong>Bereich definieren</strong>
-          <p>Optional wird ein gemeinsamer Aufenthaltsbereich für das Event festgelegt.</p>
+        <div class="mini-card">
+          <strong>3. Bereich definieren</strong>
+          Optional kann ein gemeinsamer Aufenthaltsbereich festgelegt werden.
         </div>
-
-        <div class="event-step">
-          <span>4</span>
-          <strong>Im Ernstfall informieren</strong>
-          <p>Bei Unterstützungsbedarf oder Verlassen des Bereichs wird die Gruppe benachrichtigt.</p>
+        <div class="mini-card">
+          <strong>4. Im Ernstfall informieren</strong>
+          Bei Unterstützungsbedarf oder Verlassen des Bereichs wird die Gruppe benachrichtigt.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-  <section id="wearables" class="section wearables-section">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">Ergänzende Safety1-Lösungen</p>
-      <h2>Wearables für schnelle Hilfe im Alltag</h2>
-      <p class="lead">
-        Safety1 soll künftig nicht nur über das Smartphone gedacht werden. Ergänzende Wearables können
-        dabei helfen, einen Notruf schneller, diskreter und alltagstauglicher auszulösen – besonders dann,
-        wenn das Smartphone nicht griffbereit ist oder eine besonders einfache Bedienung wichtig ist.
-      </p>
-    </div>
-
-    <div class="wearables-showcase">
-      <img
-        src="Safety1_Wearables.png"
-        alt="Safety1 Wearables mit Armband, Umhänger, Smartwatch-Button, Aufsteckring, GPS-Aufnäher für Kinder und Einlegesender für Schuhe"
-        loading="lazy"
-      >
-    </div>
-
-    <div class="wearables-content-grid">
-      <article class="wearables-text-card">
-        <h3>Diskrete Auslösung im Alltag</h3>
-        <p>
-          Ein Safety1-Armband, ein Umhänger oder ein kompakter Button könnten ermöglichen, rasch Hilfe
-          anzufordern, ohne zuerst das Smartphone suchen oder entsperren zu müssen.
-        </p>
-      </article>
-
-      <article class="wearables-text-card">
-        <h3>Ergänzung für Kinder und Familien</h3>
-        <p>
-          Denkbar sind Lösungen wie ein GPS-Aufnäher, ein Einlegesender für Schuhe oder ein tragbarer
-          Begleiter für Schulweg, Freizeit, Veranstaltungen oder definierte Sicherheitsbereiche.
-        </p>
-      </article>
-
-      <article class="wearables-text-card">
-        <h3>Flexible Erweiterung des Safety1-Systems</h3>
-        <p>
-          Wearables können das Safety1-System perspektivisch ergänzen – etwa für Senioren, alleinlebende
-          Personen, Betreuungssituationen, Kinder oder Gruppen bei Veranstaltungen.
-        </p>
-      </article>
-    </div>
-
-    <div class="wearables-disclaimer">
-      <strong>Hinweis:</strong>
-      Die dargestellten Wearables zeigen mögliche ergänzende Produktideen und Entwicklungsrichtungen.
-      Umfang, technische Umsetzung, Zertifizierung und Verfügbarkeit können sich im weiteren
-      Entwicklungsprozess ändern.
-    </div>
-  </div>
-</section>
-
- <section class="section section-alt anchor-offset s1aw-section" id="bereiche">
+<section class="section section-alt" id="bereiche">
   <div class="container">
     <div class="section-intro">
-      <span class="eyebrow-dark">Bereiche &amp; Wege</span>
-      <h2>Bereiche, Wege &amp; Standortlogik</h2>
-
+      <span class="eyebrow-dark">Bereiche & Wege</span>
+      <h2>Bereiche, Wege und Standortlogik</h2>
       <p>
-        Safety1 soll perspektivisch mit festgelegten Aufenthaltsbereichen und geplanten Wegen arbeiten können.
-        Dadurch können bestimmte Situationen strukturierter eingeordnet werden, ohne dass eine permanente
-        Echtzeitüberwachung im Vordergrund steht.
-      </p>
-
-      <p>
-        Die dargestellten Funktionen sind konzeptionell zu verstehen und abhängig von technischer,
-        rechtlicher und organisatorischer Umsetzbarkeit.
+        Safety1 soll perspektivisch auch mit festgelegten Aufenthaltsbereichen und geplanten Wegen arbeiten können.
+        So können bestimmte Situationen strukturierter eingeordnet werden, ohne dass permanentes Live-Tracking im Vordergrund steht.
       </p>
     </div>
 
-    <div class="s1aw-grid">
+    <div class="visual-card" style="margin-bottom:24px;">
+      <img src="Safety1_Visualisierung.png" alt="Safety1 Visualisierung zu kontrollierten Abläufen, Bereichen und Wegen" loading="lazy">
+    </div>
 
-      <!-- DEFINIERTE BEREICHE -->
-      <article class="s1aw-card">
+    <div class="areas-layout">
+      <div class="card">
         <h3>Definierte Bereiche</h3>
-
-        <div class="s1aw-map s1aw-area-map" aria-label="Schematische Darstellung definierter Bereiche">
-          <div class="s1aw-area-zone"></div>
-
-          <div class="s1aw-pill s1aw-area-pill">
-            Festgelegter<br>Aufenthaltsbereich
-          </div>
-
-          <div class="s1aw-area-alert-node"></div>
-
-          <div class="s1aw-pill s1aw-area-alert-pill">
-            Letzter bekannter<br>Aufenthaltsort
-          </div>
-        </div>
-
-        <p class="s1aw-text">
-          Für bestimmte Orte kann ein festgelegter Aufenthaltsbereich definiert werden.
-          Eine Benachrichtigung ist insbesondere dann denkbar, wenn der Bereich verlassen wird.
-          Der letzte bekannte Aufenthaltsort kann in diesem Fall außerhalb des festgelegten Bereichs
-          als Orientierungspunkt dargestellt werden.
+        <p>
+          Für bestimmte Orte kann ein Aufenthaltsbereich festgelegt werden. Denkbar ist eine Meldung, wenn dieser Bereich verlassen wird.
         </p>
-
-        <div class="s1aw-mini-grid s1aw-mini-grid-two">
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">1</span>
-            <div class="s1aw-mini-icon">⌖</div>
-            <p>Festgelegten Aufenthaltsbereich definieren</p>
-          </div>
-
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">2</span>
-            <div class="s1aw-mini-icon">◎</div>
-            <p>Letzten bekannten Aufenthaltsort außerhalb des Bereichs darstellen</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- GEPLANTE WEGE -->
-      <article class="s1aw-card">
-        <h3>Geplante Wege</h3>
-
-        <div class="s1aw-map s1aw-route-map" aria-label="Schematische Darstellung geplanter Wege">
-          <svg class="s1aw-route-svg" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
-            <!-- Hauptkorridor in Grün -->
-            <path
-              class="s1aw-route-corridor-main"
-              d="M80 255
-                 C150 155, 260 135, 360 210
-                 C430 260, 520 265, 610 220
-                 C700 175, 785 165, 920 195" />
-
-            <!-- Hauptlinie in Grün -->
-            <path
-              class="s1aw-route-line-main"
-              d="M80 255
-                 C150 155, 260 135, 360 210
-                 C430 260, 520 265, 610 220
-                 C700 175, 785 165, 920 195" />
-
-            <!-- Bordeaux-Abzweigung / Abweichungsbereich -->
-            <path
-              class="s1aw-route-corridor-branch"
-              d="M595 223
-                 C650 265, 700 310, 760 345" />
-
-            <!-- Bordeaux-Abweichungslinie -->
-            <path
-              class="s1aw-route-line-branch"
-              d="M595 223
-                 C650 265, 700 310, 760 345" />
-          </svg>
-
-          <div class="s1aw-route-node s1aw-route-start-node"></div>
-          <div class="s1aw-route-node s1aw-route-end-node"></div>
-          <div class="s1aw-route-node s1aw-route-alert-node"></div>
-
-          <div class="s1aw-pill s1aw-route-start-pill">Startpunkt</div>
-          <div class="s1aw-pill s1aw-route-corridor-pill">Wegkorridor</div>
-          <div class="s1aw-pill s1aw-route-end-pill">Zielpunkt</div>
-          <div class="s1aw-pill s1aw-route-alert-pill">Letzter bekannter Punkt</div>
-        </div>
-
-        <p class="s1aw-text">
-          Bei geplanten Wegen können Startpunkt, Wegkorridor, Zielpunkt sowie Zeit und Puffer
-          konzeptionell festgelegt werden. Erfolgt keine Ankunft innerhalb des vorgesehenen
-          Zeitfensters oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung
-          ausgelöst werden.
+        <p>
+          Der letzte bekannte Aufenthaltsort kann in diesem Fall als Orientierungspunkt dargestellt werden.
         </p>
-
-        <div class="s1aw-mini-grid s1aw-mini-grid-four">
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">1</span>
-            <div class="s1aw-mini-icon">⌖</div>
-            <p>Startpunkt und Wegkorridor festlegen</p>
-          </div>
-
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">2</span>
-            <div class="s1aw-mini-icon">◎</div>
-            <p>Zielpunkt festlegen</p>
-          </div>
-
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">3</span>
-            <div class="s1aw-mini-icon">◷</div>
-            <p>Zeit + Puffer festlegen</p>
-          </div>
-
-          <div class="s1aw-mini-card">
-            <span class="s1aw-mini-number">4</span>
-            <div class="s1aw-mini-icon">◔</div>
-            <p>Benachrichtigung bei ausbleibender Ankunft</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- ERGÄNZENDE MÖGLICHKEITEN -->
-      <article class="s1aw-card s1aw-extra-card">
-        <h3>Ergänzende konzeptionelle Möglichkeiten</h3>
-
-        <div class="s1aw-extra-grid">
-          <div class="s1aw-extra-item">
-            <div class="s1aw-extra-icon">▤</div>
-            <div>
-              <h4>Wegstrecken- &amp; Zeitabgleich</h4>
-              <p>
-                Eine Benachrichtigung könnte auch dann erfolgen, wenn anhand von Wegstrecke
-                und Zeitabweichung auffällt, dass sich eine Person unberechtigt in einem
-                Zug oder Auto befindet.
-              </p>
-            </div>
-          </div>
-
-          <div class="s1aw-extra-item">
-            <div class="s1aw-extra-icon">♡</div>
-            <div>
-              <h4>Wearables &amp; Sturzerkennung</h4>
-              <p>
-                Bei Nutzung geeigneter Wearables könnte zudem ein erkannter Sturz als
-                zusätzlicher Hinweis berücksichtigt werden, insbesondere bei hilfsbedürftigen
-                Personen.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <p class="s1aw-note">
-          Die dargestellten Funktionen sind konzeptionell und abhängig von technischer,
-          rechtlicher und organisatorischer Umsetzbarkeit. Safety1 ersetzt keine bestehenden
-          Notrufsysteme.
+        <h3 style="margin-top:22px;">Geplante Wege</h3>
+        <p>
+          Bei geplanten Wegen können Startpunkt, Ziel, Zeit und Puffer festgelegt werden. Erfolgt keine Ankunft oder wird eine auffällige Abweichung erkannt, kann eine Benachrichtigung ausgelöst werden.
         </p>
-      </article>
+      </div>
 
+      <div class="areas-points">
+        <div class="mini-card">
+          <strong>Festgelegter Aufenthaltsbereich</strong>
+          Bereich definieren und auffälliges Verlassen erkennen.
+        </div>
+        <div class="mini-card">
+          <strong>Geplanter Weg</strong>
+          Startpunkt, Ziel und Zeitfenster als Orientierung festlegen.
+        </div>
+        <div class="mini-card">
+          <strong>Letzter bekannter Punkt</strong>
+          Kann im Anlassfall als zusätzliche Orientierung dienen.
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:22px;">
+      <h3>Kein permanentes Live-Tracking als Grundidee</h3>
+      <p>
+        Vorgesehen ist ausdrücklich kein permanentes, lückenloses Dauertracking als Standardfunktion,
+        sondern eine geregelte, zweckgebundene Standortlogik im Rahmen definierter Situationen.
+      </p>
     </div>
   </div>
 </section>
 
-  <section class="section anchor-offset" id="zielgruppen">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Zielgruppen</span>
-        <h2>Zielgruppen</h2>
+<section class="section" id="wearables">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">Wearables</span>
+      <h2>Ergänzende Lösungen für schnelle Hilfe im Alltag</h2>
+      <p>
+        Safety1 soll künftig nicht nur über das Smartphone gedacht werden. Ergänzende Wearables könnten helfen,
+        einen Hilfeimpuls schneller, diskreter und alltagstauglicher auszulösen – besonders dann, wenn das Smartphone nicht griffbereit ist.
+      </p>
+    </div>
 
+    <div class="wearables-layout">
+      <div class="card">
+        <img src="Safety1_Wearables.png" alt="Safety1 Wearables mit Armband, Umhänger, Smartwatch, Ring, Aufnäher und Einlegesender" loading="lazy" style="border-radius:16px;margin-bottom:18px;">
         <p>
-          Safety1 ist für Anwendungsfälle gedacht, in denen definierte Kommunikationswege, klare Zuständigkeiten
-          und rasche Erreichbarkeit besonders relevant sein können.
+          Denkbar sind etwa Armbänder, Umhänger, Buttons, Ringe, Aufnäher oder ergänzende Lösungen für Kinder, Senioren und Betreuungssituationen.
         </p>
       </div>
 
-      <div class="grid-4">
-        <div class="card">
-          <h3>Familien und Angehörige</h3>
-          <p>
-            Für private Konstellationen, in denen vertraute Personen im Anlassfall strukturiert eingebunden
-            werden sollen.
-          </p>
+      <div class="grid-1">
+        <div class="card highlight">
+          <h3>Diskrete Auslösung</h3>
+          <p>Ein Hilfeimpuls könnte schneller ausgelöst werden, ohne zuerst das Smartphone suchen oder entsperren zu müssen.</p>
         </div>
-
-        <div class="card">
-          <h3>Betreuungssituationen</h3>
-          <p>
-            Für Szenarien mit Kindern, älteren Personen oder sonstigen Konstellationen, in denen eine klare,
-            definierte Unterstützungslogik sinnvoll ist.
-          </p>
+        <div class="card highlight" style="margin-top:18px;">
+          <h3>Familien und Betreuung</h3>
+          <p>Besonders relevant für Kinder, ältere Personen, alleinlebende Menschen oder bestimmte Betreuungssituationen.</p>
         </div>
-
-        <div class="card">
-          <h3>Alleinlebende Personen</h3>
-          <p>
-            Für Menschen, die sich eine zusätzliche, kontrollierte Möglichkeit wünschen, im Anlassfall rasch
-            Unterstützung aus dem persönlichen oder erweiterten Umfeld zu organisieren.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Organisationen</h3>
-          <p>
-            Für organisatorische Umfelder mit definierten Rollen, Verantwortlichkeiten und Bedarf an klar
-            strukturierter Kommunikation.
-          </p>
+        <div class="card highlight" style="margin-top:18px;">
+          <h3>Konzeptionell gedacht</h3>
+          <p>Die dargestellten Wearables zeigen mögliche Entwicklungsrichtungen. Umfang, Umsetzung und Verfügbarkeit können sich noch ändern.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section section-alt anchor-offset" id="werte">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Grundprinzipien</span>
-        <h2>Werte und Grundprinzipien</h2>
+
+<section class="section section-alt" id="werte">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">Grundprinzipien</span>
+      <h2>Werte und Grundprinzipien</h2>
+      <p>
+        Safety1 soll nicht nur funktional, sondern auch verantwortungsvoll gedacht sein. Im Vordergrund stehen klare Abläufe,
+        bewusster Umgang mit Informationen und ein kontrollierter Rahmen.
+      </p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <h3>Nachvollziehbarkeit</h3>
+        <p>Klare, verständliche Abläufe statt unstrukturierter Alarmierung.</p>
       </div>
-
-      <div class="grid-4">
-        <div class="card">
-          <h3>Nachvollziehbarkeit</h3>
-          <p>
-            Klare, verständliche Abläufe statt unstrukturierter Alarmierung.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Kontrolle</h3>
-          <p>
-            Definierte Freigaben, Zuständigkeiten und Eskalationsstufen statt unkontrollierter Reichweite.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Datensensibilität</h3>
-          <p>
-            Bewusster Umgang mit Informationen und Zurückhaltung bei der Verarbeitung sensibler Daten.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Weiterentwicklung</h3>
-          <p>
-            Iterative Verbesserung auf Basis technischer, organisatorischer und praktischer Erkenntnisse.
-          </p>
-        </div>
+      <div class="card">
+        <h3>Kontrolle</h3>
+        <p>Definierte Freigaben, Rollen und Eskalationsstufen statt unkontrollierter Reichweite.</p>
+      </div>
+      <div class="card">
+        <h3>Datensensibilität</h3>
+        <p>Keine Dauerüberwachung als Grundidee, sondern zweckgebundene Logik für definierte Situationen.</p>
+      </div>
+      <div class="card">
+        <h3>Weiterentwicklung</h3>
+        <p>Safety1 befindet sich in Entwicklung und soll auf Basis von Feedback, Praxisnähe und technischer Machbarkeit weiter geschärft werden.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section anchor-offset" id="warteliste">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Projektstatus</span>
-        <h2>Projektstatus und Warteliste</h2>
+<section class="section section-alt" id="zielgruppen">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">Zielgruppen</span>
+      <h2>Für wen Safety1 gedacht ist</h2>
+      <p>
+        Safety1 ist für Anwendungsfälle gedacht, in denen definierte Kommunikationswege, klare Zuständigkeiten und rasche Erreichbarkeit besonders relevant sein können.
+      </p>
+    </div>
 
-        <p>
-          Safety1 befindet sich derzeit in der Entwicklungsphase. Ziel ist es, eine praxistaugliche,
-          verantwortungsvoll gestaltete Lösung zu entwickeln, die im Alltag verständlich bleibt und
-          im Anlassfall strukturierte Kommunikation unterstützt.
-        </p>
-
-        <p>
-          Interessierte Personen können sich unverbindlich für Informationen zum Projektstand und
-          zu ausgewählten Entwicklungsschritten vormerken.
-        </p>
+    <div class="grid-4">
+      <div class="card">
+        <h3>Familien und Angehörige</h3>
+        <p>Für private Konstellationen, in denen vertraute Personen im Anlassfall strukturiert eingebunden werden sollen.</p>
       </div>
-
-      <div class="cta">
-        <h2>Jetzt unverbindlich vormerken</h2>
-        <p>
-          Trage dich in die Warteliste ein, um Informationen zum Projektfortschritt und zum geplanten
-          Produktstart zu erhalten.
-        </p>
-
-        <div class="btn-row" style="margin-top:18px;">
-          <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
-        </div>
-        
-        <p class="small" style="color:rgba(255,255,255,0.84);">
-          Die unverbindliche Vormerkung erfolgt über das Formular im oberen Seitenbereich.
-        </p>
+      <div class="card">
+        <h3>Betreuungssituationen</h3>
+        <p>Für Kinder, ältere Personen oder andere Konstellationen, in denen eine klare Unterstützungslogik hilfreich sein kann.</p>
+      </div>
+      <div class="card">
+        <h3>Alleinlebende Personen</h3>
+        <p>Für Menschen, die sich im Anlassfall eine zusätzliche, kontrollierte Möglichkeit zur Hilfeorganisation wünschen.</p>
+      </div>
+      <div class="card">
+        <h3>Organisationen und Gruppen</h3>
+        <p>Für Umfelder mit definierten Rollen, Verantwortlichkeiten und Bedarf an klar strukturierter Kommunikation.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section section-alt anchor-offset" id="faq">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Häufige Fragen</span>
-        <h2>FAQ</h2>
+<section class="section" id="warteliste">
+  <div class="container">
+    <div class="cta-box">
+      <span class="eyebrow">Projektstatus</span>
+      <h2>Safety1 befindet sich derzeit in Entwicklung</h2>
+      <p>
+        Ziel ist eine praxistaugliche, verantwortungsvoll gestaltete Lösung, die im Alltag verständlich bleibt
+        und im Anlassfall strukturierte Kommunikation unterstützt.
+      </p>
+      <div class="btn-row" style="margin-top:18px;">
+        <a href="#warteliste-formular" class="btn btn-primary">Jetzt unverbindlich vormerken</a>
       </div>
+      <p class="small" style="color:rgba(255,255,255,.84);margin-top:14px;">
+        Die Vormerkung erfolgt über das Formular im oberen Seitenbereich.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <div class="faq">
-        <div class="faq-item">
-          <h3>Ist Safety1 bereits verfügbar?</h3>
-          <p>
-            Safety1 befindet sich derzeit in Entwicklung. Ein konkreter Produktumfang, ein finaler
-            Veröffentlichungstermin sowie einzelne Funktionen können sich bis zum Marktstart ändern.
-          </p>
-        </div>
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">FAQ</span>
+      <h2>Häufige Fragen</h2>
+    </div>
 
-        <div class="faq-item">
-          <h3>Ersetzt Safety1 den Notruf?</h3>
-          <p>
-            Nein. Safety1 ist ausdrücklich nicht als Ersatz für Notrufnummern, Rettungsdienste, Polizei,
-            Feuerwehr oder sonstige professionelle Hilfe gedacht. In akuten Notfällen sind weiterhin
-            unverzüglich die zuständigen offiziellen Notrufnummern zu kontaktieren.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Garantiert Safety1 Hilfe im Ernstfall?</h3>
-          <p>
-            Nein. Safety1 kann weder die Zustellung von Benachrichtigungen noch Reaktionen Dritter oder
-            tatsächliche Hilfeleistungen garantieren. Dies hängt unter anderem von technischen Voraussetzungen,
-            Gerätestatus, Netzverfügbarkeit, individuellen Einstellungen und dem tatsächlichen Verhalten
-            eingebundener Personen ab.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Was bedeutet das Best-Effort-Prinzip bei Safety1?</h3>
-            <p>
-              Safety1 ist als unterstützende digitale Lösung konzipiert, die im Anlassfall definierte Benachrichtigungs-
-              und Ablaufschritte bestmöglich auslösen soll. Die Anwendung arbeitet dabei nach einem Best-Effort-Prinzip.
-            </p>
-            <p>
-              Das bedeutet, dass Safety1 Funktionen und Abläufe nach Maßgabe der technischen, organisatorischen und tatsächlichen
-              Möglichkeiten bereitstellt, jedoch keine Garantie für eine erfolgreiche Zustellung, eine Reaktion Dritter,
-              eine ständige Verfügbarkeit oder das tatsächliche Eintreffen von Hilfe übernehmen kann.
-            </p>
-            <p>
-              Die Wirksamkeit einzelner Abläufe kann insbesondere von der Netzverbindung, dem Gerätestatus, individuellen
-              Einstellungen, der Erreichbarkeit eingebundener Personen, technischen Drittservices sowie vom tatsächlichen
-              Verhalten der kontaktierten Personen abhängen.
-            </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Was bedeutet bei Safety1 „dringend“ oder „zeitkritisch“?</h3>
-          <p>
-            Gemeint sind Situationen, in denen rasches Handeln oder eine schnelle Kontaktaufnahme besonders wichtig sein kann.
-            Das bedeutet nicht automatisch, dass bereits ein akuter Notfall vorliegt, sondern dass eine zeitnahe Reaktion
-            hilfreich oder sinnvoll sein kann.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Was bedeutet ein gestufter Benachrichtigungsablauf?</h3>
-          <p>
-            Gemeint ist, dass Benachrichtigungen nicht unkontrolliert an beliebige Personen gesendet werden, sondern in
-            einer klar definierten Reihenfolge. Zunächst werden vordefinierte Kontakte eingebunden. Erfolgt dort keine
-            Reaktion, kann – je nach Einstellung – ein weiterer Benachrichtigungsschritt ausgelöst werden.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Ist die Bereichs- und Standortlogik ein Live-Tracking?</h3>
-          <p>
-            Nein. Vorgesehen ist ausdrücklich kein permanentes Live-Tracking, sondern eine geregelte
-            Standortüberprüfung in definierten Intervallen innerhalb eines vorab festgelegten Rahmens.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Was bedeutet „letzte bekannte Position“?</h3>
-          <p>
-            Gemeint ist ein technisch erfasster letzter Standortpunkt, der im Anlassfall als Orientierung
-            dienen kann. Eine lückenlose, permanente oder jederzeit aktuelle Echtzeit-Ortung ist damit
-            nicht verbunden.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Was bedeutet „verifizierte Community“ bei Safety1?</h3>
-          <p>
-            Mit „verifizierte Community“ ist gemeint, dass zusätzliche unterstützende Personen nicht völlig anonym
-            und unkontrolliert eingebunden werden sollen. Eine Teilnahme soll nur auf Basis definierter Prüf- und
-            Freigabeschritte erfolgen.
-          </p>
-          <p>
-            Der konkrete Umfang dieser Verifizierung kann je nach Entwicklungsstand, technischer Umsetzung,
-            Rolle der betreffenden Person und vorgesehenem Einsatzbereich unterschiedlich ausgestaltet werden.
-            Safety1 verfolgt dabei ausdrücklich nicht das Ziel einer offenen, unkontrollierten Alarmierungsplattform.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Werden Funktionen noch geändert?</h3>
-          <p>
-            Ja. Da sich Safety1 in Entwicklung befindet, können Funktionen, Inhalte, Abläufe und technische
-            Umsetzungen jederzeit angepasst, erweitert, eingeschränkt oder verworfen werden.
-          </p>
-        </div>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>Ist Safety1 bereits verfügbar?</h3>
+        <p>Safety1 befindet sich derzeit in Entwicklung. Produktumfang, Veröffentlichungstermin und Funktionen können sich bis zum Marktstart noch ändern.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ersetzt Safety1 den Notruf?</h3>
+        <p>Nein. Safety1 ist ausdrücklich nicht als Ersatz für Notrufnummern, Rettungsdienste, Polizei, Feuerwehr oder sonstige professionelle Hilfe gedacht.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Garantiert Safety1 Hilfe im Ernstfall?</h3>
+        <p>Nein. Safety1 kann weder die Zustellung von Benachrichtigungen noch Reaktionen Dritter oder tatsächliche Hilfeleistungen garantieren.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Was bedeutet „verifizierte Community“?</h3>
+        <p>Zusätzliche unterstützende Personen sollen nicht völlig anonym und unkontrolliert eingebunden werden, sondern nur auf Basis definierter Prüf- und Freigabeschritte.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ist die Standortlogik ein Live-Tracking?</h3>
+        <p>Nein. Vorgesehen ist kein permanentes Dauertracking als Grundfunktion, sondern eine zweckgebundene Standortlogik für definierte Situationen.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Kann sich Safety1 noch ändern?</h3>
+        <p>Ja. Da sich Safety1 in Entwicklung befindet, können Funktionen, Inhalte, Abläufe und technische Umsetzungen angepasst, erweitert oder verworfen werden.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section anchor-offset" id="rechtliches">
-    <div class="container">
-      <div class="section-intro">
-        <span class="eyebrow-dark">Rechtliche Einordnung</span>
-        <h2>Wichtige rechtliche Hinweise</h2>
+
+<section class="section" id="rechtliches">
+  <div class="container">
+    <div class="section-intro">
+      <span class="eyebrow-dark">Rechtliche Einordnung</span>
+      <h2>Wichtige rechtliche Hinweise</h2>
+      <p class="section-subtitle">
+        Safety1 ist als unterstützende digitale Lösung gedacht und arbeitet nach einem Best-Effort-Prinzip.
+      </p>
+      <p>
+        Safety1 soll definierte Benachrichtigungs- und Ablaufschritte bestmöglich unterstützen, kann jedoch keine erfolgreiche
+        Zustellung, keine Reaktion Dritter und keine tatsächliche Hilfeleistung garantieren.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="note-box">
+        <h3>Safety1 ersetzt keine offiziellen Notrufsysteme</h3>
+        <p>
+          In akuten Notfällen sind weiterhin die offiziellen Notrufnummern und zuständigen Einsatzorganisationen zu kontaktieren.
+          Safety1 ist keine Alternative zu Rettung, Polizei, Feuerwehr oder sonstigen professionellen Einsatzkräften.
+        </p>
       </div>
 
-      <div class="legal-box">
+      <div class="note-box">
+        <h3>Technische und tatsächliche Grenzen</h3>
         <p>
-          Safety1 arbeitet nach einem Best-Effort-Prinzip. Die Anwendung ist darauf ausgelegt, definierte Funktionen
-          und Abläufe nach Maßgabe der technischen, organisatorischen und tatsächlichen Möglichkeiten bestmöglich
-          bereitzustellen. Eine Garantie für die fehlerfreie, vollständige oder jederzeit erfolgreiche Auslösung,
-          Übermittlung oder Bearbeitung von Benachrichtigungen sowie für eine Reaktion Dritter oder das Eintreffen
-          von Hilfe wird ausdrücklich nicht übernommen.
-        </p>
-        
-        <p>
-          Soweit Safety1 die ergänzende Einbindung einer verifizierten Community vorsieht, bedeutet dies nicht,
-          dass jede eingebundene Person in jedem Fall umfassend oder behördlich geprüft ist. Maßgeblich sind
-          vielmehr die jeweils vorgesehenen technischen, organisatorischen und prozessualen Prüf- und
-          Freigabeschritte in ihrer zum jeweiligen Zeitpunkt gültigen Ausgestaltung.
-        </p>
-
-        <p>Safety1 übernimmt insbesondere keine Garantie für:</p>
-        <ul>
-          <li>die jederzeitige technische Verfügbarkeit,</li>
-          <li>die fehlerfreie oder zeitgerechte Übermittlung von Benachrichtigungen,</li>
-          <li>die ständige Erreichbarkeit eingebundener Kontakte oder Community-Mitglieder,</li>
-          <li>die Vollständigkeit, Genauigkeit oder jederzeitige Aktualität von Standortmeldungen,</li>
-          <li>das tatsächliche Eintreffen oder Tätigwerden von Hilfe,</li>
-          <li>die Eignung der Anwendung für jeden Einzelfall.</li>
-        </ul>
-
-        <p>
-          Bereichsprüfungen, Zeitlogiken und Standortmeldungen dienen ausschließlich der strukturierten Einordnung
-          vordefinierter Situationen. Aus Abweichungen, Zeitüberschreitungen oder letzten bekannten Positionsmeldungen
-          kann nicht automatisch auf einen konkreten Notfall, ein Schadensereignis oder einen tatsächlichen Aufenthaltsort
-          geschlossen werden.
-        </p>
-
-        <p>
-          Die Nutzung hat stets verantwortungsvoll und ausschließlich im rechtlich zulässigen Rahmen zu erfolgen.
-          Maßgeblich sind die jeweils geltenden Nutzungsbedingungen, Datenschutzinformationen und produktspezifischen Hinweise.
-        </p>
-
-        <p>
-          In akuten Notfällen sind ausschließlich die offiziellen Notrufnummern und zuständigen Einsatzorganisationen
-          zu kontaktieren.
+          Die Wirksamkeit einzelner Abläufe kann unter anderem von Netzverbindung, Gerätestatus, individuellen Einstellungen,
+          Drittservices und dem tatsächlichen Verhalten eingebundener Personen abhängen.
         </p>
       </div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="cta">
-        <span class="eyebrow">Abschluss</span>
-        <h2>Sicherheit beginnt mit klarer Kommunikation</h2>
-        <p>
-          Safety1 wird mit dem Ziel entwickelt, im entscheidenden Moment eine nachvollziehbare,
-          strukturierte und verantwortungsvoll konzipierte Kommunikationslösung bereitzustellen.
-        </p>
-        <a href="#warteliste-formular" class="btn btn-primary">Jetzt vormerken</a>
-      </div>
+    <div class="note-box" style="margin-top:22px;">
+      <h3>Hinweis zu Funktionen in Entwicklung</h3>
+      <p>
+        Bereiche, Wege, Wearables, Event-Modus, Community-Logik und weitere Darstellungen sind konzeptionell zu verstehen.
+        Umfang, technische Umsetzung, rechtliche Ausgestaltung und Verfügbarkeit können sich bis zum finalen Produkt ändern.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer" id="footer">
+<footer class="footer" id="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-card">
-        <h2>Safety1</h2>
+        <h2 style="color:#fff;">Safety1</h2>
         <p>
           Safety1 ist eine digitale Lösung in Entwicklung, die Menschen dabei unterstützen soll,
-          in dringenden oder unübersichtlichen Situationen ausgewählte Kontakte strukturiert zu
-          informieren und – je nach Ausgestaltung – zusätzliche, vorab geprüfte Personen kontrolliert
-          einzubinden.
+          im entscheidenden Moment ausgewählte Kontakte strukturiert zu informieren und Unterstützungsabläufe nachvollziehbarer zu gestalten.
         </p>
         <p>
           E-Mail: <a href="mailto:info@mysafety1.app">info@mysafety1.app</a><br>
@@ -3598,314 +1485,268 @@ if(!localStorage.getItem("cookieAccepted")){
         </p>
       </div>
 
-      <div class="footer-card" id="schnellzugriff">
-        <h3>Schnellzugriff</h3>
+      <div class="footer-card">
+        <h3 style="color:#fff;">Schnellzugriff</h3>
+        <p><a href="#wofuer">Über Safety1</a></p>
+        <p><a href="#so-funktionierts">So funktioniert’s</a></p>
+        <p><a href="#event-modus">Event-Modus</a></p>
         <p><a href="#warteliste-formular">Warteliste</a></p>
         <p><a href="/datenschutz">Datenschutz</a></p>
         <p><a href="/impressum">Impressum</a></p>
         <p><a href="/nutzungsbedingungen">Nutzungsbedingungen</a></p>
-        <p><a href="#kontakt">Kontakt</a></p>
       </div>
     </div>
 
-      <section class="anchor-offset" id="kontakt" style="margin-bottom:34px;">
-        <h3>Kontakt</h3>
-        <p>
-          Kontaktaufnahme für allgemeine Anfragen derzeit bevorzugt per E-Mail an
-          <a href="mailto:info@mysafety1.app">info@mysafety1.app</a>.
-        </p>
-      </section>
-
-      <section class="anchor-offset" id="impressum" style="margin-bottom:34px;">
-        <h3>Impressum</h3>
-
-        <p><strong>Medieninhaber und Diensteanbieter</strong></p>
-        <p>
-          DI Jérôme Ortner BSc.<br>
-          e.U.<br>
-          Ortnerweg 2<br>
-          8431 Gralla<br>
-          Österreich
-        </p>
-
-        <p>
-          E-Mail: <a href="mailto:info@mysafety1.app">info@mysafety1.app</a><br>
-          Website: <a href="https://www.mysafety1.app">www.mysafety1.app</a>
-        </p>
-
-        <p>
-          Unternehmensgegenstand: Entwicklung und Konzeption digitaler Lösungen<br>
-          Firmenbuchnummer: [in Arbeit]<br>
-          Firmenbuchgericht: [in Arbeit]<br>
-          UID-Nummer: [in Arbeit]<br>
-          Mitglied bei: [in Arbeit]
-        </p>
-      </section>
-
-      <section class="anchor-offset" id="datenschutz">
-        <h3>Datenschutzerklärung</h3>
-
-        <p>
-          Der Schutz personenbezogener Daten ist uns ein besonderes Anliegen. Die Verarbeitung Ihrer Daten erfolgt
-          ausschließlich auf Grundlage der anwendbaren gesetzlichen Bestimmungen, insbesondere der Datenschutz-
-          Grundverordnung (DSGVO) sowie sonstiger einschlägiger datenschutzrechtlicher Vorschriften in ihrer
-          jeweils geltenden Fassung.
-        </p>
-
-        <h3>1. Verantwortlicher</h3>
-        <p>
-          Verantwortlich für die Datenverarbeitung ist:<br>
-          DI Jérôme Ortner BSc<br>
-          Ortnerweg 2<br>
-          8431 Gralla<br>
-          Österreich<br>
-          E-Mail: <a href="mailto:info@mysafety1.app">info@mysafety1.app</a>
-        </p>
-
-        <h3>2. Besuch der Website</h3>
-        <p>
-          Beim rein informatorischen Besuch dieser Website können technisch erforderliche Zugriffsdaten durch den
-          Hosting- bzw. Plattformanbieter verarbeitet werden. Dazu können insbesondere IP-Adresse, Datum und Uhrzeit
-          des Zugriffs, aufgerufene Inhalte, Browserinformationen sowie technische Protokolldaten zählen.
-          Diese Verarbeitung erfolgt zum Zweck der Bereitstellung, Stabilität und Sicherheit der Website.
-        </p>
-
-        <h3>3. Warteliste / Kontaktaufnahme</h3>
-        <p>
-          Wenn Sie sich über das Formular zur Warteliste anmelden oder per E-Mail Kontakt aufnehmen, werden die von
-          Ihnen übermittelten personenbezogenen Daten verarbeitet, um Ihre Anfrage zu bearbeiten bzw. Sie über das
-          Projekt Safety1 zu informieren.
-        </p>
-
-        <p>
-          Im Rahmen der Warteliste betrifft dies insbesondere die angegebene E-Mail-Adresse. Die Verarbeitung erfolgt
-          auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Eine erteilte Einwilligung kann jederzeit
-          mit Wirkung für die Zukunft widerrufen werden.
-        </p>
-
-        <h3>4. Empfänger / Auftragsverarbeiter</h3>
-        <p>
-          Sofern externe technische Dienstleister für Hosting, Formularverarbeitung oder E-Mail-Versand eingesetzt
-          werden, erfolgt dies ausschließlich im Rahmen datenschutzrechtlich zulässiger Auftragsverarbeitung.
-          Werden künftig Newsletter- oder Wartelisten-Dienste eingesetzt, werden diese Informationen in der
-          Datenschutzerklärung entsprechend ergänzt.
-        </p>
-
-        <h3>5. Speicherdauer</h3>
-        <p>
-          Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist
-          oder gesetzliche Aufbewahrungspflichten bestehen. Daten, die auf Grundlage einer Einwilligung verarbeitet
-          werden, werden grundsätzlich bis zum Widerruf oder bis zum Wegfall des Verarbeitungszwecks gespeichert.
-        </p>
-
-        <h3>6. Ihre Rechte</h3>
-        <p>
-          Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
-          Datenübertragbarkeit sowie Widerspruch zu. Wenn die Verarbeitung auf Ihrer Einwilligung beruht, haben Sie
-          das Recht, diese Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen.
-        </p>
-
-        <p>
-          Wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen Datenschutzrecht verstößt, können Sie
-          sich bei der zuständigen Datenschutzbehörde beschweren.
-        </p>
-
-        <h3>7. Cookies / Tracking</h3>
-        <p>
-          Diese Website ist so ausgestaltet, dass derzeit keine nicht technisch erforderlichen Cookies, keine
-          Analyse-Tools und kein Marketing-Tracking eingesetzt werden sollen. Sollten künftig zusätzliche Dienste
-          eingebunden werden, wird diese Datenschutzerklärung entsprechend angepasst und – soweit erforderlich –
-          ein gesondertes Einwilligungsmanagement ergänzt.
-        </p>
-
-        <h3>8. Externe Links</h3>
-        <p>
-          Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte und Datenverarbeitungen sind
-          ausschließlich die jeweiligen Betreiber verantwortlich.
-        </p>
-
-        <h3>9. Änderungen dieser Datenschutzerklärung</h3>
-        <p>
-          Diese Datenschutzerklärung kann angepasst werden, wenn dies aufgrund tatsächlicher, technischer oder
-          rechtlicher Entwicklungen erforderlich ist.
-        </p>
-
-        <h3>10. Kontakt in Datenschutzfragen</h3>
-        <p>
-          Für Fragen zur Verarbeitung personenbezogener Daten wenden Sie sich bitte an:
-          <a href="mailto:info@mysafety1.app">info@mysafety1.app</a>
-        </p>
-      </section>
-
-      <div class="subfooter">
-        © Safety1. Alle Rechte vorbehalten. Diese Website dient derzeit der Information über ein Projekt in Entwicklung.
-      </div>
+    <div class="subfooter">
+      © Safety1. Alle Rechte vorbehalten. Diese Website dient derzeit der Information über ein Projekt in Entwicklung.
     </div>
-  </footer>
+  </div>
+</footer>
 
 <a href="#top" class="back-to-top" aria-label="Zum Seitenanfang">↑</a>
 
-<script>
-  const btn = document.querySelector(".back-to-top");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      btn.style.display = "flex";
-    } else {
-      btn.style.display = "none";
-    }
-  });
-</script>
-  
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.getElementById("mobile-menu-toggle");
-  const links = document.querySelectorAll(".nav a");
+<div class="share-modal" id="shareModal" hidden aria-hidden="true">
+  <div class="share-modal-backdrop" data-share-close></div>
+  <div class="share-modal-dialog" role="dialog" aria-modal="true" aria-label="Safety1 teilen">
+    <button class="share-modal-close" type="button" data-share-close aria-label="Teilen-Fenster schließen">×</button>
+    <h3 class="share-modal-title">Safety1 teilen</h3>
+    <p class="share-modal-text">
+      Wählen Sie aus, wie Sie Safety1 weiterempfehlen möchten.
+    </p>
+    <div class="share-grid">
+      <button class="share-option primary full" id="nativeShareOption" type="button">Auf Gerät teilen</button>
+      <a class="share-option" id="shareWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="share-option" id="shareEmail" href="#">E‑Mail</a>
+      <a class="share-option" id="shareSms" href="#">Nachricht / SMS</a>
+      <a class="share-option" id="shareFacebook" href="#" target="_blank" rel="noopener">Facebook</a>
+      <button class="share-option full" type="button" onclick="copySafety1Link()">Link kopieren</button>
+    </div>
+    <p class="share-modal-note" id="shareModalNote" aria-live="polite"></p>
+  </div>
+</div>
 
-  links.forEach(function (link) {
-    link.addEventListener("click", function () {
-      if (toggle) {
-        toggle.checked = false;
-      }
-    });
-  });
-});
-</script>
 
-<div class="s1-video-modal" id="s1VideoModal" hidden aria-hidden="true">
-  <div class="s1-video-modal-backdrop" data-s1-video-close></div>
-
-  <div class="s1-video-modal-dialog" role="dialog" aria-modal="true" aria-label="Safety1 Kurzfilm">
-    <button class="s1-video-modal-close" type="button" data-s1-video-close aria-label="Video schließen">
-      ×
-    </button>
-
+<div class="video-modal" id="s1VideoModal" hidden aria-hidden="true">
+  <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Safety1 Kurzfilm">
+    <button class="video-modal-close" type="button" data-s1-video-close aria-label="Video schließen">×</button>
     <video id="s1MainVideo" controls playsinline preload="metadata" poster="safety1-video-poster.png">
       <source src="safety1-imagefilm.mp4" type="video/mp4">
       Ihr Browser unterstützt das Video-Tag nicht.
     </video>
-
-    <p class="s1-video-modal-note">
+    <p class="video-modal-note">
       KI-generierter Konzeptfilm. Funktionen in Entwicklung. Safety1 ersetzt keine bestehenden Notrufsysteme.
     </p>
   </div>
 </div>
 
-  <script>
-document.addEventListener("DOMContentLoaded", function(){
-  const modal = document.getElementById("s1VideoModal");
-  const video = document.getElementById("s1MainVideo");
-  const openButtons = document.querySelectorAll("[data-s1-video-open]");
-  const closeButtons = document.querySelectorAll("[data-s1-video-close]");
+<script>
+  function acceptCookies(){
+    localStorage.setItem("cookieAccepted", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+  }
 
-  function openVideo(){
-    if(!modal){
-      return;
+  if(!localStorage.getItem("cookieAccepted")){
+    document.getElementById("cookie-banner").style.display = "block";
+  }
+
+  const backToTop = document.querySelector(".back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "flex" : "none";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("mobile-menu-toggle");
+    const links = document.querySelectorAll(".nav a");
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (toggle) toggle.checked = false;
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const modal = document.getElementById("s1VideoModal");
+    const video = document.getElementById("s1MainVideo");
+    const openButtons = document.querySelectorAll("[data-s1-video-open]");
+    const closeButtons = document.querySelectorAll("[data-s1-video-close]");
+
+    function openVideo(){
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if(video){
+        video.currentTime = 0;
+        video.play().catch(function(){});
+      }
     }
 
-    modal.hidden = false;
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("s1-modal-open");
+    function closeVideo(){
+      if(video) video.pause();
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
 
-    if(video){
-      video.currentTime = 0;
-      video.play().catch(function(){});
+    openButtons.forEach(function(button){
+      button.addEventListener("click", openVideo);
+    });
+
+    closeButtons.forEach(function(button){
+      button.addEventListener("click", closeVideo);
+    });
+
+    modal.addEventListener("click", function(event){
+      if(event.target === modal){
+        closeVideo();
+      }
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape" && !modal.hidden){
+        closeVideo();
+      }
+    });
+  });
+
+  const safety1ShareUrl = "https://mysafety1.app";
+  const safety1ShareTitle = "Safety1 – Hilfe im Ernstfall einfacher, klarer und strukturierter auslösen";
+  const safety1ShareText = "Ich finde die Idee von Safety1 spannend: eine digitale Lösung, die Menschen im Ernstfall dabei unterstützen soll, ausgewählte Kontakte rasch zu informieren und Hilfe strukturierter zu organisieren.";
+  const encodedShareUrl = encodeURIComponent(safety1ShareUrl);
+  const encodedShareTitle = encodeURIComponent(safety1ShareTitle);
+  const encodedShareText = encodeURIComponent(safety1ShareText);
+  const encodedCombinedText = encodeURIComponent(safety1ShareText + " " + safety1ShareUrl);
+
+  function setShareNote(message){
+    const note = document.getElementById("shareNote");
+    const modalNote = document.getElementById("shareModalNote");
+    if(note) note.textContent = message;
+    if(modalNote) modalNote.textContent = message;
+  }
+
+  function fallbackCopySafety1Link(){
+    const tempInput = document.createElement("textarea");
+    tempInput.value = safety1ShareUrl;
+    tempInput.setAttribute("readonly", "");
+    tempInput.style.position = "fixed";
+    tempInput.style.left = "-9999px";
+    document.body.appendChild(tempInput);
+    tempInput.focus();
+    tempInput.select();
+    try{
+      const successful = document.execCommand("copy");
+      setShareNote(successful ? "Link wurde kopiert – danke fürs Weiterempfehlen!" : "Kopieren nicht möglich. Link: " + safety1ShareUrl);
+    } catch(error){
+      setShareNote("Kopieren nicht möglich. Link: " + safety1ShareUrl);
+    }
+    document.body.removeChild(tempInput);
+  }
+
+  function copySafety1Link(){
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(safety1ShareUrl).then(function(){
+        setShareNote("Link wurde kopiert – danke fürs Weiterempfehlen!");
+      }).catch(function(){
+        fallbackCopySafety1Link();
+      });
+    } else {
+      fallbackCopySafety1Link();
     }
   }
 
-  function closeVideo(){
-    if(video){
-      video.pause();
+  function openShareModal(){
+    const modal = document.getElementById("shareModal");
+    const nativeButton = document.getElementById("nativeShareOption");
+    const whatsapp = document.getElementById("shareWhatsapp");
+    const email = document.getElementById("shareEmail");
+    const sms = document.getElementById("shareSms");
+    const facebook = document.getElementById("shareFacebook");
+
+    if(whatsapp){
+      whatsapp.href = "https://wa.me/?text=" + encodedCombinedText;
+    }
+    if(email){
+      email.href = "mailto:?subject=" + encodedShareTitle + "&body=" + encodeURIComponent(safety1ShareText + "\n\n" + safety1ShareUrl);
+    }
+    if(sms){
+      sms.href = "sms:?&body=" + encodedCombinedText;
+    }
+    if(facebook){
+      facebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedShareUrl;
+    }
+    if(nativeButton){
+      if(navigator.share){
+        nativeButton.hidden = false;
+      } else {
+        nativeButton.hidden = true;
+      }
     }
 
     if(modal){
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      setShareNote("");
+    }
+  }
+
+  function closeShareModal(){
+    const modal = document.getElementById("shareModal");
+    if(modal){
       modal.hidden = true;
       modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
-
-    document.body.classList.remove("s1-modal-open");
   }
 
-  openButtons.forEach(function(button){
-    button.addEventListener("click", openVideo);
-  });
+  function nativeShareSafety1(){
+    const shareData = {
+      title: safety1ShareTitle,
+      text: safety1ShareText,
+      url: safety1ShareUrl
+    };
 
-  closeButtons.forEach(function(button){
-    button.addEventListener("click", closeVideo);
-  });
-
-  document.addEventListener("keydown", function(event){
-    if(event.key === "Escape" && modal && !modal.hidden){
-      closeVideo();
+    if(navigator.share){
+      navigator.share(shareData).then(function(){
+        setShareNote("Danke fürs Weiterempfehlen!");
+        closeShareModal();
+      }).catch(function(){
+        setShareNote("");
+      });
     }
-  });
-});
-
-const safety1ShareUrl = "https://mysafety1.app";
-const safety1ShareTitle = "Safety1 – Unterstützung im entscheidenden Moment";
-const safety1ShareText = "Ich finde die Idee von Safety1 spannend: eine digitale Lösung, die Menschen im Ernstfall dabei unterstützen soll, ausgewählte Kontakte rasch zu informieren und Hilfe strukturierter zu organisieren.";
-
-function setShareNote(message){
-  const note = document.getElementById("shareNote");
-  if(note){
-    note.textContent = message;
   }
-}
 
-function copySafety1Link(){
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(safety1ShareUrl).then(function(){
-      setShareNote("Link wurde kopiert – danke fürs Weiterempfehlen!");
-    }).catch(function(){
-      fallbackCopySafety1Link();
+  function shareSafety1(){
+    openShareModal();
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    const nativeButton = document.getElementById("nativeShareOption");
+    const closeButtons = document.querySelectorAll("[data-share-close]");
+    const modal = document.getElementById("shareModal");
+
+    if(nativeButton){
+      nativeButton.addEventListener("click", nativeShareSafety1);
+    }
+
+    closeButtons.forEach(function(button){
+      button.addEventListener("click", closeShareModal);
     });
-  } else {
-    fallbackCopySafety1Link();
-  }
-}
 
-function fallbackCopySafety1Link(){
-  const tempInput = document.createElement("textarea");
-  tempInput.value = safety1ShareUrl;
-  tempInput.setAttribute("readonly", "");
-  tempInput.style.position = "fixed";
-  tempInput.style.left = "-9999px";
-  tempInput.style.top = "0";
-  document.body.appendChild(tempInput);
-  tempInput.focus();
-  tempInput.select();
-
-  try{
-    const successful = document.execCommand("copy");
-    if(successful){
-      setShareNote("Link wurde kopiert – danke fürs Weiterempfehlen!");
-    } else {
-      setShareNote("Kopieren nicht möglich. Link: " + safety1ShareUrl);
+    if(modal){
+      modal.addEventListener("click", function(event){
+        if(event.target === modal){
+          closeShareModal();
+        }
+      });
     }
-  } catch(error){
-    setShareNote("Kopieren nicht möglich. Link: " + safety1ShareUrl);
-  }
 
-  document.body.removeChild(tempInput);
-}
-
-function shareSafety1(){
-  const shareData = {
-    title: safety1ShareTitle,
-    text: safety1ShareText,
-    url: safety1ShareUrl
-  };
-
-  if(navigator.share){
-    navigator.share(shareData).then(function(){
-      setShareNote("Danke fürs Weiterempfehlen!");
-    }).catch(function(){
-      setShareNote("");
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape" && modal && !modal.hidden){
+        closeShareModal();
+      }
     });
-  } else {
-    copySafety1Link();
-  }
-}
+  });
 </script>
 
 </body>
